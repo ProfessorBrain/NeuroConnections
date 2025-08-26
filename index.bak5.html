@@ -13,14 +13,13 @@
   *{box-sizing:border-box}
   html,body{height:100%}
   body{margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif; line-height:1.25;}
-  .wrap{width:min(640px,96vw); margin:0 auto; padding:40px 0 24px; position:relative;}
+  .wrap{width:min(640px, 96vw); margin:0 auto; padding:40px 0 24px; position:relative;}
   h1{margin:0 0 6px; text-align:center; font-weight:900; font-size:28px; letter-spacing:-0.01em}
   h2{margin:0; text-align:center; font-weight:700; font-size:18px}
-  /* fixed slot for toasts so they don't overlap the title */
-  .toast-slot{ height:44px; display:flex; align-items:center; justify-content:center; margin-top:6px; }
+  .date-bar{ margin-top:6px; text-align:center; color:var(--muted); font-size:12px; user-select:none }
   .grid{margin-top:24px; display:grid; grid-template-columns:repeat(4,auto); gap:10px; justify-items:center; justify-content:center;}
   .tile{
-    width:150px; min-height:88px; max-height:160px;
+    width: 150px; min-height:88px; max-height:160px;
     border-radius:10px; border:1px solid var(--border); background:var(--tile);
     display:flex; align-items:center; justify-content:center;
     font-weight:800; font-size:18px; text-align:center; cursor:pointer;
@@ -34,10 +33,15 @@
     border-radius:10px; border:1px solid var(--border); background:var(--card);
     padding:12px; display:flex; align-items:center; gap:10px; }
   .badge{ font-weight:900; padding:6px 10px; border-radius:999px; color:#0b0e12; font-size:12px; }
-  .toast{ position:relative; z-index:1; pointer-events:none; font-weight:700; font-size:14px; border-radius:8px; padding:8px 10px; display:none; border:1px solid transparent; }
+  .toast{
+    position:absolute; left:50%; transform:translateX(-50%);
+    top:64px; z-index:20; pointer-events:none;
+    font-weight:700; font-size:14px; border-radius:8px; padding:8px 10px; display:none; border:1px solid transparent;
+  }
   .toast.show{display:block}
   .toast.ok{ background:rgba(22,163,74,.10); border-color:rgba(22,163,74,.35)}
-  .toast.warn{ background:rgba(217,119,6,.10); border-color:rgba(217,119,6,.35)} .toast.err{ background:rgba(220,38,38,.10); border-color:rgba(220,38,38,.35)}
+  .toast.warn{ background:rgba(217,119,6,.10); border-color:rgba(217,119,6,.35)}
+  .toast.err{ background:rgba(220,38,38,.10); border-color:rgba(220,38,38,.35)}
   .controls{ margin-top:18px; display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;}
   .btn{ border-radius:10px; border:1px solid var(--border); background:#fff; color:#0f172a; padding:14px 20px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; font-size:13px; cursor:pointer; }
   .btn:hover{ background:#f8fafc; }
@@ -47,44 +51,26 @@
   #hint.btn{ background:#fff7ed; border-color:#fed7aa; }
   #hint.btn:hover{ background:#fff1e6; }
   footer{ margin-top:14px; text-align:center; color:#94a3b8; font-size:12px; user-select:none}
-  .skeleton{ width:150px; height:120px; border-radius:10px; border:1px solid var(--border); background:linear-gradient(90deg, #ffffff 25%, #f1f5f9 37%, #ffffff 63%); background-size:400% 100%; animation:shimmer 1.2s infinite; }
+  .skeleton{ width: 150px; height:120px; border-radius:10px; border:1px solid var(--border); background:linear-gradient(90deg, #ffffff 25%, #f1f5f9 37%, #ffffff 63%); background-size:400% 100%; animation:shimmer 1.2s infinite; }
   @keyframes shimmer{ 0%{background-position:100% 0} 100%{background-position:0 0} }
   .loader{ margin-top:10px; text-align:center; color:var(--muted); font-size:14px; white-space:pre-wrap; }
   .uploader{ display:none; margin-top:10px; text-align:center; }
   .uploader.show{ display:block; }
-
-  /* --- Mobile-friendly adjustments --- */
-  @media (max-width: 480px){
-    .wrap{ width:min(420px, 98vw); padding:24px 0 16px; }
-    .grid{ gap:8px; grid-template-columns: repeat(4, 1fr); justify-content:stretch; }
-    .tile{
-      width:100%; min-height:72px; max-height:140px;
-      font-size:clamp(12px, 3.4vw, 16px); padding:8px;
-      -webkit-tap-highlight-color: transparent; touch-action: manipulation;
-    }
-    .skeleton{ width:100%; height:100px; }
-    .toast-slot{ height:48px; }
-    .btn{ min-height:44px; padding:12px 14px; font-size:12px; touch-action: manipulation; }
-  }
-  @media (max-width: 360px){
-    .grid{ gap:6px; }
-    .tile{ min-height:64px; max-height:120px; font-size:clamp(11px, 3.6vw, 15px); padding:6px; }
-    .skeleton{ height:92px; }
-  }
 </style>
 </head>
 <body>
   <div class="wrap">
     <h1><span aria-hidden="true">🧠</span> NeuroConnections</h1>
     <h2>Create four groups of four!</h2>
-    <div class="toast-slot"><div id="toast" class="toast" role="status" aria-live="polite"></div></div>
+    
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
     <div id="grid" class="grid" aria-label="Tiles grid"></div>
     <div id="loader" class="loader"></div>
 
     <div id="uploader" class="uploader">
       <input id="fileInput" type="file" accept=".csv,text/csv" />
-      <div style="margin-top:8px; color:#64748b; font-size:12px">Tip: If you opened the file directly (file://), browsers may block reading puzzles.csv. Use this picker or run a tiny local server.</div>
+      <div style="margin-top:8px; color:#64748b; font-size:12px">Tip: Use this when opening the file directly (file://) where browsers block fetching local CSVs.</div>
     </div>
 
     <div class="controls">
@@ -112,8 +98,9 @@
   const uploaderEl = document.getElementById('uploader');
   const fileInput = document.getElementById('fileInput');
   const toastEl = document.getElementById('toast');
+  const dateEl = document.getElementById('puzzleDate');
 
-  let dayOffset = 0; // secret 'N' (forward), 'P' (back)
+  let dayOffset = 0; // secret 'N'
 
   // skeleton now to avoid white screen
   (function renderSkeleton(){
@@ -125,13 +112,14 @@
   })();
 
   function phoenixISODateFromOffset(offset){
+    
     const msPerDay = 86400000;
     const target = new Date(Date.now() + offset*msPerDay);
     const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Phoenix',year:'numeric',month:'2-digit',day:'2-digit'});
     const p=fmt.formatToParts(target);
     return `${p.find(x=>x.type==='year').value}-${p.find(x=>x.type==='month').value}-${p.find(x=>x.type==='day').value}`;
   }
-  // Month-Day only (ignore year)
+  // Return Phoenix month-day string 'MM-DD' for the given offset
   function phoenixMonthDayFromOffset(offset){
     const msPerDay = 86400000;
     const target = new Date(Date.now() + offset*msPerDay);
@@ -140,18 +128,19 @@
     return `${p.find(x=>x.type==='month').value}-${p.find(x=>x.type==='day').value}`;
   }
   function two(n){ n=String(n); return n.length===1? '0'+n : n; }
-  // Normalize CSV dates to 'MM-DD'
+  // Normalize various date formats (YYYY-MM-DD, MM/DD/YYYY, MM-DD, etc.) to 'MM-DD'
   function toMMDD(s){
     s = String(s||'').trim();
-    let m = s.match(/^([0-9]{4})[-\\/](\d{1,2})[-\\/](\d{1,2})$/);
+    let m = s.match(/^([0-9]{4})[-\/]?([0-9]{2})[-\/]?([0-9]{2})$/);
+    if(m) return `${m[2]}-${m[3]}`;
+    m = s.match(/^([0-9]{4})[-\/]([0-9]{1,2})[-\/]([0-9]{1,2})$/);
     if(m) return `${two(m[2])}-${two(m[3])}`;
-    m = s.match(/^(\d{1,2})[-\\/](\d{1,2})(?:[-\\/](\d{2,4}))?$/);
+    m = s.match(/^([0-9]{1,2})[-\/]([0-9]{1,2})(?:[-\/]([0-9]{2,4}))?$/);
     if(m) return `${two(m[1])}-${two(m[2])}`;
-    m = s.match(/^(\d{2})(\d{2})$/);
+    m = s.match(/^([0-9]{2})([0-9]{2})$/);
     if(m) return `${m[1]}-${m[2]}`;
     return s;
   }
-
   function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
   function rgba(hex,alpha=.15){ const s=hex.replace('#',''); const x=s.length===3? s.split('').map(c=>c+c).join(''):s; const n=parseInt(x,16); const r=(n>>16)&255,g=(n>>8)&255,b=n&255; return `rgba(${r},${g},${b},${alpha})`; }
   function showToast(msg,kind){ toastEl.textContent = msg; toastEl.className = 'toast show '+(kind||''); if(kind!=='err'){ clearTimeout(showToast._t); showToast._t=setTimeout(()=>{ toastEl.className='toast'; },1500);} }
@@ -206,28 +195,37 @@
       const cats = byDate.get(d);
       const valids = cats.filter(c=>c.items.length===4);
       if(valids.length < 4) continue;
-      // Order categories by difficulty color
       valids.sort((a,b)=> (DIFFICULTY_ORDER[(a.difficulty||'').toLowerCase()]||99) - (DIFFICULTY_ORDER[(b.difficulty||'').toLowerCase()]||99));
       puzzles.push({
         title:d,
         categories: valids.slice(0,4).map((c,i)=> ({...c, color: pickDifficultyColor(c.difficulty, i)}))
       });
-    }
+      }
     return puzzles;
   }
 
-  // ================= Game state & rendering =================
+  
+  function renderNoPuzzle(dateStr){
+    gridEl.innerHTML='';
+    const frag = document.createDocumentFragment();
+    for(let i=0;i<16;i++){ const d=document.createElement('div'); d.className='skeleton'; frag.appendChild(d); }
+    gridEl.appendChild(frag);
+    submitEl.disabled = deselectEl.disabled = shuffleEl.disabled = hintEl.disabled = true;
+    loaderEl.textContent = 'No puzzle found for ' + dateStr + '. Update puzzles.csv or press N to change day.';
+  }
+// ================= Game state & rendering =================
   let PUZZLES=[], PUZZLE=null, solved=[], selected=new Set(), remaining=new Set(), order=[], itemToCat=new Map();
 
   // Hints
   let hintedColors = new Map(); // item -> color for visual hinting
-  let hintGroupIdx = -1;
-  let hintedItems = new Set(); // items revealed so far in current hinted group
+  let hintGroupIdx = -1;      // current hinted group's index
+  let hintedItems = new Set(); // items revealed so far in the hinted group
 
   function clearHintState(){ hintGroupIdx=-1; hintedItems.clear(); hintedColors.clear(); }
 
   function chooseUnsolvedGroupIndex(){
     if(!PUZZLE) return -1;
+    // choose first group fully remaining
     for(let i=0;i<PUZZLE.categories.length;i++){
       const c = PUZZLE.categories[i];
       if(c.items.every(it => remaining.has(it))) return i;
@@ -247,24 +245,18 @@
     });
   }
 
+  function setDateBarText(dateStr, usedRotation){ if(!dateEl) return; dateEl.textContent = usedRotation ? `Puzzle date: ${dateStr} (rotated match)` : `Puzzle date: ${dateStr}`; }
+
   function selectPuzzleForCurrentOffset(){
     const mmdd = phoenixMonthDayFromOffset(dayOffset);
+    // Find the first puzzle whose CSV date normalizes to this MM-DD
     for(let i=0;i<PUZZLES.length;i++){
-      if(toMMDD(PUZZLES[i].title) === mmdd) return PUZZLES[i];
+      const p = PUZZLES[i];
+      if(toMMDD(p.title) === mmdd) return p;
     }
     return null;
   }
-
-  function renderNoPuzzle(mmdd){
-    gridEl.innerHTML='';
-    const frag = document.createDocumentFragment();
-    for(let i=0;i<16;i++){ const d=document.createElement('div'); d.className='skeleton'; frag.appendChild(d); }
-    gridEl.appendChild(frag);
-    submitEl.disabled = deselectEl.disabled = shuffleEl.disabled = hintEl.disabled = true;
-    loaderEl.textContent = 'No puzzle found for ' + mmdd + '. Update puzzles.csv or press N/P to change day.';
-  }
-
-  function initBoard(){
+    function initBoard(){
     solved=[]; selected.clear(); clearHintState();
     remaining = new Set(PUZZLE.categories.flatMap(c=>c.items));
     order = shuffle([...remaining]);
@@ -293,8 +285,7 @@
       const b=document.createElement('button'); b.type='button'; b.className='tile'; b.textContent=it;
       const isSel=selected.has(it); if(isSel) b.classList.add('selected');
       b.setAttribute('aria-pressed', isSel? 'true':'false');
-      // Apply hint coloring only when not selected
-      if(hintedColors.has(it) && !isSel){
+      if(hintedColors.has(it)){
         const c = hintedColors.get(it);
         b.style.borderColor = c;
         b.style.outline = '2px solid ' + c;
@@ -320,18 +311,6 @@
       const isSel = selected.has(n.textContent);
       n.classList.toggle('selected', isSel);
       n.setAttribute('aria-pressed', isSel ? 'true' : 'false');
-      // reapply hint visuals only if not selected
-      if(hintedColors.has(n.textContent) && !isSel){
-        const c = hintedColors.get(n.textContent);
-        n.style.borderColor = c;
-        n.style.outline = '2px solid ' + c;
-        n.style.background = rgba(c, 0.12);
-      } else {
-        // clear inline hint styles when selected or not hinted
-        n.style.borderColor = '';
-        n.style.outline = '';
-        n.style.background = '';
-      }
     }
   }
 
@@ -364,10 +343,17 @@
   function onHint(){
     if(!PUZZLE) return;
 
-    // If no current hinted group or it's no longer fully remaining, pick a new unsolved group
+    // If no current hinted group or that group is no longer fully remaining, pick a new unsolved group
     const validCurrent = hintGroupIdx >= 0 && PUZZLE.categories[hintGroupIdx].items.every(it => remaining.has(it));
     if(hintGroupIdx < 0 || !validCurrent){
-      hintGroupIdx = chooseUnsolvedGroupIndex();
+      // choose the first fully-remaining unsolved group
+      hintGroupIdx = -1;
+      for(let i=0;i<PUZZLE.categories.length;i++){
+        const cat = PUZZLE.categories[i];
+        if(cat.items.every(it => remaining.has(it))){
+          hintGroupIdx = i; break;
+        }
+      }
       hintedItems.clear();
       hintedColors.clear();
       if(hintGroupIdx < 0){ showToast('No groups left to hint.','warn'); return; }
@@ -410,7 +396,8 @@
   deselectEl.addEventListener('click', onDeselect);
   hintEl.addEventListener('click', onHint);
 
-  // Secret: 'N' forward a day, 'P' back a day (strict MM-DD only)
+  
+  // Secret: press 'N' to advance the date offset and reload; 'P' to go back a day
   window.addEventListener('keydown', (e)=>{
     const k = (e.key||'').toLowerCase();
     if(k === 'n'){
@@ -445,12 +432,12 @@
       PUZZLES = rowsToPuzzles(rows);
       if(!PUZZLES.length) throw new Error('No valid puzzles found');
       PUZZLE = selectPuzzleForCurrentOffset();
-      if(!PUZZLE){ const ds = phoenixMonthDayFromOffset(dayOffset); showToast('No puzzle for '+ds,'err'); renderNoPuzzle(ds); return; }
       initBoard();
     }catch(e){
       console.warn('Fetch failed, enabling local CSV uploader.', e);
       loaderEl.textContent = "Couldn't fetch puzzles.csv.\n• Put index.html and puzzles.csv together and use a local server, or\n• Upload the CSV below.";
       uploaderEl.classList.add('show');
+      if(dateEl){ dateEl.textContent = `Puzzle date: ${phoenixISODateFromOffset(dayOffset)} (awaiting CSV)`; }
     }
   })();
 
