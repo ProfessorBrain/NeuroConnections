@@ -28,14 +28,15 @@
   .toast.show{display:block} .toast.ok{ background:rgba(22,163,74,.10); border-color:rgba(22,163,74,.35)}
   .toast.warn{ background:rgba(217,119,6,.10); border-color:rgba(217,119,6,.35)} .toast.err{ background:rgba(220,38,38,.10); border-color:rgba(220,38,38,.35)}
   .controls{ margin-top:18px; display:flex; align-items:center; justify-content:center; gap:10px; }
-  .btn{ border-radius:10px; border:1px solid var(--border); background:#fff; color:var(--text); padding:14px 20px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; font-size:13px; cursor:pointer; }
+  .btn{ border-radius:10px; border:1px solid var(--border); background:#fff; color:#0f172a; padding:14px 20px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; font-size:13px; cursor:pointer; }
   .btn:hover{ background:#f8fafc; }
   footer{ margin-top:14px; text-align:center; color:#94a3b8; font-size:12px; user-select:none}
   .skeleton{ width:112px; height:112px; border-radius:10px; border:1px solid var(--border); background:linear-gradient(90deg, #ffffff 25%, #f1f5f9 37%, #ffffff 63%); background-size:400% 100%; animation:shimmer 1.2s infinite; }
   @keyframes shimmer{ 0%{background-position:100% 0} 100%{background-position:0 0} }
-  .loader{ margin-top:10px; text-align:center; color:var(--muted); font-size:14px; }
+  .loader{ margin-top:10px; text-align:center; color:var(--muted); font-size:14px; white-space:pre-wrap; }
   .uploader{ display:none; margin-top:10px; text-align:center; }
   .uploader.show{ display:block; }
+  .error{ color:#dc2626; }
 </style>
 </head>
 <body>
@@ -62,16 +63,9 @@
     <footer>created by micah etter, md and sean lee, md</footer>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script>
-  // Difficulty color mapping; accepts 'yellow' | 'green' | 'blue' | 'purple' (case-insensitive).
-  const DIFFICULTY_COLORS = {
-    yellow: '#F2C14E',
-    green:  '#5DD0C2',
-    blue:   '#6AA6FF',
-    purple: '#B388EB'
-  };
-  // Fallback colors if no difficulty provided
+  // ================= Core helpers (no dependencies) =================
+  const DIFFICULTY_COLORS = { yellow:'#F2C14E', green:'#5DD0C2', blue:'#6AA6FF', purple:'#B388EB' };
   const FALLBACK_COLORS = ['#B388EB','#5DD0C2','#F2C14E','#F78C6C'];
 
   const gridEl = document.getElementById('grid');
@@ -81,6 +75,16 @@
   const loaderEl = document.getElementById('loader');
   const uploaderEl = document.getElementById('uploader');
   const fileInput = document.getElementById('fileInput');
+  const toastEl = document.getElementById('toast');
+
+  // Render an immediate skeleton to avoid blank screen
+  (function renderSkeleton(){
+    gridEl.innerHTML = '';
+    const frag = document.createDocumentFragment();
+    for(let i=0;i<16;i++){ const d=document.createElement('div'); d.className='skeleton'; frag.appendChild(d); }
+    gridEl.appendChild(frag);
+    loaderEl.textContent = 'Loading puzzles.csv…';
+  })();
 
   function phoenixISODate(now=new Date()){
     const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Phoenix',year:'numeric',month:'2-digit',day:'2-digit'});
@@ -89,54 +93,82 @@
   }
   function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
   function rgba(hex,alpha=.15){ const s=hex.replace('#',''); const x=s.length===3? s.split('').map(c=>c+c).join(''):s; const n=parseInt(x,16); const r=(n>>16)&255,g=(n>>8)&255,b=n&255; return `rgba(${r},${g},${b},${alpha})`; }
-  function showToast(msg,kind){ const t=document.getElementById('toast'); t.textContent=msg; t.className='toast show '+(kind||''); if(kind!=='err'){ clearTimeout(showToast._t); showToast._t=setTimeout(()=>{ t.className='toast'; },1500);} }
 
-  async function loadPuzzlesHttp(){
-    loaderEl.textContent = 'Loading puzzles.csv…';
-    const res = await fetch('puzzles.csv', {cache:'no-store'});
-    if(!res.ok) throw new Error('HTTP '+res.status);
-    const text = await res.text();
-    return parseCsv(text);
+  function showToast(msg,kind){
+    toastEl.textContent = msg;
+    toastEl.className = 'toast show ' + (kind||'');
+    if(kind!=='err'){ clearTimeout(showToast._t); showToast._t=setTimeout(()=>{ toastEl.className='toast'; },1500); }
   }
-  function parseCsv(text){
-    const parsed = Papa.parse(text, {header:true, skipEmptyLines:true});
-    const rows = parsed.data.map(r=>{
-      const out={};
-      Object.keys(r).forEach(k=> out[k.trim().toLowerCase()] = String(r[k]??'').trim());
-      return out;
+
+  // Robust CSV parser (handles quotes, commas, newlines in quotes; RFC 4180-ish)
+  function parseCSV(text){
+    const rows = [];
+    let cur = [], val = '', i = 0, inQuotes = false;
+    const pushVal = ()=>{ cur.push(val); val=''; };
+    const pushRow = ()=>{ rows.push(cur); cur=[]; };
+    while(i < text.length){
+      const ch = text[i];
+      if(inQuotes){
+        if(ch === '"'){
+          if(text[i+1] === '"'){ val += '"'; i+=2; continue; } // escaped quote
+          inQuotes = false; i++; continue;
+        } else { val += ch; i++; continue; }
+      } else {
+        if(ch === '"'){ inQuotes = true; i++; continue; }
+        if(ch === ','){ pushVal(); i++; continue; }
+        if(ch === '\r'){ i++; continue; }
+        if(ch === '\n'){ pushVal(); pushRow(); i++; continue; }
+        val += ch; i++;
+      }
+    }
+    // flush last value/row
+    pushVal(); if(cur.length>1 || (cur.length===1 && cur[0]!=='')) pushRow();
+    if(rows.length === 0) return [];
+
+    const headers = rows[0].map(h => (h||'').trim().toLowerCase());
+    return rows.slice(1).map(cols => {
+      const obj = {};
+      headers.forEach((h, idx)=> obj[h] = (cols[idx]||'').trim());
+      return obj;
     });
-    return rowsToPuzzles(rows);
   }
+
   function pickDifficultyColor(val, idx){
     if(!val) return FALLBACK_COLORS[idx % FALLBACK_COLORS.length];
     const key = String(val).toLowerCase();
     if (DIFFICULTY_COLORS[key]) return DIFFICULTY_COLORS[key];
-    if(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(val)) return val; // allow custom hex colors
+    if(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(val)) return val; // allow custom hex
     return FALLBACK_COLORS[idx % FALLBACK_COLORS.length];
   }
+
   function rowsToPuzzles(rows){
     // Columns: date, category, item1..item4, (optional) difficulty|tier|color
     const byDate=new Map();
-    rows.forEach(r=>{
+    for(const r of rows){
       const date=r['date']||'';
       const category=r['category'];
       const items=[r['item1'],r['item2'],r['item3'],r['item4']].filter(Boolean);
-      // PRIORITIZE difficulty, then tier, then color
       const difficulty = r['difficulty'] || r['tier'] || r['color'] || '';
-      if(!date||!category||items.length!==4) return;
+      if(!date||!category||items.length!==4) continue;
       if(!byDate.has(date)) byDate.set(date,[]);
       byDate.get(date).push({name:category, items, difficulty});
-    });
+    }
     const dates=[...byDate.keys()].sort();
-    return dates.map(d=>{
-      const cats=byDate.get(d);
-      return {
+    const puzzles = [];
+    for(const d of dates){
+      const cats = byDate.get(d);
+      // Require at least 4 valid categories; take the first 4 to form a 16-tile puzzle
+      const valids = cats.filter(c=>c.items.length===4);
+      if(valids.length < 4) continue;
+      puzzles.push({
         title:d,
-        categories: cats.map((c,i)=> ({...c, color: pickDifficultyColor(c.difficulty, i)}))
-      };
-    });
+        categories: valids.slice(0,4).map((c,i)=> ({...c, color: pickDifficultyColor(c.difficulty, i)}))
+      });
+    }
+    return puzzles;
   }
 
+  // ================= Game state & rendering =================
   let PUZZLES=[], PUZZLE=null, solved=[], selected=new Set(), remaining=new Set(), order=[], itemToCat=new Map();
 
   function initBoard(){
@@ -145,85 +177,113 @@
     order = shuffle([...remaining]);
     itemToCat = new Map();
     PUZZLE.categories.forEach((c, idx)=> c.items.forEach(it=> itemToCat.set(it, idx)));
-    loaderEl.textContent = '';
+    loaderEl.textContent='';
     render();
   }
+
   function pickTodayPuzzle(){
     const today=phoenixISODate();
     let idx = PUZZLES.findIndex(p=>p.title===today);
     if(idx<0){ const dayNum=Math.floor(Date.now()/86400000); idx = dayNum % PUZZLES.length; }
     return PUZZLES[idx];
   }
+
   function getUnsolvedOrder(){ return order.filter(it=>remaining.has(it)); }
+
   function render(){
+    const frag = document.createDocumentFragment();
     gridEl.innerHTML='';
-    solved.forEach(g=>{
+
+    // Solved cards
+    for(const g of solved){
       const card=document.createElement('div'); card.className='solved-card'; card.style.background=rgba(g.color,.15); card.style.borderColor=g.color;
       const badge=document.createElement('span'); badge.className='badge'; badge.style.background=g.color; badge.textContent=g.name;
       const items=document.createElement('div'); items.style.opacity='.95'; items.style.fontWeight='700'; items.textContent=g.items.join(' • ');
-      card.appendChild(badge); card.appendChild(items); gridEl.appendChild(card);
-    });
-    getUnsolvedOrder().forEach(it=>{
+      card.appendChild(badge); card.appendChild(items); frag.appendChild(card);
+    }
+
+    // Remaining tiles
+    for(const it of getUnsolvedOrder()){
       const b=document.createElement('button'); b.type='button'; b.className='tile'; b.textContent=it;
       const isSel=selected.has(it); if(isSel) b.classList.add('selected');
       b.setAttribute('aria-pressed', isSel? 'true':'false');
-      b.onclick=()=>toggle(it); gridEl.appendChild(b);
-    });
+      b.addEventListener('click', ()=> toggle(it), {passive:true});
+      frag.appendChild(b);
+    }
+
+    gridEl.appendChild(frag);
     const done = PUZZLE && solved.length===PUZZLE.categories.length;
-    [submitEl,deselectEl,shuffleEl].forEach(btn=> btn.disabled = !!done);
+    submitEl.disabled = deselectEl.disabled = shuffleEl.disabled = !!done;
   }
+
   function toggle(it){
     if(!remaining.has(it)) return;
-    if(selected.has(it)) selected.delete(it); else { if(selected.size===4) selected.delete([...selected][0]); selected.add(it); }
-    [...gridEl.querySelectorAll('.tile')].forEach(btn=>{
-      const isSel = selected.has(btn.textContent); btn.classList.toggle('selected', isSel); btn.setAttribute('aria-pressed', isSel? 'true':'false');
-    });
+    if(selected.has(it)) selected.delete(it);
+    else { if(selected.size===4) selected.delete([...selected][0]); selected.add(it); }
+    // minimal DOM walk to update classes
+    const nodes = gridEl.querySelectorAll('.tile');
+    for(const n of nodes){
+      const isSel = selected.has(n.textContent);
+      n.classList.toggle('selected', isSel);
+      n.setAttribute('aria-pressed', isSel ? 'true' : 'false');
+    }
   }
+
   function countOverlap(arr, group){ const set=new Set(group); return arr.reduce((n,x)=> n+(set.has(x)?1:0),0); }
+
   function onSubmit(){
     if(!PUZZLE) return;
     if(selected.size!==4){ showToast('Select 4 tiles.','warn'); return; }
-    const sel=[...selected]; const catIdx=itemToCat.get(sel[0]);
+    const sel=[...selected];
+    const catIdx=itemToCat.get(sel[0]);
     const allSame = sel.every(it=> itemToCat.get(it)===catIdx);
     if(allSame){
       const cat=PUZZLE.categories[catIdx];
       solved.push({name:cat.name, color:cat.color, items:cat.items.slice()});
-      sel.forEach(it=> remaining.delete(it)); selected.clear();
-      showToast('Correct!','ok'); if(solved.length===PUZZLE.categories.length){ showToast('You solved NeuroConnections!','ok'); } render();
+      for(const it of sel) remaining.delete(it);
+      selected.clear();
+      showToast('Correct!','ok');
+      if(solved.length===PUZZLE.categories.length){ showToast('You solved NeuroConnections!','ok'); }
+      render();
     }else{
       const oneAway = PUZZLE.categories.some(cat=> countOverlap(sel, cat.items)===3);
       showToast(oneAway? 'One away!':'Nope. Try again.', oneAway? 'warn':'err');
     }
   }
+
   function onShuffle(){ order = shuffle(getUnsolvedOrder()); render(); }
-  function onDeselect(){ selected.clear(); [...gridEl.querySelectorAll('.tile')].forEach(btn=>{ btn.classList.remove('selected'); btn.setAttribute('aria-pressed','false'); }); }
+  function onDeselect(){ selected.clear(); const tiles=gridEl.querySelectorAll('.tile'); tiles.forEach(t=>{ t.classList.remove('selected'); t.setAttribute('aria-pressed','false'); }); }
 
   submitEl.addEventListener('click', onSubmit);
   shuffleEl.addEventListener('click', onShuffle);
   deselectEl.addEventListener('click', onDeselect);
 
+  // ================= Boot: HTTP first, then file:// fallback =================
   (async function boot(){
     try{
-      PUZZLES = await loadPuzzlesHttp();
+      const res = await fetch('puzzles.csv', {cache:'no-store'});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const text = await res.text();
+      const rows = parseCSV(text);
+      PUZZLES = rowsToPuzzles(rows);
       if(!PUZZLES.length) throw new Error('No valid puzzles found');
       PUZZLE = pickTodayPuzzle(); initBoard();
     }catch(e){
-      console.warn('HTTP load failed; enabling local CSV uploader.', e);
-      loaderEl.textContent = \"Couldn't fetch puzzles.csv. Load it manually:\";
+      console.warn('Fetch failed, enabling local CSV uploader.', e);
+      loaderEl.textContent = "Couldn't fetch puzzles.csv.\n• Put index.html and puzzles.csv together and use a local server, or\n• Upload the CSV below.";
       uploaderEl.classList.add('show');
     }
   })();
 
-  // Local CSV uploader fallback for file://
+  // Local CSV uploader fallback (works when opened via file://)
   fileInput.addEventListener('change', (ev)=>{
     const file = ev.target.files && ev.target.files[0];
     if(!file) return;
     const reader = new FileReader();
     reader.onload = ()=>{
       try{
-        const text = String(reader.result);
-        const parsed = Papa.parse(text, {header:true, skipEmptyLines:true});
-        const rows = parsed.data.map(r=>{ const out={}; Object.keys(r).forEach(k=> out[k.trim().toLowerCase()] = String(r[k]??'').trim()); return out; });
+        const text = String(reader.result||'');
+        const rows = parseCSV(text);
         PUZZLES = rowsToPuzzles(rows);
         if(!PUZZLES.length) throw new Error('No valid puzzles in CSV');
         PUZZLE = pickTodayPuzzle(); uploaderEl.classList.remove('show'); initBoard();
