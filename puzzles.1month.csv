@@ -1,0 +1,121 @@
+date,category,item1,item2,item3,item4,difficulty
+2025-08-26,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+2025-08-26,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+2025-08-26,Cranial nerves w/ parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),blue
+2025-08-26,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,purple
+2025-08-27,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+2025-08-27,Aphasia types,Broca,Wernicke,Conduction,Global,green
+2025-08-27,Neurocutaneous disorders,NF1,NF2,Tuberous sclerosis,Sturge-Weber,blue
+2025-08-27,Pediatric posterior fossa tumors,Medulloblastoma,Pilocytic astrocytoma,Ependymoma,Brainstem glioma,purple
+2025-08-28,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+2025-08-28,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,green
+2025-08-28,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,blue
+2025-08-28,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,purple
+2025-08-29,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,yellow
+2025-08-29,Motor neuron diseases,ALS,SMA,PLS,PMA,green
+2025-08-29,Cerebral herniation types,Subfalcine,Uncal (transtentorial),Tonsillar,Upward transtentorial,blue
+2025-08-29,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,purple
+2025-08-30,ASMs: sodium channel blockers,Carbamazepine,Phenytoin,Lamotrigine,Lacosamide,yellow
+2025-08-30,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+2025-08-30,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,blue
+2025-08-30,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,purple
+2025-08-31,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,yellow
+2025-08-31,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+2025-08-31,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+2025-08-31,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,purple
+2025-09-01,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+2025-09-01,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,green
+2025-09-01,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,blue
+2025-09-01,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+2025-09-02,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+2025-09-02,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+2025-09-02,Cranial nerves w/ parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),blue
+2025-09-02,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,purple
+2025-09-03,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+2025-09-03,Aphasia types,Broca,Wernicke,Conduction,Global,green
+2025-09-03,Neurocutaneous disorders,NF1,NF2,Tuberous sclerosis,Sturge-Weber,blue
+2025-09-03,Pediatric posterior fossa tumors,Medulloblastoma,Pilocytic astrocytoma,Ependymoma,Brainstem glioma,purple
+2025-09-04,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+2025-09-04,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,green
+2025-09-04,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,blue
+2025-09-04,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,purple
+2025-09-05,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,yellow
+2025-09-05,Motor neuron diseases,ALS,SMA,PLS,PMA,green
+2025-09-05,Cerebral herniation types,Subfalcine,Uncal (transtentorial),Tonsillar,Upward transtentorial,blue
+2025-09-05,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,purple
+2025-09-06,ASMs: sodium channel blockers,Carbamazepine,Phenytoin,Lamotrigine,Lacosamide,yellow
+2025-09-06,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+2025-09-06,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,blue
+2025-09-06,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,purple
+2025-09-07,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,yellow
+2025-09-07,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+2025-09-07,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+2025-09-07,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,purple
+2025-09-08,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+2025-09-08,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,green
+2025-09-08,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,blue
+2025-09-08,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+2025-09-09,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+2025-09-09,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+2025-09-09,Cranial nerves w/ parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),blue
+2025-09-09,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,purple
+2025-09-10,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+2025-09-10,Aphasia types,Broca,Wernicke,Conduction,Global,green
+2025-09-10,Neurocutaneous disorders,NF1,NF2,Tuberous sclerosis,Sturge-Weber,blue
+2025-09-10,Pediatric posterior fossa tumors,Medulloblastoma,Pilocytic astrocytoma,Ependymoma,Brainstem glioma,purple
+2025-09-11,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+2025-09-11,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,green
+2025-09-11,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,blue
+2025-09-11,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,purple
+2025-09-12,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,yellow
+2025-09-12,Motor neuron diseases,ALS,SMA,PLS,PMA,green
+2025-09-12,Cerebral herniation types,Subfalcine,Uncal (transtentorial),Tonsillar,Upward transtentorial,blue
+2025-09-12,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,purple
+2025-09-13,ASMs: sodium channel blockers,Carbamazepine,Phenytoin,Lamotrigine,Lacosamide,yellow
+2025-09-13,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+2025-09-13,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,blue
+2025-09-13,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,purple
+2025-09-14,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,yellow
+2025-09-14,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+2025-09-14,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+2025-09-14,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,purple
+2025-09-15,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+2025-09-15,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,green
+2025-09-15,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,blue
+2025-09-15,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+2025-09-16,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+2025-09-16,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+2025-09-16,Cranial nerves w/ parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),blue
+2025-09-16,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,purple
+2025-09-17,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+2025-09-17,Aphasia types,Broca,Wernicke,Conduction,Global,green
+2025-09-17,Neurocutaneous disorders,NF1,NF2,Tuberous sclerosis,Sturge-Weber,blue
+2025-09-17,Pediatric posterior fossa tumors,Medulloblastoma,Pilocytic astrocytoma,Ependymoma,Brainstem glioma,purple
+2025-09-18,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+2025-09-18,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,green
+2025-09-18,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,blue
+2025-09-18,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,purple
+2025-09-19,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,yellow
+2025-09-19,Motor neuron diseases,ALS,SMA,PLS,PMA,green
+2025-09-19,Cerebral herniation types,Subfalcine,Uncal (transtentorial),Tonsillar,Upward transtentorial,blue
+2025-09-19,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,purple
+2025-09-20,ASMs: sodium channel blockers,Carbamazepine,Phenytoin,Lamotrigine,Lacosamide,yellow
+2025-09-20,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+2025-09-20,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,blue
+2025-09-20,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,purple
+2025-09-21,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,yellow
+2025-09-21,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+2025-09-21,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+2025-09-21,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,purple
+2025-09-22,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+2025-09-22,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,green
+2025-09-22,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,blue
+2025-09-22,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+2025-09-23,Sleep stages,N1,N2,N3,REM,yellow
+2025-09-23,MRI sequences,T1,T2,FLAIR,DWI,green
+2025-09-23,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+2025-09-23,Autoimmune encephalitis Abs,Anti-NMDA,LGI1,CASPR2,GAD65,purple
+2025-09-24,Intracranial hemorrhage types,Epidural,Subdural,Subarachnoid,Intraparenchymal,yellow
+2025-09-24,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,green
+2025-09-24,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+2025-09-24,Dementia meds,Donepezil,Rivastigmine,Galantamine,Memantine,purple

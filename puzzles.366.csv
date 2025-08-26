@@ -1,0 +1,1465 @@
+date,category,item1,item2,item3,item4,difficulty
+01-01,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+01-01,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+01-01,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+01-01,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+01-02,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+01-02,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+01-02,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+01-02,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+01-03,Sleep stages,N1,N2,N3,REM,yellow
+01-03,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+01-03,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+01-03,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+01-04,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+01-04,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+01-04,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+01-04,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+01-05,MRI sequences,T1,T2,FLAIR,DWI,yellow
+01-05,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+01-05,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+01-05,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+01-06,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+01-06,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+01-06,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+01-06,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+01-07,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+01-07,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+01-07,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+01-07,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+01-08,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+01-08,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+01-08,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+01-08,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+01-09,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+01-09,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+01-09,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+01-09,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+01-10,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+01-10,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+01-10,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+01-10,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+01-11,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+01-11,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+01-11,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+01-11,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+01-12,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+01-12,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+01-12,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+01-12,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+01-13,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+01-13,Aphasia types,Broca,Wernicke,Conduction,Global,green
+01-13,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+01-13,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+01-14,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+01-14,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+01-14,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+01-14,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+01-15,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+01-15,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+01-15,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+01-15,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+01-16,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+01-16,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+01-16,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+01-16,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+01-17,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+01-17,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+01-17,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+01-17,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+01-18,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+01-18,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+01-18,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+01-18,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+01-19,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+01-19,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+01-19,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+01-19,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+01-20,Sleep stages,N1,N2,N3,REM,yellow
+01-20,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+01-20,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+01-20,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+01-21,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+01-21,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+01-21,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+01-21,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+01-22,MRI sequences,T1,T2,FLAIR,DWI,yellow
+01-22,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+01-22,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+01-22,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+01-23,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+01-23,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+01-23,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+01-23,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+01-24,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+01-24,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+01-24,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+01-24,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+01-25,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+01-25,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+01-25,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+01-25,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+01-26,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+01-26,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+01-26,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+01-26,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+01-27,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+01-27,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+01-27,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+01-27,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+01-28,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+01-28,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+01-28,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+01-28,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+01-29,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+01-29,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+01-29,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+01-29,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+01-30,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+01-30,Aphasia types,Broca,Wernicke,Conduction,Global,green
+01-30,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+01-30,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+01-31,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+01-31,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+01-31,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+01-31,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+02-01,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+02-01,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+02-01,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+02-01,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+02-02,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+02-02,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+02-02,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+02-02,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+02-03,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+02-03,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+02-03,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+02-03,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+02-04,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+02-04,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+02-04,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+02-04,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+02-05,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+02-05,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+02-05,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+02-05,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+02-06,Sleep stages,N1,N2,N3,REM,yellow
+02-06,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+02-06,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+02-06,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+02-07,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+02-07,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+02-07,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+02-07,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+02-08,MRI sequences,T1,T2,FLAIR,DWI,yellow
+02-08,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+02-08,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+02-08,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+02-09,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+02-09,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+02-09,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+02-09,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+02-10,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+02-10,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+02-10,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+02-10,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+02-11,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+02-11,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+02-11,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+02-11,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+02-12,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+02-12,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+02-12,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+02-12,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+02-13,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+02-13,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+02-13,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+02-13,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+02-14,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+02-14,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+02-14,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+02-14,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+02-15,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+02-15,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+02-15,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+02-15,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+02-16,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+02-16,Aphasia types,Broca,Wernicke,Conduction,Global,green
+02-16,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+02-16,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+02-17,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+02-17,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+02-17,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+02-17,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+02-18,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+02-18,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+02-18,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+02-18,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+02-19,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+02-19,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+02-19,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+02-19,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+02-20,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+02-20,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+02-20,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+02-20,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+02-21,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+02-21,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+02-21,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+02-21,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+02-22,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+02-22,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+02-22,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+02-22,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+02-23,Sleep stages,N1,N2,N3,REM,yellow
+02-23,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+02-23,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+02-23,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+02-24,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+02-24,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+02-24,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+02-24,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+02-25,MRI sequences,T1,T2,FLAIR,DWI,yellow
+02-25,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+02-25,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+02-25,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+02-26,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+02-26,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+02-26,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+02-26,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+02-27,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+02-27,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+02-27,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+02-27,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+02-28,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+02-28,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+02-28,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+02-28,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+02-29,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+02-29,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+02-29,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+02-29,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+03-01,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+03-01,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+03-01,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+03-01,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+03-02,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+03-02,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+03-02,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+03-02,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+03-03,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+03-03,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+03-03,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+03-03,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+03-04,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+03-04,Aphasia types,Broca,Wernicke,Conduction,Global,green
+03-04,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+03-04,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+03-05,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+03-05,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+03-05,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+03-05,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+03-06,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+03-06,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+03-06,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+03-06,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+03-07,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+03-07,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+03-07,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+03-07,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+03-08,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+03-08,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+03-08,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+03-08,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+03-09,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+03-09,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+03-09,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+03-09,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+03-10,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+03-10,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+03-10,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+03-10,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+03-11,Sleep stages,N1,N2,N3,REM,yellow
+03-11,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+03-11,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+03-11,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+03-12,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+03-12,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+03-12,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+03-12,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+03-13,MRI sequences,T1,T2,FLAIR,DWI,yellow
+03-13,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+03-13,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+03-13,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+03-14,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+03-14,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+03-14,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+03-14,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+03-15,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+03-15,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+03-15,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+03-15,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+03-16,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+03-16,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+03-16,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+03-16,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+03-17,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+03-17,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+03-17,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+03-17,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+03-18,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+03-18,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+03-18,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+03-18,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+03-19,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+03-19,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+03-19,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+03-19,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+03-20,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+03-20,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+03-20,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+03-20,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+03-21,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+03-21,Aphasia types,Broca,Wernicke,Conduction,Global,green
+03-21,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+03-21,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+03-22,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+03-22,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+03-22,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+03-22,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+03-23,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+03-23,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+03-23,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+03-23,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+03-24,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+03-24,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+03-24,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+03-24,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+03-25,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+03-25,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+03-25,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+03-25,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+03-26,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+03-26,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+03-26,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+03-26,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+03-27,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+03-27,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+03-27,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+03-27,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+03-28,Sleep stages,N1,N2,N3,REM,yellow
+03-28,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+03-28,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+03-28,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+03-29,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+03-29,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+03-29,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+03-29,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+03-30,MRI sequences,T1,T2,FLAIR,DWI,yellow
+03-30,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+03-30,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+03-30,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+03-31,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+03-31,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+03-31,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+03-31,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+04-01,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+04-01,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+04-01,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+04-01,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+04-02,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+04-02,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+04-02,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+04-02,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+04-03,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+04-03,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+04-03,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+04-03,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+04-04,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+04-04,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+04-04,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+04-04,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+04-05,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+04-05,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+04-05,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+04-05,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+04-06,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+04-06,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+04-06,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+04-06,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+04-07,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+04-07,Aphasia types,Broca,Wernicke,Conduction,Global,green
+04-07,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+04-07,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+04-08,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+04-08,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+04-08,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+04-08,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+04-09,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+04-09,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+04-09,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+04-09,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+04-10,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+04-10,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+04-10,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+04-10,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+04-11,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+04-11,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+04-11,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+04-11,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+04-12,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+04-12,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+04-12,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+04-12,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+04-13,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+04-13,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+04-13,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+04-13,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+04-14,Sleep stages,N1,N2,N3,REM,yellow
+04-14,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+04-14,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+04-14,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+04-15,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+04-15,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+04-15,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+04-15,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+04-16,MRI sequences,T1,T2,FLAIR,DWI,yellow
+04-16,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+04-16,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+04-16,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+04-17,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+04-17,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+04-17,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+04-17,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+04-18,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+04-18,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+04-18,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+04-18,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+04-19,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+04-19,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+04-19,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+04-19,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+04-20,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+04-20,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+04-20,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+04-20,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+04-21,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+04-21,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+04-21,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+04-21,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+04-22,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+04-22,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+04-22,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+04-22,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+04-23,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+04-23,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+04-23,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+04-23,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+04-24,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+04-24,Aphasia types,Broca,Wernicke,Conduction,Global,green
+04-24,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+04-24,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+04-25,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+04-25,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+04-25,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+04-25,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+04-26,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+04-26,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+04-26,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+04-26,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+04-27,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+04-27,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+04-27,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+04-27,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+04-28,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+04-28,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+04-28,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+04-28,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+04-29,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+04-29,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+04-29,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+04-29,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+04-30,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+04-30,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+04-30,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+04-30,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+05-01,Sleep stages,N1,N2,N3,REM,yellow
+05-01,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+05-01,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+05-01,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+05-02,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+05-02,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+05-02,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+05-02,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+05-03,MRI sequences,T1,T2,FLAIR,DWI,yellow
+05-03,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+05-03,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+05-03,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+05-04,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+05-04,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+05-04,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+05-04,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+05-05,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+05-05,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+05-05,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+05-05,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+05-06,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+05-06,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+05-06,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+05-06,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+05-07,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+05-07,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+05-07,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+05-07,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+05-08,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+05-08,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+05-08,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+05-08,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+05-09,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+05-09,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+05-09,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+05-09,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+05-10,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+05-10,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+05-10,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+05-10,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+05-11,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+05-11,Aphasia types,Broca,Wernicke,Conduction,Global,green
+05-11,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+05-11,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+05-12,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+05-12,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+05-12,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+05-12,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+05-13,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+05-13,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+05-13,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+05-13,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+05-14,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+05-14,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+05-14,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+05-14,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+05-15,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+05-15,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+05-15,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+05-15,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+05-16,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+05-16,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+05-16,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+05-16,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+05-17,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+05-17,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+05-17,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+05-17,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+05-18,Sleep stages,N1,N2,N3,REM,yellow
+05-18,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+05-18,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+05-18,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+05-19,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+05-19,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+05-19,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+05-19,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+05-20,MRI sequences,T1,T2,FLAIR,DWI,yellow
+05-20,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+05-20,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+05-20,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+05-21,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+05-21,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+05-21,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+05-21,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+05-22,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+05-22,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+05-22,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+05-22,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+05-23,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+05-23,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+05-23,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+05-23,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+05-24,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+05-24,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+05-24,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+05-24,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+05-25,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+05-25,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+05-25,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+05-25,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+05-26,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+05-26,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+05-26,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+05-26,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+05-27,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+05-27,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+05-27,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+05-27,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+05-28,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+05-28,Aphasia types,Broca,Wernicke,Conduction,Global,green
+05-28,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+05-28,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+05-29,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+05-29,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+05-29,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+05-29,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+05-30,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+05-30,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+05-30,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+05-30,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+05-31,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+05-31,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+05-31,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+05-31,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+06-01,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+06-01,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+06-01,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+06-01,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+06-02,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+06-02,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+06-02,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+06-02,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+06-03,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+06-03,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+06-03,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+06-03,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+06-04,Sleep stages,N1,N2,N3,REM,yellow
+06-04,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+06-04,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+06-04,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+06-05,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+06-05,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+06-05,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+06-05,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+06-06,MRI sequences,T1,T2,FLAIR,DWI,yellow
+06-06,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+06-06,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+06-06,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+06-07,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+06-07,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+06-07,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+06-07,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+06-08,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+06-08,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+06-08,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+06-08,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+06-09,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+06-09,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+06-09,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+06-09,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+06-10,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+06-10,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+06-10,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+06-10,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+06-11,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+06-11,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+06-11,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+06-11,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+06-12,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+06-12,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+06-12,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+06-12,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+06-13,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+06-13,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+06-13,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+06-13,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+06-14,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+06-14,Aphasia types,Broca,Wernicke,Conduction,Global,green
+06-14,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+06-14,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+06-15,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+06-15,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+06-15,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+06-15,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+06-16,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+06-16,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+06-16,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+06-16,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+06-17,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+06-17,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+06-17,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+06-17,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+06-18,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+06-18,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+06-18,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+06-18,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+06-19,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+06-19,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+06-19,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+06-19,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+06-20,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+06-20,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+06-20,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+06-20,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+06-21,Sleep stages,N1,N2,N3,REM,yellow
+06-21,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+06-21,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+06-21,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+06-22,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+06-22,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+06-22,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+06-22,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+06-23,MRI sequences,T1,T2,FLAIR,DWI,yellow
+06-23,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+06-23,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+06-23,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+06-24,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+06-24,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+06-24,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+06-24,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+06-25,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+06-25,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+06-25,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+06-25,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+06-26,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+06-26,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+06-26,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+06-26,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+06-27,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+06-27,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+06-27,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+06-27,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+06-28,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+06-28,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+06-28,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+06-28,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+06-29,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+06-29,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+06-29,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+06-29,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+06-30,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+06-30,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+06-30,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+06-30,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+07-01,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+07-01,Aphasia types,Broca,Wernicke,Conduction,Global,green
+07-01,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+07-01,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+07-02,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+07-02,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+07-02,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+07-02,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+07-03,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+07-03,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+07-03,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+07-03,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+07-04,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+07-04,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+07-04,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+07-04,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+07-05,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+07-05,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+07-05,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+07-05,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+07-06,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+07-06,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+07-06,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+07-06,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+07-07,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+07-07,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+07-07,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+07-07,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+07-08,Sleep stages,N1,N2,N3,REM,yellow
+07-08,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+07-08,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+07-08,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+07-09,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+07-09,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+07-09,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+07-09,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+07-10,MRI sequences,T1,T2,FLAIR,DWI,yellow
+07-10,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+07-10,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+07-10,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+07-11,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+07-11,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+07-11,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+07-11,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+07-12,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+07-12,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+07-12,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+07-12,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+07-13,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+07-13,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+07-13,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+07-13,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+07-14,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+07-14,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+07-14,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+07-14,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+07-15,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+07-15,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+07-15,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+07-15,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+07-16,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+07-16,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+07-16,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+07-16,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+07-17,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+07-17,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+07-17,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+07-17,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+07-18,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+07-18,Aphasia types,Broca,Wernicke,Conduction,Global,green
+07-18,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+07-18,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+07-19,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+07-19,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+07-19,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+07-19,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+07-20,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+07-20,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+07-20,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+07-20,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+07-21,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+07-21,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+07-21,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+07-21,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+07-22,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+07-22,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+07-22,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+07-22,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+07-23,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+07-23,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+07-23,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+07-23,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+07-24,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+07-24,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+07-24,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+07-24,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+07-25,Sleep stages,N1,N2,N3,REM,yellow
+07-25,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+07-25,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+07-25,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+07-26,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+07-26,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+07-26,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+07-26,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+07-27,MRI sequences,T1,T2,FLAIR,DWI,yellow
+07-27,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+07-27,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+07-27,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+07-28,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+07-28,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+07-28,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+07-28,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+07-29,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+07-29,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+07-29,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+07-29,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+07-30,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+07-30,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+07-30,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+07-30,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+07-31,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+07-31,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+07-31,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+07-31,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+08-01,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+08-01,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+08-01,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+08-01,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+08-02,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+08-02,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+08-02,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+08-02,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+08-03,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+08-03,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+08-03,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+08-03,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+08-04,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+08-04,Aphasia types,Broca,Wernicke,Conduction,Global,green
+08-04,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+08-04,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+08-05,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+08-05,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+08-05,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+08-05,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+08-06,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+08-06,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+08-06,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+08-06,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+08-07,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+08-07,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+08-07,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+08-07,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+08-08,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+08-08,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+08-08,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+08-08,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+08-09,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+08-09,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+08-09,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+08-09,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+08-10,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+08-10,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+08-10,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+08-10,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+08-11,Sleep stages,N1,N2,N3,REM,yellow
+08-11,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+08-11,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+08-11,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+08-12,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+08-12,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+08-12,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+08-12,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+08-13,MRI sequences,T1,T2,FLAIR,DWI,yellow
+08-13,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+08-13,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+08-13,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+08-14,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+08-14,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+08-14,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+08-14,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+08-15,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+08-15,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+08-15,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+08-15,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+08-16,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+08-16,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+08-16,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+08-16,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+08-17,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+08-17,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+08-17,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+08-17,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+08-18,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+08-18,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+08-18,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+08-18,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+08-19,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+08-19,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+08-19,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+08-19,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+08-20,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+08-20,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+08-20,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+08-20,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+08-21,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+08-21,Aphasia types,Broca,Wernicke,Conduction,Global,green
+08-21,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+08-21,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+08-22,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+08-22,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+08-22,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+08-22,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+08-23,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+08-23,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+08-23,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+08-23,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+08-24,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+08-24,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+08-24,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+08-24,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+08-25,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+08-25,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+08-25,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+08-25,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+08-26,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+08-26,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+08-26,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+08-26,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+08-27,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+08-27,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+08-27,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+08-27,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+08-28,Sleep stages,N1,N2,N3,REM,yellow
+08-28,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+08-28,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+08-28,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+08-29,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+08-29,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+08-29,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+08-29,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+08-30,MRI sequences,T1,T2,FLAIR,DWI,yellow
+08-30,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+08-30,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+08-30,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+08-31,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+08-31,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+08-31,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+08-31,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+09-01,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+09-01,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+09-01,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+09-01,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+09-02,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+09-02,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+09-02,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+09-02,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+09-03,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+09-03,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+09-03,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+09-03,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+09-04,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+09-04,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+09-04,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+09-04,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+09-05,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+09-05,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+09-05,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+09-05,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+09-06,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+09-06,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+09-06,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+09-06,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+09-07,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+09-07,Aphasia types,Broca,Wernicke,Conduction,Global,green
+09-07,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+09-07,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+09-08,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+09-08,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+09-08,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+09-08,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+09-09,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+09-09,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+09-09,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+09-09,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+09-10,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+09-10,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+09-10,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+09-10,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+09-11,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+09-11,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+09-11,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+09-11,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+09-12,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+09-12,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+09-12,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+09-12,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+09-13,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+09-13,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+09-13,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+09-13,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+09-14,Sleep stages,N1,N2,N3,REM,yellow
+09-14,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+09-14,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+09-14,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+09-15,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+09-15,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+09-15,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+09-15,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+09-16,MRI sequences,T1,T2,FLAIR,DWI,yellow
+09-16,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+09-16,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+09-16,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+09-17,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+09-17,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+09-17,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+09-17,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+09-18,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+09-18,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+09-18,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+09-18,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+09-19,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+09-19,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+09-19,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+09-19,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+09-20,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+09-20,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+09-20,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+09-20,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+09-21,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+09-21,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+09-21,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+09-21,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+09-22,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+09-22,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+09-22,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+09-22,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+09-23,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+09-23,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+09-23,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+09-23,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+09-24,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+09-24,Aphasia types,Broca,Wernicke,Conduction,Global,green
+09-24,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+09-24,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+09-25,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+09-25,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+09-25,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+09-25,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+09-26,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+09-26,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+09-26,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+09-26,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+09-27,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+09-27,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+09-27,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+09-27,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+09-28,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+09-28,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+09-28,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+09-28,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+09-29,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+09-29,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+09-29,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+09-29,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+09-30,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+09-30,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+09-30,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+09-30,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+10-01,Sleep stages,N1,N2,N3,REM,yellow
+10-01,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+10-01,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+10-01,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+10-02,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+10-02,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+10-02,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+10-02,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+10-03,MRI sequences,T1,T2,FLAIR,DWI,yellow
+10-03,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+10-03,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+10-03,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+10-04,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+10-04,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+10-04,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+10-04,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+10-05,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+10-05,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+10-05,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+10-05,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+10-06,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+10-06,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+10-06,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+10-06,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+10-07,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+10-07,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+10-07,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+10-07,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+10-08,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+10-08,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+10-08,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+10-08,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+10-09,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+10-09,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+10-09,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+10-09,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+10-10,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+10-10,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+10-10,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+10-10,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+10-11,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+10-11,Aphasia types,Broca,Wernicke,Conduction,Global,green
+10-11,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+10-11,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+10-12,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+10-12,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+10-12,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+10-12,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+10-13,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+10-13,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+10-13,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+10-13,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+10-14,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+10-14,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+10-14,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+10-14,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+10-15,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+10-15,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+10-15,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+10-15,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+10-16,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+10-16,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+10-16,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+10-16,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+10-17,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+10-17,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+10-17,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+10-17,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+10-18,Sleep stages,N1,N2,N3,REM,yellow
+10-18,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+10-18,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+10-18,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+10-19,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+10-19,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+10-19,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+10-19,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+10-20,MRI sequences,T1,T2,FLAIR,DWI,yellow
+10-20,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+10-20,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+10-20,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+10-21,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+10-21,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+10-21,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+10-21,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+10-22,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+10-22,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+10-22,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+10-22,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+10-23,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+10-23,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+10-23,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+10-23,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+10-24,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+10-24,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+10-24,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+10-24,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+10-25,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+10-25,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+10-25,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+10-25,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+10-26,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+10-26,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+10-26,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+10-26,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+10-27,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+10-27,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+10-27,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+10-27,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+10-28,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+10-28,Aphasia types,Broca,Wernicke,Conduction,Global,green
+10-28,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+10-28,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+10-29,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+10-29,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+10-29,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+10-29,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+10-30,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+10-30,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+10-30,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+10-30,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+10-31,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+10-31,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+10-31,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+10-31,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+11-01,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+11-01,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+11-01,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+11-01,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+11-02,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+11-02,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+11-02,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+11-02,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+11-03,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+11-03,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+11-03,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+11-03,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+11-04,Sleep stages,N1,N2,N3,REM,yellow
+11-04,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+11-04,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+11-04,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+11-05,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+11-05,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+11-05,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+11-05,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+11-06,MRI sequences,T1,T2,FLAIR,DWI,yellow
+11-06,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+11-06,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+11-06,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+11-07,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+11-07,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+11-07,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+11-07,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+11-08,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+11-08,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+11-08,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+11-08,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+11-09,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+11-09,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+11-09,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+11-09,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+11-10,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+11-10,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+11-10,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+11-10,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+11-11,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+11-11,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+11-11,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+11-11,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+11-12,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+11-12,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+11-12,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+11-12,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+11-13,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+11-13,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+11-13,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+11-13,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+11-14,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+11-14,Aphasia types,Broca,Wernicke,Conduction,Global,green
+11-14,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+11-14,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+11-15,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+11-15,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+11-15,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+11-15,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+11-16,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+11-16,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+11-16,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+11-16,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+11-17,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+11-17,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+11-17,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+11-17,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+11-18,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+11-18,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+11-18,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+11-18,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+11-19,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+11-19,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+11-19,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+11-19,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+11-20,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+11-20,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+11-20,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+11-20,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+11-21,Sleep stages,N1,N2,N3,REM,yellow
+11-21,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+11-21,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+11-21,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+11-22,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+11-22,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+11-22,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+11-22,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+11-23,MRI sequences,T1,T2,FLAIR,DWI,yellow
+11-23,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+11-23,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+11-23,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+11-24,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+11-24,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+11-24,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+11-24,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+11-25,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+11-25,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+11-25,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+11-25,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+11-26,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+11-26,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+11-26,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+11-26,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+11-27,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+11-27,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+11-27,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+11-27,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+11-28,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+11-28,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+11-28,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+11-28,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+11-29,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+11-29,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+11-29,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+11-29,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+11-30,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+11-30,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+11-30,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+11-30,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+12-01,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+12-01,Aphasia types,Broca,Wernicke,Conduction,Global,green
+12-01,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+12-01,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+12-02,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+12-02,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+12-02,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+12-02,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+12-03,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+12-03,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+12-03,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+12-03,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+12-04,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+12-04,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+12-04,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+12-04,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+12-05,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+12-05,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+12-05,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+12-05,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+12-06,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+12-06,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+12-06,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+12-06,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+12-07,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+12-07,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+12-07,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+12-07,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+12-08,Sleep stages,N1,N2,N3,REM,yellow
+12-08,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+12-08,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+12-08,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+12-09,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+12-09,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+12-09,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+12-09,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+12-10,MRI sequences,T1,T2,FLAIR,DWI,yellow
+12-10,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+12-10,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+12-10,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+12-11,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+12-11,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+12-11,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+12-11,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+12-12,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+12-12,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+12-12,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+12-12,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+12-13,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+12-13,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+12-13,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+12-13,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+12-14,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+12-14,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+12-14,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+12-14,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple
+12-15,Hearing loss types,Conductive,Sensorineural,Mixed,Central,yellow
+12-15,Brainstem stroke syndromes,Lateral medullary,Medial medullary,Lateral pontine,Medial pontine,green
+12-15,MS disease-modifying therapies,Ocrelizumab,Natalizumab,Fingolimod,Teriflunomide,blue
+12-15,Stroke mimics,Seizure,Hemiplegic migraine,Hypoglycemia,Conversion disorder,purple
+12-16,Hydrocephalus categories,Communicating,Obstructive (non-communicating),Normal pressure,Ex vacuo,yellow
+12-16,Eye movement disorders,Internuclear ophthalmoplegia,Skew deviation,Parinaud syndrome,One-and-a-half syndrome,green
+12-16,Status epilepticus sequence,Benzodiazepine,Levetiracetam,Fosphenytoin,Propofol,blue
+12-16,Antiplatelets for stroke,Aspirin,Clopidogrel,Ticagrelor,Dipyridamole,purple
+12-17,Headache red flags (SNOOP),Systemic,Neurologic,Onset sudden,Older age,yellow
+12-17,NMJ antibodies,Anti–AChR,Anti–MuSK,Anti–LRP4,Anti–P/Q-type VGCC,green
+12-17,Common mononeuropathies,Median (carpal tunnel),Ulnar (cubital tunnel),Radial (spiral groove),Peroneal (fibular head),blue
+12-17,Direct oral anticoagulants,Apixaban,Rivaroxaban,Dabigatran,Edoxaban,purple
+12-18,Common reflexes,Biceps,Triceps,Patellar,Achilles,yellow
+12-18,Aphasia types,Broca,Wernicke,Conduction,Global,green
+12-18,Demyelination on NCS/EMG,Slowed velocity,Conduction block,Prolonged distal latency,Temporal dispersion,blue
+12-18,CVT imaging signs,Empty delta sign,Cord sign,SWI blooming,Hyperdense sinus,purple
+12-19,Peripheral nerve fiber types,A-alpha,A-beta,A-delta,C,yellow
+12-19,Carotid artery disorders,Dissection,Fibromuscular dysplasia,Atherosclerosis,Pseudoaneurysm,green
+12-19,Pupillary syndromes,Horner,Argyll Robertson,Adie tonic pupil,Marcus Gunn RAPD,blue
+12-19,Huntington disease features,Chorea,Psychiatric symptoms,Cognitive decline,Caudate atrophy,purple
+12-20,Common stroke imaging,Non-contrast CT,CTA,CT Perfusion,MRI DWI,yellow
+12-20,Prehospital LVO scales,RACE,LAMS,FAST-ED,PASS,green
+12-20,Thunderclap headache causes,SAH,RCVS,Cervical dissection,Cerebral venous thrombosis,blue
+12-20,Mitochondrial disorders,MELAS,MERRF,LHON,Leigh,purple
+12-21,Parkinson cardinal features,Bradykinesia,Rigidity,Rest tremor,Postural instability,yellow
+12-21,Visual pathway anatomy (retinotopy),Macula,Nasal retina,Temporal retina,Fovea,green
+12-21,Focal seizure semiologies,Automotor,Aphasic,Hypermotor,Somatosensory,blue
+12-21,Autoimmune myositis Abs,Anti–Jo-1,Mi-2,SRP,HMGCR,purple
+12-22,Visual field defects,Bitemporal hemianopia,Homonymous hemianopia,Quadrantanopia,Central scotoma,yellow
+12-22,CSF flow structures,Choroid plexus,Foramen of Monro,Aqueduct of Sylvius,Foramina of Luschka/Magendie,green
+12-22,Ataxia types,Cerebellar,Sensory,Vestibular,Frontal,blue
+12-22,Paraneoplastic syndromes,Lambert-Eaton,Opsoclonus–myoclonus,Subacute cerebellar degeneration,Sensory neuronopathy,purple
+12-23,Cerebral lobes,Frontal,Parietal,Temporal,Occipital,yellow
+12-23,Posterior circulation arteries,PICA,AICA,SCA,PCA,green
+12-23,Basal ganglia nuclei,Caudate,Putamen,Globus pallidus,Subthalamic nucleus,blue
+12-23,Thalamic relay nuclei,VPL,VPM,LGN,MGN,purple
+12-24,Normal EEG rhythms,Alpha,Beta,Theta,Delta,yellow
+12-24,Association fiber tracts,Arcuate fasciculus,Uncinate fasciculus,Cingulum,Inferior longitudinal fasciculus,green
+12-24,Autoimmune encephalitis antibodies,Anti-NMDA,LGI1,CASPR2,GAD65,blue
+12-24,Spinal cord syndromes,Anterior cord,Posterior cord,Central cord,Brown-Séquard,purple
+12-25,Sleep stages,N1,N2,N3,REM,yellow
+12-25,Major spinal cord tracts,Lateral corticospinal,Spinothalamic,Dorsal column–medial lemniscus,Spinocerebellar,green
+12-25,Classic lacunar syndromes,Pure motor,Pure sensory,Ataxic hemiparesis,Dysarthria–clumsy hand,blue
+12-25,CNS infections (immunocompromised),Toxoplasmosis,Cryptococcal meningitis,CMV encephalitis,PML,purple
+12-26,Dementia types,Alzheimer,Lewy body,Frontotemporal,Vascular,yellow
+12-26,Cranial nerves with parasympathetics,III (Oculomotor),VII (Facial),IX (Glossopharyngeal),X (Vagus),green
+12-26,Cerebellar deep nuclei,Dentate,Emboliform,Globose,Fastigial,blue
+12-26,Dementia medications,Donepezil,Rivastigmine,Galantamine,Memantine,purple
+12-27,MRI sequences,T1,T2,FLAIR,DWI,yellow
+12-27,Early ischemic CT signs,Hyperdense MCA sign,Insular ribbon loss,Loss of gray–white,Sulcal effacement,green
+12-27,CNS demyelinating disorders,Multiple sclerosis,NMOSD,MOGAD,ADEM,blue
+12-27,Migraine abortives,Sumatriptan,Ubrogepant,Rimegepant,Dihydroergotamine,purple
+12-28,Visual pathway anatomy,Optic nerve,Optic chiasm,Optic tract,Optic radiations,yellow
+12-28,MS lesion topography,Periventricular,Juxtacortical,Infratentorial,Spinal cord,green
+12-28,Neuromuscular junction disorders,Myasthenia gravis,Lambert-Eaton,Botulism,Congenital myasthenic,blue
+12-28,Migraine preventives,Topiramate,Propranolol,Amitriptyline,Erenumab,purple
+12-29,Glial cell types,Astrocyte,Oligodendrocyte,Microglia,Ependymal cell,yellow
+12-29,Trigeminal autonomic cephalalgias,Cluster headache,Paroxysmal hemicrania,SUNCT,SUNA,green
+12-29,Motor neuron diseases,ALS,SMA,PLS,PMA,blue
+12-29,Peripheral neuropathy types,Axonal,Demyelinating,Small fiber,Large fiber,purple
+12-30,Tremor types,Rest,Postural,Intention,Task-specific,yellow
+12-30,Pediatric epilepsy syndromes,West (infantile spasms),Lennox–Gastaut,Dravet,Childhood absence epilepsy,green
+12-30,Gait patterns,Hemiparetic,Ataxic,Steppage,Parkinsonian,blue
+12-30,Toxic neuropathies,Amiodarone,Vincristine,Isoniazid,Linezolid,purple
+12-31,Seizure types (ILAE),Focal aware,Focal impaired awareness,Generalized tonic-clonic,Absence,yellow
+12-31,Parkinson therapies,Levodopa,Pramipexole,Selegiline,Amantadine,green
+12-31,Evoked potentials,VEP,SSEP,BAER,MEP,blue
+12-31,GBS variants,AIDP,AMAN,AMSAN,Miller Fisher,purple

@@ -13,13 +13,13 @@
   *{box-sizing:border-box}
   html,body{height:100%}
   body{margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif; line-height:1.25;}
-  .wrap{width:min(640px, 96vw); margin:0 auto; padding:40px 0 24px; position:relative;}
+  .wrap{width:min(520px,92vw); margin:0 auto; padding:40px 0 24px; position:relative;}
   h1{margin:0 0 6px; text-align:center; font-weight:900; font-size:28px; letter-spacing:-0.01em}
   h2{margin:0; text-align:center; font-weight:700; font-size:18px}
   .date-bar{ margin-top:6px; text-align:center; color:var(--muted); font-size:12px; user-select:none }
-  .grid{margin-top:24px; display:grid; grid-template-columns:repeat(4,auto); gap:10px; justify-items:center; justify-content:center;}
+  .grid{margin-top:24px; display:grid; grid-template-columns:repeat(4,1fr); gap:10px; justify-items:center;}
   .tile{
-    width: 150px; min-height:88px; max-height:160px;
+    width:120px; min-height:88px; max-height:160px;
     border-radius:10px; border:1px solid var(--border); background:var(--tile);
     display:flex; align-items:center; justify-content:center;
     font-weight:800; font-size:18px; text-align:center; cursor:pointer;
@@ -45,13 +45,8 @@
   .controls{ margin-top:18px; display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;}
   .btn{ border-radius:10px; border:1px solid var(--border); background:#fff; color:#0f172a; padding:14px 20px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; font-size:13px; cursor:pointer; }
   .btn:hover{ background:#f8fafc; }
-  /* Submit = pale green, Hint = pale orange */
-  #submit.btn{ background:#ecfdf5; border-color:#bbf7d0; }
-  #submit.btn:hover{ background:#e6f7ef; }
-  #hint.btn{ background:#fff7ed; border-color:#fed7aa; }
-  #hint.btn:hover{ background:#fff1e6; }
   footer{ margin-top:14px; text-align:center; color:#94a3b8; font-size:12px; user-select:none}
-  .skeleton{ width: 150px; height:120px; border-radius:10px; border:1px solid var(--border); background:linear-gradient(90deg, #ffffff 25%, #f1f5f9 37%, #ffffff 63%); background-size:400% 100%; animation:shimmer 1.2s infinite; }
+  .skeleton{ width:120px; height:120px; border-radius:10px; border:1px solid var(--border); background:linear-gradient(90deg, #ffffff 25%, #f1f5f9 37%, #ffffff 63%); background-size:400% 100%; animation:shimmer 1.2s infinite; }
   @keyframes shimmer{ 0%{background-position:100% 0} 100%{background-position:0 0} }
   .loader{ margin-top:10px; text-align:center; color:var(--muted); font-size:14px; white-space:pre-wrap; }
   .uploader{ display:none; margin-top:10px; text-align:center; }
@@ -62,7 +57,8 @@
   <div class="wrap">
     <h1><span aria-hidden="true">🧠</span> NeuroConnections</h1>
     <h2>Create four groups of four!</h2>
-    
+    <div id="puzzleDate" class="date-bar"></div>
+
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
     <div id="grid" class="grid" aria-label="Tiles grid"></div>
@@ -74,8 +70,8 @@
     </div>
 
     <div class="controls">
-      <button id="hint" class="btn" type="button">Hint</button>
       <button id="shuffle" class="btn" type="button">Shuffle</button>
+      <button id="hint" class="btn" type="button">Hint</button>
       <button id="deselect" class="btn" type="button">Deselect All</button>
       <button id="submit" class="btn" type="button">Submit</button>
     </div>
@@ -87,7 +83,6 @@
   // ================= Utilities =================
   const DIFFICULTY_COLORS = { yellow:'#F2C14E', green:'#5DD0C2', blue:'#6AA6FF', purple:'#B388EB' };
   const FALLBACK_COLORS = ['#B388EB','#5DD0C2','#F2C14E','#F78C6C'];
-  const DIFFICULTY_ORDER = {yellow:1, green:2, blue:3, purple:4};
 
   const gridEl = document.getElementById('grid');
   const submitEl = document.getElementById('submit');
@@ -112,34 +107,11 @@
   })();
 
   function phoenixISODateFromOffset(offset){
-    
     const msPerDay = 86400000;
     const target = new Date(Date.now() + offset*msPerDay);
     const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Phoenix',year:'numeric',month:'2-digit',day:'2-digit'});
     const p=fmt.formatToParts(target);
     return `${p.find(x=>x.type==='year').value}-${p.find(x=>x.type==='month').value}-${p.find(x=>x.type==='day').value}`;
-  }
-  // Return Phoenix month-day string 'MM-DD' for the given offset
-  function phoenixMonthDayFromOffset(offset){
-    const msPerDay = 86400000;
-    const target = new Date(Date.now() + offset*msPerDay);
-    const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Phoenix',month:'2-digit',day:'2-digit'});
-    const p=fmt.formatToParts(target);
-    return `${p.find(x=>x.type==='month').value}-${p.find(x=>x.type==='day').value}`;
-  }
-  function two(n){ n=String(n); return n.length===1? '0'+n : n; }
-  // Normalize various date formats (YYYY-MM-DD, MM/DD/YYYY, MM-DD, etc.) to 'MM-DD'
-  function toMMDD(s){
-    s = String(s||'').trim();
-    let m = s.match(/^([0-9]{4})[-\/]?([0-9]{2})[-\/]?([0-9]{2})$/);
-    if(m) return `${m[2]}-${m[3]}`;
-    m = s.match(/^([0-9]{4})[-\/]([0-9]{1,2})[-\/]([0-9]{1,2})$/);
-    if(m) return `${two(m[2])}-${two(m[3])}`;
-    m = s.match(/^([0-9]{1,2})[-\/]([0-9]{1,2})(?:[-\/]([0-9]{2,4}))?$/);
-    if(m) return `${two(m[1])}-${two(m[2])}`;
-    m = s.match(/^([0-9]{2})([0-9]{2})$/);
-    if(m) return `${m[1]}-${m[2]}`;
-    return s;
   }
   function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
   function rgba(hex,alpha=.15){ const s=hex.replace('#',''); const x=s.length===3? s.split('').map(c=>c+c).join(''):s; const n=parseInt(x,16); const r=(n>>16)&255,g=(n>>8)&255,b=n&255; return `rgba(${r},${g},${b},${alpha})`; }
@@ -195,33 +167,24 @@
       const cats = byDate.get(d);
       const valids = cats.filter(c=>c.items.length===4);
       if(valids.length < 4) continue;
-      valids.sort((a,b)=> (DIFFICULTY_ORDER[(a.difficulty||'').toLowerCase()]||99) - (DIFFICULTY_ORDER[(b.difficulty||'').toLowerCase()]||99));
       puzzles.push({
         title:d,
         categories: valids.slice(0,4).map((c,i)=> ({...c, color: pickDifficultyColor(c.difficulty, i)}))
       });
-      }
+    }
     return puzzles;
   }
 
-  
-  function renderNoPuzzle(dateStr){
-    gridEl.innerHTML='';
-    const frag = document.createDocumentFragment();
-    for(let i=0;i<16;i++){ const d=document.createElement('div'); d.className='skeleton'; frag.appendChild(d); }
-    gridEl.appendChild(frag);
-    submitEl.disabled = deselectEl.disabled = shuffleEl.disabled = hintEl.disabled = true;
-    loaderEl.textContent = 'No puzzle found for ' + dateStr + '. Update puzzles.csv or press N to change day.';
-  }
-// ================= Game state & rendering =================
+  // ================= Game state & rendering =================
   let PUZZLES=[], PUZZLE=null, solved=[], selected=new Set(), remaining=new Set(), order=[], itemToCat=new Map();
 
   // Hints
   let hintedColors = new Map(); // item -> color for visual hinting
-  let hintGroupIdx = -1;      // current hinted group's index
-  let hintedItems = new Set(); // items revealed so far in the hinted group
+  let hintPhase = 'idle'; // 'idle' | 'single'
+  let hintGroupIdx = -1;
+  let hintedItem = null;
 
-  function clearHintState(){ hintGroupIdx=-1; hintedItems.clear(); hintedColors.clear(); }
+  function clearHintState(){ hintPhase='idle'; hintGroupIdx=-1; hintedItem=null; hintedColors.clear(); }
 
   function chooseUnsolvedGroupIndex(){
     if(!PUZZLE) return -1;
@@ -245,18 +208,25 @@
     });
   }
 
-  function setDateBarText(dateStr, usedRotation){ if(!dateEl) return; dateEl.textContent = usedRotation ? `Puzzle date: ${dateStr} (rotated match)` : `Puzzle date: ${dateStr}`; }
+  function setDateBarText(dateStr, usedRotation){
+    dateEl.textContent = usedRotation ? `Puzzle date: ${dateStr} (rotated match)` : `Puzzle date: ${dateStr}`;
+  }
 
   function selectPuzzleForCurrentOffset(){
-    const mmdd = phoenixMonthDayFromOffset(dayOffset);
-    // Find the first puzzle whose CSV date normalizes to this MM-DD
-    for(let i=0;i<PUZZLES.length;i++){
-      const p = PUZZLES[i];
-      if(toMMDD(p.title) === mmdd) return p;
+    const dateStr = phoenixISODateFromOffset(dayOffset);
+    let idx = PUZZLES.findIndex(p=>p.title===dateStr);
+    let rotated = false;
+    if(idx < 0){
+      const baseDay = Math.floor(Date.now()/86400000);
+      idx = (baseDay + dayOffset) % PUZZLES.length;
+      if(idx < 0) idx += PUZZLES.length;
+      rotated = true;
     }
-    return null;
+    setDateBarText(dateStr, rotated);
+    return PUZZLES[idx];
   }
-    function initBoard(){
+
+  function initBoard(){
     solved=[]; selected.clear(); clearHintState();
     remaining = new Set(PUZZLE.categories.flatMap(c=>c.items));
     order = shuffle([...remaining]);
@@ -324,7 +294,6 @@
     const allSame = sel.every(it=> itemToCat.get(it)===catIdx);
     if(allSame){
       const cat=PUZZLE.categories[catIdx];
-      if(hintGroupIdx === catIdx) clearHintState();
       solved.push({name:cat.name, color:cat.color, items:cat.items.slice()});
       for(const it of sel) remaining.delete(it);
       selected.clear();
@@ -342,53 +311,32 @@
 
   function onHint(){
     if(!PUZZLE) return;
-
-    // If no current hinted group or that group is no longer fully remaining, pick a new unsolved group
-    const validCurrent = hintGroupIdx >= 0 && PUZZLE.categories[hintGroupIdx].items.every(it => remaining.has(it));
-    if(hintGroupIdx < 0 || !validCurrent){
-      // choose the first fully-remaining unsolved group
-      hintGroupIdx = -1;
-      for(let i=0;i<PUZZLE.categories.length;i++){
-        const cat = PUZZLE.categories[i];
-        if(cat.items.every(it => remaining.has(it))){
-          hintGroupIdx = i; break;
-        }
-      }
-      hintedItems.clear();
-      hintedColors.clear();
-      if(hintGroupIdx < 0){ showToast('No groups left to hint.','warn'); return; }
+    // Phase 1: reveal one random tile color from an unsolved group
+    if(hintPhase === 'idle'){
+      const idx = chooseUnsolvedGroupIndex();
+      if(idx < 0){ showToast('No groups left to hint.','warn'); return; }
+      const cat = PUZZLE.categories[idx];
+      const candidates = cat.items.filter(it => remaining.has(it));
+      if(!candidates.length){ showToast('No groups left to hint.','warn'); return; }
+      const item = candidates[Math.floor(Math.random()*candidates.length)];
+      hintedColors.set(item, cat.color);
+      hintPhase = 'single'; hintGroupIdx = idx; hintedItem = item;
+      showToast('Hint: one tile highlighted','warn');
+      render();
+      return;
     }
-
-    const cat = PUZZLE.categories[hintGroupIdx];
-    const unseen = cat.items.filter(it => remaining.has(it) && !hintedItems.has(it));
-
-    if(unseen.length === 0){
-      // All 4 have been hinted already; auto-solve this group now
+    // Phase 2: reveal the entire color and auto-solve that group
+    if(hintPhase === 'single' && hintGroupIdx >= 0){
+      const cat = PUZZLE.categories[hintGroupIdx];
+      cat.items.forEach(it => hintedColors.set(it, cat.color));
+      // Immediately move to solved (behaves like a correct submission)
       solved.push({name:cat.name, color:cat.color, items:cat.items.slice()});
       cat.items.forEach(it => remaining.delete(it));
       selected.clear();
       showToast('Hint solved: ' + cat.name, 'ok');
       clearHintState();
       render();
-      return;
     }
-
-    // Reveal one random new item from this group's remaining items
-    const item = unseen[Math.floor(Math.random()*unseen.length)];
-    hintedItems.add(item);
-    hintedColors.set(item, cat.color);
-    const count = hintedItems.size;
-    showToast(`Hint: revealed ${count}/4`, 'warn');
-
-    // If that was the 4th, auto-solve immediately
-    if(count >= 4){
-      solved.push({name:cat.name, color:cat.color, items:cat.items.slice()});
-      cat.items.forEach(it => remaining.delete(it));
-      selected.clear();
-      showToast('Hint solved: ' + cat.name, 'ok');
-      clearHintState();
-    }
-    render();
   }
 
   submitEl.addEventListener('click', onSubmit);
@@ -396,28 +344,15 @@
   deselectEl.addEventListener('click', onDeselect);
   hintEl.addEventListener('click', onHint);
 
-  
-  // Secret: press 'N' to advance the date offset and reload; 'P' to go back a day
+  // Secret: press 'N' to advance the date offset and reload
   window.addEventListener('keydown', (e)=>{
     const k = (e.key||'').toLowerCase();
     if(k === 'n'){
       dayOffset += 1;
       if(PUZZLES.length){
-        const ds = phoenixMonthDayFromOffset(dayOffset);
         PUZZLE = selectPuzzleForCurrentOffset();
-        if(!PUZZLE){ showToast('No puzzle for '+ds, 'err'); renderNoPuzzle(ds); return; }
         initBoard();
-        showToast(`Advanced date → ${ds}`, 'ok');
-      }
-    }
-    if(k === 'p'){
-      dayOffset -= 1;
-      if(PUZZLES.length){
-        const ds = phoenixMonthDayFromOffset(dayOffset);
-        PUZZLE = selectPuzzleForCurrentOffset();
-        if(!PUZZLE){ showToast('No puzzle for '+ds, 'err'); renderNoPuzzle(ds); return; }
-        initBoard();
-        showToast(`Went back → ${ds}`, 'ok');
+        showToast(`Advanced date → ${phoenixISODateFromOffset(dayOffset)}`, 'ok');
       }
     }
   }, {passive:true});
@@ -437,7 +372,7 @@
       console.warn('Fetch failed, enabling local CSV uploader.', e);
       loaderEl.textContent = "Couldn't fetch puzzles.csv.\n• Put index.html and puzzles.csv together and use a local server, or\n• Upload the CSV below.";
       uploaderEl.classList.add('show');
-      if(dateEl){ dateEl.textContent = `Puzzle date: ${phoenixISODateFromOffset(dayOffset)} (awaiting CSV)`; }
+      dateEl.textContent = `Puzzle date: ${phoenixISODateFromOffset(dayOffset)} (awaiting CSV)`;
     }
   })();
 
@@ -453,7 +388,6 @@
         PUZZLES = rowsToPuzzles(rows);
         if(!PUZZLES.length) throw new Error('No valid puzzles in CSV');
         PUZZLE = selectPuzzleForCurrentOffset();
-        if(!PUZZLE){ const ds = phoenixMonthDayFromOffset(dayOffset); showToast('No puzzle for '+ds,'err'); renderNoPuzzle(ds); return; }
         uploaderEl.classList.remove('show');
         initBoard();
       }catch(err){ console.error(err); showToast('Invalid CSV format.','err'); }
