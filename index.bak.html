@@ -9,6 +9,7 @@
     --bg:#f8fafc; --text:#0f172a; --muted:#64748b; --card:#ffffff; --border:#d1d5db;
     --tile:#ffffff; --tile-hover:#f8fafc; --tile-selected:#e0e7ff; --tile-selected-border:#a5b4fc;
     --ok:#16a34a; --warn:#d97706; --err:#dc2626;
+    --c1:#B388EB; --c2:#5DD0C2; --c3:#F2C14E; --c4:#F78C6C;
   }
   *{box-sizing:border-box}
   html,body{height:100%}
@@ -21,7 +22,7 @@
         display:flex; align-items:center; justify-content:center; font-weight:800; font-size:17px; text-align:center; cursor:pointer;
         transition:background .15s ease, border-color .15s ease, transform .02s ease-in-out; user-select:none;}
   .tile:hover{ background:var(--tile-hover); }
-  .tile.selected{ background:#e0e7ff; border-color:#a5b4fc; outline:2px solid #a5b4fc; }
+  .tile.selected{ background:var(--tile-selected); border-color:var(--tile-selected-border); outline:2px solid var(--tile-selected-border); }
   .solved-card{ grid-column:1/-1; width:100%; border-radius:10px; border:1px solid var(--border); background:var(--card); padding:12px; display:flex; align-items:center; gap:10px; }
   .badge{ font-weight:900; padding:6px 10px; border-radius:999px; color:#0b0e12; font-size:12px; }
   .toast{ position:absolute; left:50%; transform:translateX(-50%); top:64px; z-index:20; pointer-events:none; font-weight:700; font-size:14px; border-radius:8px; padding:8px 10px; display:none; border:1px solid transparent; }
@@ -64,77 +65,50 @@
 
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script>
-  // Difficulty color mapping; accepts 'yellow' | 'green' | 'blue' | 'purple' (case-insensitive).
-  const DIFFICULTY_COLORS = {
-    yellow: '#F2C14E',
-    green:  '#5DD0C2',
-    blue:   '#6AA6FF',
-    purple: '#B388EB'
-  };
-  // Fallback colors if no difficulty provided
-  const FALLBACK_COLORS = ['#B388EB','#5DD0C2','#F2C14E','#F78C6C'];
-
-  const gridEl = document.getElementById('grid');
-  const submitEl = document.getElementById('submit');
-  const deselectEl = document.getElementById('deselect');
-  const shuffleEl = document.getElementById('shuffle');
-  const loaderEl = document.getElementById('loader');
-  const uploaderEl = document.getElementById('uploader');
-  const fileInput = document.getElementById('fileInput');
+  const COLORS = ["#B388EB","#5DD0C2","#F2C14E","#F78C6C"];
+  const gridEl = document.getElementById("grid");
+  const submitEl = document.getElementById("submit");
+  const deselectEl = document.getElementById("deselect");
+  const shuffleEl = document.getElementById("shuffle");
+  const loaderEl = document.getElementById("loader");
+  const uploaderEl = document.getElementById("uploader");
+  const fileInput = document.getElementById("fileInput");
 
   function phoenixISODate(now=new Date()){
-    const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Phoenix',year:'numeric',month:'2-digit',day:'2-digit'});
+    const fmt=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Phoenix",year:"numeric",month:"2-digit",day:"2-digit"});
     const p=fmt.formatToParts(now);
-    return `${p.find(x=>x.type==='year').value}-${p.find(x=>x.type==='month').value}-${p.find(x=>x.type==='day').value}`;
+    const y=p.find(x=>x.type==="year").value, m=p.find(x=>x.type==="month").value, d=p.find(x=>x.type==="day").value;
+    return `${y}-${m}-${d}`;
   }
   function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
-  function rgba(hex,alpha=.15){ const s=hex.replace('#',''); const x=s.length===3? s.split('').map(c=>c+c).join(''):s; const n=parseInt(x,16); const r=(n>>16)&255,g=(n>>8)&255,b=n&255; return `rgba(${r},${g},${b},${alpha})`; }
-  function showToast(msg,kind){ const t=document.getElementById('toast'); t.textContent=msg; t.className='toast show '+(kind||''); if(kind!=='err'){ clearTimeout(showToast._t); showToast._t=setTimeout(()=>{ t.className='toast'; },1500);} }
+  function rgba(hex,alpha=.15){ const s=hex.replace("#",""); const x=s.length===3? s.split("").map(c=>c+c).join(""):s; const n=parseInt(x,16); const r=(n>>16)&255,g=(n>>8)&255,b=n&255; return `rgba(${r},${g},${b},${alpha})`; }
+  function showToast(msg,kind){ const t=document.getElementById("toast"); t.textContent=msg; t.className="toast show "+(kind||""); if(kind!=="err"){ clearTimeout(showToast._t); showToast._t=setTimeout(()=>{ t.className="toast"; },1500);} }
 
   async function loadPuzzlesHttp(){
-    loaderEl.textContent = 'Loading puzzles.csv…';
-    const res = await fetch('puzzles.csv', {cache:'no-store'});
-    if(!res.ok) throw new Error('HTTP '+res.status);
+    loaderEl.textContent = "Loading puzzles.csv…";
+    const res = await fetch("puzzles.csv", {cache:"no-store"});
+    if(!res.ok) throw new Error("HTTP "+res.status);
     const text = await res.text();
     return parseCsv(text);
   }
   function parseCsv(text){
     const parsed = Papa.parse(text, {header:true, skipEmptyLines:true});
     const rows = parsed.data.map(r=>{
-      const out={};
-      Object.keys(r).forEach(k=> out[k.trim().toLowerCase()] = String(r[k]??'').trim());
-      return out;
+      const out={}; Object.keys(r).forEach(k=> out[k.trim().toLowerCase()] = String(r[k]??"").trim()); return out;
     });
     return rowsToPuzzles(rows);
   }
-  function pickDifficultyColor(val, idx){
-    if(!val) return FALLBACK_COLORS[idx % FALLBACK_COLORS.length];
-    const key = String(val).toLowerCase();
-    if (DIFFICULTY_COLORS[key]) return DIFFICULTY_COLORS[key];
-    if(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(val)) return val; // allow custom hex colors
-    return FALLBACK_COLORS[idx % FALLBACK_COLORS.length];
-  }
   function rowsToPuzzles(rows){
-    // Columns: date, category, item1..item4, (optional) difficulty|tier|color
     const byDate=new Map();
     rows.forEach(r=>{
-      const date=r['date']||'';
-      const category=r['category'];
-      const items=[r['item1'],r['item2'],r['item3'],r['item4']].filter(Boolean);
-      // PRIORITIZE difficulty, then tier, then color
-      const difficulty = r['difficulty'] || r['tier'] || r['color'] || '';
+      const date=r["date"]||""; const category=r["category"];
+      const items=[r["item1"],r["item2"],r["item3"],r["item4"]].filter(Boolean);
       if(!date||!category||items.length!==4) return;
       if(!byDate.has(date)) byDate.set(date,[]);
-      byDate.get(date).push({name:category, items, difficulty});
+      byDate.get(date).push({name:category, items});
     });
     const dates=[...byDate.keys()].sort();
-    return dates.map(d=>{
-      const cats=byDate.get(d);
-      return {
-        title:d,
-        categories: cats.map((c,i)=> ({...c, color: pickDifficultyColor(c.difficulty, i)}))
-      };
-    });
+    return dates.map(d=>({ title:d, categories: byDate.get(d).map((c,i)=>({...c,color:COLORS[i%COLORS.length]})) }));
   }
 
   let PUZZLES=[], PUZZLE=null, solved=[], selected=new Set(), remaining=new Set(), order=[], itemToCat=new Map();
@@ -145,7 +119,7 @@
     order = shuffle([...remaining]);
     itemToCat = new Map();
     PUZZLE.categories.forEach((c, idx)=> c.items.forEach(it=> itemToCat.set(it, idx)));
-    loaderEl.textContent = '';
+    loaderEl.textContent = "";
     render();
   }
   function pickTodayPuzzle(){
@@ -156,17 +130,17 @@
   }
   function getUnsolvedOrder(){ return order.filter(it=>remaining.has(it)); }
   function render(){
-    gridEl.innerHTML='';
+    gridEl.innerHTML="";
     solved.forEach(g=>{
-      const card=document.createElement('div'); card.className='solved-card'; card.style.background=rgba(g.color,.15); card.style.borderColor=g.color;
-      const badge=document.createElement('span'); badge.className='badge'; badge.style.background=g.color; badge.textContent=g.name;
-      const items=document.createElement('div'); items.style.opacity='.95'; items.style.fontWeight='700'; items.textContent=g.items.join(' • ');
+      const card=document.createElement("div"); card.className="solved-card"; card.style.background=rgba(g.color,.15); card.style.borderColor=g.color;
+      const badge=document.createElement("span"); badge.className="badge"; badge.style.background=g.color; badge.textContent=g.name;
+      const items=document.createElement("div"); items.style.opacity=".95"; items.style.fontWeight="700"; items.textContent=g.items.join(" • ");
       card.appendChild(badge); card.appendChild(items); gridEl.appendChild(card);
     });
     getUnsolvedOrder().forEach(it=>{
-      const b=document.createElement('button'); b.type='button'; b.className='tile'; b.textContent=it;
-      const isSel=selected.has(it); if(isSel) b.classList.add('selected');
-      b.setAttribute('aria-pressed', isSel? 'true':'false');
+      const b=document.createElement("button"); b.type="button"; b.className="tile"; b.textContent=it;
+      const isSel=selected.has(it); if(isSel) b.classList.add("selected");
+      b.setAttribute("aria-pressed", isSel? "true":"false");
       b.onclick=()=>toggle(it); gridEl.appendChild(b);
     });
     const done = PUZZLE && solved.length===PUZZLE.categories.length;
@@ -175,59 +149,59 @@
   function toggle(it){
     if(!remaining.has(it)) return;
     if(selected.has(it)) selected.delete(it); else { if(selected.size===4) selected.delete([...selected][0]); selected.add(it); }
-    [...gridEl.querySelectorAll('.tile')].forEach(btn=>{
-      const isSel = selected.has(btn.textContent); btn.classList.toggle('selected', isSel); btn.setAttribute('aria-pressed', isSel? 'true':'false');
+    [...gridEl.querySelectorAll(".tile")].forEach(btn=>{
+      const isSel = selected.has(btn.textContent); btn.classList.toggle("selected", isSel); btn.setAttribute("aria-pressed", isSel? "true":"false");
     });
   }
   function countOverlap(arr, group){ const set=new Set(group); return arr.reduce((n,x)=> n+(set.has(x)?1:0),0); }
   function onSubmit(){
     if(!PUZZLE) return;
-    if(selected.size!==4){ showToast('Select 4 tiles.','warn'); return; }
+    if(selected.size!==4){ showToast("Select 4 tiles.","warn"); return; }
     const sel=[...selected]; const catIdx=itemToCat.get(sel[0]);
     const allSame = sel.every(it=> itemToCat.get(it)===catIdx);
     if(allSame){
       const cat=PUZZLE.categories[catIdx];
       solved.push({name:cat.name, color:cat.color, items:cat.items.slice()});
       sel.forEach(it=> remaining.delete(it)); selected.clear();
-      showToast('Correct!','ok'); if(solved.length===PUZZLE.categories.length){ showToast('You solved NeuroConnections!','ok'); } render();
+      showToast("Correct!","ok"); if(solved.length===PUZZLE.categories.length){ showToast("You solved NeuroConnections!","ok"); } render();
     }else{
       const oneAway = PUZZLE.categories.some(cat=> countOverlap(sel, cat.items)===3);
-      showToast(oneAway? 'One away!':'Nope. Try again.', oneAway? 'warn':'err');
+      showToast(oneAway? "One away!":"Nope. Try again.", oneAway? "warn":"err");
     }
   }
   function onShuffle(){ order = shuffle(getUnsolvedOrder()); render(); }
-  function onDeselect(){ selected.clear(); [...gridEl.querySelectorAll('.tile')].forEach(btn=>{ btn.classList.remove('selected'); btn.setAttribute('aria-pressed','false'); }); }
+  function onDeselect(){ selected.clear(); [...gridEl.querySelectorAll(".tile")].forEach(btn=>{ btn.classList.remove("selected"); btn.setAttribute("aria-pressed","false"); }); }
 
-  submitEl.addEventListener('click', onSubmit);
-  shuffleEl.addEventListener('click', onShuffle);
-  deselectEl.addEventListener('click', onDeselect);
+  submitEl.addEventListener("click", onSubmit);
+  shuffleEl.addEventListener("click", onShuffle);
+  deselectEl.addEventListener("click", onDeselect);
 
+  // Boot: try HTTP fetch; if it fails (common with file://), show uploader fallback
   (async function boot(){
     try{
       PUZZLES = await loadPuzzlesHttp();
-      if(!PUZZLES.length) throw new Error('No valid puzzles found');
+      if(!PUZZLES.length) throw new Error("No valid puzzles found");
       PUZZLE = pickTodayPuzzle(); initBoard();
     }catch(e){
-      console.warn('HTTP load failed; enabling local CSV uploader.', e);
-      loaderEl.textContent = \"Couldn't fetch puzzles.csv. Load it manually:\";
-      uploaderEl.classList.add('show');
+      console.warn("HTTP load failed; enabling local CSV uploader.", e);
+      loaderEl.textContent = "Couldn't fetch puzzles.csv. Load it manually:";
+      uploaderEl.classList.add("show");
     }
   })();
 
-  // Local CSV uploader fallback for file://
-  fileInput.addEventListener('change', (ev)=>{
+  // Local CSV uploader fallback
+  fileInput.addEventListener("change", (ev)=>{
     const file = ev.target.files && ev.target.files[0];
     if(!file) return;
     const reader = new FileReader();
     reader.onload = ()=>{
       try{
-        const text = String(reader.result);
-        const parsed = Papa.parse(text, {header:true, skipEmptyLines:true});
-        const rows = parsed.data.map(r=>{ const out={}; Object.keys(r).forEach(k=> out[k.trim().toLowerCase()] = String(r[k]??'').trim()); return out; });
-        PUZZLES = rowsToPuzzles(rows);
-        if(!PUZZLES.length) throw new Error('No valid puzzles in CSV');
-        PUZZLE = pickTodayPuzzle(); uploaderEl.classList.remove('show'); initBoard();
-      }catch(err){ console.error(err); showToast('Invalid CSV format.','err'); }
+        PUZZLES = parseCsv(String(reader.result));
+        if(!PUZZLES.length) throw new Error("No valid puzzles in CSV");
+        PUZZLE = pickTodayPuzzle(); uploaderEl.classList.remove("show"); initBoard();
+      }catch(err){
+        console.error(err); showToast("Invalid CSV format.","err");
+      }
     };
     reader.readAsText(file);
   });
