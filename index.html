@@ -188,17 +188,35 @@
     return FALLBACK_COLORS[idx % FALLBACK_COLORS.length];
   }
 
+  
   function rowsToPuzzles(rows){
-    // Columns: date, category, item1..item4, (optional) difficulty|tier|color
+    // Columns: date, category, item1..item4, (optional) difficulty|tier|color, and optional url/url1..url4
     const byDate=new Map();
     for(const r of rows){
       const date=r['date']||'';
       const category=r['category'];
       const items=[r['item1'],r['item2'],r['item3'],r['item4']].filter(Boolean);
       const difficulty = r['difficulty'] || r['tier'] || r['color'] || '';
+
+      // Extract URLs: prefer url1..url4; else split a single 'url' field by | ; , (in that order)
+      let urls = [];
+      const ukeys = ['url1','url2','url3','url4'];
+      if (ukeys.some(k => r[k])){
+        urls = ukeys.map((k,i)=> (r[k]||'').trim() || '');
+      } else if (r['url']) {
+        const raw = String(r['url']).trim();
+        let parts = raw.split('|');
+        if (parts.length < 2) parts = raw.split(';');
+        if (parts.length < 2) parts = raw.split(',');
+        urls = parts.map(s=> String(s||'').trim());
+      }
+      // Ensure urls aligns to 4 items
+      while(urls.length < 4) urls.push('');
+      urls = urls.slice(0,4);
+
       if(!date||!category||items.length!==4) continue;
       if(!byDate.has(date)) byDate.set(date,[]);
-      byDate.get(date).push({name:category, items, difficulty});
+      byDate.get(date).push({name:category, items, difficulty, urls});
     }
     const dates=[...byDate.keys()].sort();
     const puzzles = [];
@@ -215,6 +233,7 @@
     }
     return puzzles;
   }
+  
 
   // ================= Game state & rendering =================
   let PUZZLES=[], PUZZLE=null, solved=[], selected=new Set(), remaining=new Set(), order=[], itemToCat=new Map();
@@ -284,7 +303,26 @@
     for(const g of solved){
       const card=document.createElement('div'); card.className='solved-card'; card.style.background=rgba(g.color,.15); card.style.borderColor=g.color;
       const badge=document.createElement('span'); badge.className='badge'; badge.style.background=g.color; badge.textContent=g.name;
-      const items=document.createElement('div'); items.style.opacity='.95'; items.style.fontWeight='700'; items.textContent=g.items.join(' • ');
+      const items=document.createElement('div'); items.style.opacity='.95'; items.style.fontWeight='700';
+      // Build linked list: each item links to its URL if provided
+      const parts=[];
+      for(let i=0;i<g.items.length;i++){
+        const text = g.items[i];
+        const url = (g.urls||[])[i] || '';
+        if(url){
+          const a = document.createElement('a');
+          a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+          a.textContent = text;
+          a.style.textDecoration = 'none';
+          a.style.fontWeight = '800';
+          a.style.borderBottom = '1px solid rgba(0,0,0,.15)';
+          parts.push(a);
+        } else {
+          const span = document.createElement('span'); span.textContent = text; parts.push(span);
+        }
+        if(i < g.items.length-1){ parts.push(document.createTextNode(' • ')); }
+      }
+      parts.forEach(el=> items.appendChild(el));
       card.appendChild(badge); card.appendChild(items); frag.appendChild(card);
     }
 
@@ -346,7 +384,7 @@
     if(allSame){
       const cat=PUZZLE.categories[catIdx];
       if(hintGroupIdx === catIdx) clearHintState();
-      solved.push({name:cat.name, color:cat.color, items:cat.items.slice()});
+      solved.push({name:cat.name, color:cat.color, items:cat.items.slice(), urls:(cat.urls||[]).slice()});
       for(const it of sel) remaining.delete(it);
       selected.clear();
       showToast('Correct!','ok');
@@ -378,7 +416,7 @@
 
     if(unseen.length === 0){
       // All 4 have been hinted already; auto-solve this group now
-      solved.push({name:cat.name, color:cat.color, items:cat.items.slice()});
+      solved.push({name:cat.name, color:cat.color, items:cat.items.slice(), urls:(cat.urls||[]).slice()});
       cat.items.forEach(it => remaining.delete(it));
       selected.clear();
       showToast('Hint solved: ' + cat.name, 'ok');
@@ -396,7 +434,7 @@
 
     // If that was the 4th, auto-solve immediately
     if(count >= 4){
-      solved.push({name:cat.name, color:cat.color, items:cat.items.slice()});
+      solved.push({name:cat.name, color:cat.color, items:cat.items.slice(), urls:(cat.urls||[]).slice()});
       cat.items.forEach(it => remaining.delete(it));
       selected.clear();
       showToast('Hint solved: ' + cat.name, 'ok');
