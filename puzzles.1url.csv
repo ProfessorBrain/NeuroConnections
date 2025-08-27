@@ -1,0 +1,45 @@
+date,category,item1,item2,item3,item4,difficulty,URL
+08-20,Imaging signs,hummingbird sign,hot cross bun sign,pulvinar sign,eye of the tiger sign,yellow,https://radiopaedia.org/articles/hummingbird-sign-midbrain?lang=us
+08-20,Autoimmune neurology,anti-NMDA encephalitis,LGI1 encephalitis,CASPR2 encephalitis,GAD65 encephalitis,green,https://www.neurology.org/doi/10.1212/WNL.0000000000206264
+08-20,Trigeminal autonomic cephalalgias,cluster headache,paroxysmal hemicrania,SUNCT syndrome,SUNA syndrome,blue,https://pubmed.ncbi.nlm.nih.gov/39359808/
+08-20,Visual field syndromes,homonymous hemianopia,bitemporal hemianopia,quadrantanopia,central scotoma,purple,https://radiopaedia.org/articles/homonymous-hemianopia?lang=us
+08-21,Stroke patterns,lacunar infarct,watershed infarct,thalamic infarct,malignant MCA syndrome,yellow,https://radiopaedia.org/articles/watershed-cerebral-infarction?lang=us
+08-21,Peripheral entrapments,carpal tunnel syndrome,cubital tunnel syndrome,radial neuropathy,meralgia paresthetica,green,https://radiopaedia.org/articles/carpal-tunnel-syndrome?lang=us
+08-21,Seizure emergencies,status epilepticus,absence seizure,gelastic seizure,Jacksonian march,blue,https://journals.lww.com/continuum/fulltext/2016/02000/antiepileptic_drugs.12.aspx
+08-21,Neuromuscular junction disorders,myasthenia gravis,Lambert-Eaton syndrome,botulism,congenital myasthenic syndrome,purple,https://radiopaedia.org/articles/myasthenia-gravis?lang=us
+08-22,Cerebellar findings,ataxia,dysmetria,nystagmus,dysdiadochokinesia,yellow,https://radiopaedia.org/articles/nystagmus?lang=us
+08-22,Dementia spectrum,Alzheimer disease,Lewy body dementia,frontotemporal dementia,vascular dementia,green,https://journals.lww.com/continuum/fulltext/2024/02000/genetics_and_neuropathology_of.2.aspx
+08-22,CNS infections,HSV encephalitis,cryptococcal meningitis,listeria meningitis,tuberculous meningitis,blue,https://radiopaedia.org/articles/herpes-simplex-encephalitis?lang=us
+08-22,Imaging clues,hyperdense MCA sign,empty delta sign,Dawson fingers,hockey stick sign,purple,https://radiopaedia.org/articles/hyperdense-mca-sign-brain-1?lang=us
+08-23,Movement signs,bradykinesia,rigidity,dystonia,myoclonus,yellow,https://journals.lww.com/continuum/fulltext/2022/10000/diagnosis_and_medical_management_of_parkinson.5.aspx
+08-23,Exam signs,Romberg test,Hoffmann sign,Kernig sign,Brudzinski sign,green,https://radiopaedia.org/articles/kernig-sign?lang=us
+08-23,Visual symptoms,diplopia,photopsia,oscillopsia,central scotoma,blue,https://radiopaedia.org/articles/diplopia?lang=us
+08-23,Parkinson pharmacology,levodopa,pramipexole,amantadine,selegiline,purple,https://journals.lww.com/continuum/fulltext/2022/10000/diagnosis_and_medical_management_of_parkinson.5.aspx
+08-24,Infectious encephalitis,HSV encephalitis,Japanese encephalitis,West Nile encephalitis,listeria meningitis,yellow,https://radiopaedia.org/articles/herpes-simplex-encephalitis?lang=us
+08-24,Imaging vascular signs,hyperdense MCA sign,MCA dot sign,empty delta sign,cord sign,green,https://radiopaedia.org/articles/hyperdense-mca-sign-brain-1?lang=us
+08-24,Painful cranial neuropathies,trigeminal neuralgia,glossopharyngeal neuralgia,occipital neuralgia,Tolosa-Hunt syndrome,blue,https://radiopaedia.org/articles/trigeminal-neuralgia?lang=us
+08-24,Demyelinating MRI signs,Dawson fingers,open ring enhancement,Baló concentric lesions,black holes,purple,https://radiopaedia.org/articles/dawson-fingers?lang=us
+08-25,Movement pharmacotherapy,levodopa,pramipexole,amantadine,selegiline,yellow,https://journals.lww.com/continuum/fulltext/2022/10000/diagnosis_and_medical_management_of_parkinson.5.aspx
+08-25,Ocular motility disorders,internuclear ophthalmoplegia,one-and-a-half syndrome,skew deviation,vertical gaze palsy,green,https://radiopaedia.org/articles/internuclear-ophthalmoplegia?lang=us
+08-25,Headache red flags,thunderclap headache,papilledema,meningismus,fever and headache,blue,https://radiopaedia.org/articles/thunderclap-headache?lang=us
+08-25,Brainstem stroke signs,locked-in syndrome,crossed findings,dysarthria,dysphagia,purple,https://radiopaedia.org/articles/basilar-artery-occlusion?lang=us
+08-26,Parkinsonian features,bradykinesia,rest tremor,rigidity,postural instability,yellow,https://journals.lww.com/continuum/fulltext/2022/10000/diagnosis_and_medical_management_of_parkinson.5.aspx
+08-26,Meningeal signs,Kernig sign,Brudzinski sign,nuchal rigidity,jolt accentuation,green,https://radiopaedia.org/articles/kernig-sign?lang=us
+08-26,Cerebellar signs,ataxia,dysmetria,intention tremor,nystagmus,blue,https://radiopaedia.org/articles/nystagmus?lang=us
+08-26,Visual field defects,homonymous hemianopia,bitemporal hemianopia,superior quadrantanopia,central scotoma,purple,https://radiopaedia.org/articles/homonymous-hemianopia?lang=us
+08-27,Ischemic stroke overview,large artery atherosclerosis,cardioembolic stroke,small vessel disease,arterial dissection,yellow,https://radiopaedia.org/articles/ischemic-stroke?lang=us
+08-27,Seizure types,focal aware seizure,focal impaired awareness,myoclonic seizure,absence seizure,green,https://journals.lww.com/continuum/fulltext/2025/02000/contributors.2.aspx
+08-27,Vascular imaging signs,hyperdense MCA sign,empty delta sign,MCA dot sign,loss of insular ribbon,blue,https://radiopaedia.org/articles/hyperdense-mca-sign-brain-1?lang=us
+08-27,TAC features,cluster headache,paroxysmal hemicrania,SUNCT syndrome,SUNA syndrome,purple,https://pubmed.ncbi.nlm.nih.gov/39359808/
+08-28,Brainstem eye signs,internuclear ophthalmoplegia,one-and-a-half syndrome,WEBINO syndrome,skew deviation,yellow,https://radiopaedia.org/articles/internuclear-ophthalmoplegia?lang=us
+08-28,Cerebellar pearls,gaze-evoked nystagmus,truncal ataxia,dysdiadochokinesia,intention tremor,green,https://radiopaedia.org/articles/nystagmus?lang=us
+08-28,NMJ presentations,ptosis,ophthalmoparesis,fatigable weakness,bulbar weakness,blue,https://radiopaedia.org/articles/myasthenia-gravis?lang=us
+08-28,Visual features,homonymous hemianopia,central scotoma,altitudinal defect,bitemporal hemianopia,purple,https://radiopaedia.org/articles/homonymous-hemianopia?lang=us
+08-29,Aphasia patterns,Broca aphasia,Wernicke aphasia,conduction aphasia,global aphasia,yellow,https://radiopaedia.org/articles/broca-aphasia?lang=us
+08-29,Metabolic encephalopathy,hepatic encephalopathy,uremic encephalopathy,hypercapnic encephalopathy,hypoglycemic encephalopathy,green,https://radiopaedia.org/articles/hepatic-encephalopathy?lang=us
+08-29,Nutritional emergencies,Wernicke encephalopathy,subacute combined degeneration,folate deficiency neuropathy,pyridoxine toxicity,blue,https://radiopaedia.org/articles/wernicke-korsakoff-syndrome-2?lang=us
+08-29,Autoimmune demyelination,MOGAD,AQP4 NMOSD,multiple sclerosis,acute disseminated encephalomyelitis,purple,https://radiopaedia.org/articles/myelin-oligodendrocyte-glycoprotein-antibody-associated-disease-mogad?lang=us
+08-30,Toxic neuropathies,isoniazid neuropathy,linezolid neuropathy,amiodarone neuropathy,vincristine neuropathy,yellow,https://journals.lww.com/continuum/fulltext/2023/10000/toxic_neuropathies.10.aspx
+08-30,Peripheral facial palsy,Bell palsy,Ramsay Hunt syndrome,facial nerve neuritis,facial diplegia,green,https://radiopaedia.org/articles/bell-palsy?lang=us
+08-30,Peripheral entrapment basics,carpal tunnel syndrome,tarsal tunnel syndrome,ulnar neuropathy at elbow,peroneal neuropathy at fibular head,blue,https://radiopaedia.org/articles/carpal-tunnel-syndrome?lang=us
+08-30,Neuromuscular junction entities,myasthenia gravis,Lambert-Eaton syndrome,botulism,congenital myasthenic syndrome,purple,https://www.neurology.org/doi/10.1212/WNL.0000000000011124
