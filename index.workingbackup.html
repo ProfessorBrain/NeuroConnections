@@ -16,6 +16,7 @@
   .wrap{width:min(640px,96vw); margin:0 auto; padding:40px 0 24px; position:relative;}
   h1{margin:0 0 6px; text-align:center; font-weight:900; font-size:28px; letter-spacing:-0.01em}
   h2{margin:0; text-align:center; font-weight:700; font-size:18px}
+  /* fixed slot for toasts so they don't overlap the title */
   .toast-slot{ height:44px; display:flex; align-items:center; justify-content:center; margin-top:6px; }
   .grid{margin-top:24px; display:grid; grid-template-columns:repeat(4,auto); gap:10px; justify-items:center; justify-content:center;}
   .tile{
@@ -40,6 +41,7 @@
   .controls{ margin-top:18px; display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;}
   .btn{ border-radius:10px; border:1px solid var(--border); background:#fff; color:#0f172a; padding:14px 20px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; font-size:13px; cursor:pointer; }
   .btn:hover{ background:#f8fafc; }
+  /* Submit = pale green, Hint = pale orange */
   #submit.btn{ background:#ecfdf5; border-color:#bbf7d0; }
   #submit.btn:hover{ background:#e6f7ef; }
   #hint.btn{ background:#fff7ed; border-color:#fed7aa; }
@@ -51,6 +53,7 @@
   .uploader{ display:none; margin-top:10px; text-align:center; }
   .uploader.show{ display:block; }
 
+  /* --- Mobile-friendly adjustments --- */
   @media (max-width: 480px){
     .wrap{ width:min(420px, 98vw); padding:24px 0 16px; }
     .grid{ gap:8px; grid-template-columns: repeat(4, 1fr); justify-content:stretch; }
@@ -100,17 +103,6 @@
   const FALLBACK_COLORS = ['#B388EB','#5DD0C2','#F2C14E','#F78C6C'];
   const DIFFICULTY_ORDER = {yellow:1, green:2, blue:3, purple:4};
 
-  // Demo fallback so tiles always render
-  const DEMO_PUZZLE = {
-    title: "0000",
-    categories: [
-      { name:"Brainstem medial signs", color:"#F2C14E", items:["ML weakness","CN VI palsy","CN III palsy","Ataxia (medial)"], urls:["","","",""] },
-      { name:"Peripheral neuropathies", color:"#5DD0C2", items:["Peroneal palsy","Ulnar neuropathy","Radial neuropathy","Meralgia paresthetica"], urls:["","","",""] },
-      { name:"Demyelinating disorders", color:"#6AA6FF", items:["MS","AIDP/GBS","CIDP","NMOSD"], urls:["","","",""] },
-      { name:"Neuromuscular junction", color:"#B388EB", items:["Myasthenia","Lambert-Eaton","Botulism","Tick paralysis"], urls:["","","",""] }
-    ]
-  };
-
   const gridEl = document.getElementById('grid');
   const submitEl = document.getElementById('submit');
   const deselectEl = document.getElementById('deselect');
@@ -121,10 +113,9 @@
   const fileInput = document.getElementById('fileInput');
   const toastEl = document.getElementById('toast');
 
-  // Active date (MMDD) and list of available dates
-  let ACTIVE_MMDD = '';
-  let AVAILABLE_MMDD = [];
+  let dayOffset = 0; // secret 'N' (forward), 'P' (back)
 
+  // skeleton now to avoid white screen
   (function renderSkeleton(){
     gridEl.innerHTML = '';
     const frag = document.createDocumentFragment();
@@ -133,26 +124,31 @@
     loaderEl.textContent = 'Loading puzzles.csv…';
   })();
 
-  function two(n){ n=String(n); return n.length===1? '0'+n : n; }
-
-  // Phoenix "today" → "MMDD"
-  function phoenixTodayMMDD(){
-    const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Phoenix',month:'2-digit',day:'2-digit'});
-    const p=fmt.formatToParts(new Date());
-    return `${p.find(x=>x.type==='month').value}${p.find(x=>x.type==='day').value}`;
+  function phoenixISODateFromOffset(offset){
+    const msPerDay = 86400000;
+    const target = new Date(Date.now() + offset*msPerDay);
+    const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Phoenix',year:'numeric',month:'2-digit',day:'2-digit'});
+    const p=fmt.formatToParts(target);
+    return `${p.find(x=>x.type==='year').value}-${p.find(x=>x.type==='month').value}-${p.find(x=>x.type==='day').value}`;
   }
-  function fmtMMDD(mmdd){ return mmdd ? `${mmdd.slice(0,2)}-${mmdd.slice(2,4)}` : ''; }
-
-  // Normalize many date formats → "MMDD"
+  // Month-Day only (ignore year)
+  function phoenixMonthDayFromOffset(offset){
+    const msPerDay = 86400000;
+    const target = new Date(Date.now() + offset*msPerDay);
+    const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Phoenix',month:'2-digit',day:'2-digit'});
+    const p=fmt.formatToParts(target);
+    return `${p.find(x=>x.type==='month').value}-${p.find(x=>x.type==='day').value}`;
+  }
+  function two(n){ n=String(n); return n.length===1? '0'+n : n; }
+  // Normalize CSV dates to 'MM-DD'
   function toMMDD(s){
     s = String(s||'').trim();
-    if(!s) return s;
-    s = s.replace(/\s+/g,'');
-    let m = s.match(/^(\d{4})(\d{2})(\d{2})$/); if(m) return `${m[2]}${m[3]}`;
-    m = s.match(/^(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})$/); if(m) return `${two(m[2])}${two(m[3])}`;
-    m = s.match(/^(\d{1,2})[-\/](\d{1,2})$/); if(m) return `${two(m[1])}${two(m[2])}`;
-    m = s.match(/^(\d{2})(\d{2})$/); if(m) return `${m[1]}${m[2]}`;
-    const digits = s.replace(/\D/g,''); if(digits.length>=4) return digits.slice(-4);
+    let m = s.match(/^([0-9]{4})[-\\/](\d{1,2})[-\\/](\d{1,2})$/);
+    if(m) return `${two(m[2])}-${two(m[3])}`;
+    m = s.match(/^(\d{1,2})[-\\/](\d{1,2})(?:[-\\/](\d{2,4}))?$/);
+    if(m) return `${two(m[1])}-${two(m[2])}`;
+    m = s.match(/^(\d{2})(\d{2})$/);
+    if(m) return `${m[1]}-${m[2]}`;
     return s;
   }
 
@@ -160,6 +156,7 @@
   function rgba(hex,alpha=.15){ const s=hex.replace('#',''); const x=s.length===3? s.split('').map(c=>c+c).join(''):s; const n=parseInt(x,16); const r=(n>>16)&255,g=(n>>8)&255,b=n&255; return `rgba(${r},${g},${b},${alpha})`; }
   function showToast(msg,kind){ toastEl.textContent = msg; toastEl.className = 'toast show '+(kind||''); if(kind!=='err'){ clearTimeout(showToast._t); showToast._t=setTimeout(()=>{ toastEl.className='toast'; },1500);} }
 
+  // Robust CSV parser (RFC4180-ish)
   function parseCSV(text){
     const rows = []; let cur = [], val = '', i = 0, inQuotes = false;
     const pushVal = ()=>{ cur.push(val); val=''; };
@@ -191,14 +188,17 @@
     return FALLBACK_COLORS[idx % FALLBACK_COLORS.length];
   }
 
+  
   function rowsToPuzzles(rows){
+    // Columns: date, category, item1..item4, (optional) difficulty|tier|color, and optional url/url1..url4
     const byDate=new Map();
     for(const r of rows){
-      const dateKey = toMMDD(r['date']||'');
+      const date=r['date']||'';
       const category=r['category'];
       const items=[r['item1'],r['item2'],r['item3'],r['item4']].filter(Boolean);
       const difficulty = r['difficulty'] || r['tier'] || r['color'] || '';
 
+      // Extract URLs: prefer url1..url4; else split a single 'url' field by | ; , (in that order)
       let urls = [];
       const ukeys = ['url1','url2','url3','url4'];
       if (ukeys.some(k => r[k])){
@@ -210,12 +210,13 @@
         if (parts.length < 2) parts = raw.split(',');
         urls = parts.map(s=> String(s||'').trim());
       }
+      // Ensure urls aligns to 4 items
       while(urls.length < 4) urls.push('');
       urls = urls.slice(0,4);
 
-      if(!dateKey||!category||items.length!==4) continue;
-      if(!byDate.has(dateKey)) byDate.set(dateKey,[]);
-      byDate.get(dateKey).push({name:category, items, difficulty, urls});
+      if(!date||!category||items.length!==4) continue;
+      if(!byDate.has(date)) byDate.set(date,[]);
+      byDate.get(date).push({name:category, items, difficulty, urls});
     }
     const dates=[...byDate.keys()].sort();
     const puzzles = [];
@@ -223,20 +224,24 @@
       const cats = byDate.get(d);
       const valids = cats.filter(c=>c.items.length===4);
       if(valids.length < 4) continue;
+      // Order categories by difficulty color
       valids.sort((a,b)=> (DIFFICULTY_ORDER[(a.difficulty||'').toLowerCase()]||99) - (DIFFICULTY_ORDER[(b.difficulty||'').toLowerCase()]||99));
       puzzles.push({
-        title:d, // MMDD
+        title:d,
         categories: valids.slice(0,4).map((c,i)=> ({...c, color: pickDifficultyColor(c.difficulty, i)}))
       });
     }
     return puzzles;
   }
+  
 
   // ================= Game state & rendering =================
   let PUZZLES=[], PUZZLE=null, solved=[], selected=new Set(), remaining=new Set(), order=[], itemToCat=new Map();
-  let hintedColors = new Map();
+
+  // Hints
+  let hintedColors = new Map(); // item -> color for visual hinting
   let hintGroupIdx = -1;
-  let hintedItems = new Set();
+  let hintedItems = new Set(); // items revealed so far in current hinted group
 
   function clearHintState(){ hintGroupIdx=-1; hintedItems.clear(); hintedColors.clear(); }
 
@@ -261,59 +266,21 @@
     });
   }
 
-  function updateAvailableDates(){
-    AVAILABLE_MMDD = PUZZLES.map(p=>p.title).sort();
-  }
-
-  function findPuzzle(mmdd){
-    return PUZZLES.find(p => p.title === mmdd) || null;
-  }
-
-  function setActiveDate(mmdd, cause){
-    const p = findPuzzle(mmdd);
-    if(p){
-      ACTIVE_MMDD = mmdd;
-      PUZZLE = p;
-      initBoard();
-      if(cause){ showToast(`${cause}: ${fmtMMDD(mmdd)}`, 'ok'); }
-      return true;
-    }
-    return false;
-  }
-
-  function nextAvailable(mmdd){
-    if(!AVAILABLE_MMDD.length) return null;
-    for(let i=0;i<AVAILABLE_MMDD.length;i++){
-      if(AVAILABLE_MMDD[i] > mmdd) return AVAILABLE_MMDD[i];
-    }
-    return null;
-  }
-  function prevAvailable(mmdd){
-    if(!AVAILABLE_MMDD.length) return null;
-    for(let i=AVAILABLE_MMDD.length-1;i>=0;i--){
-      if(AVAILABLE_MMDD[i] < mmdd) return AVAILABLE_MMDD[i];
+  function selectPuzzleForCurrentOffset(){
+    const mmdd = phoenixMonthDayFromOffset(dayOffset);
+    for(let i=0;i<PUZZLES.length;i++){
+      if(toMMDD(PUZZLES[i].title) === mmdd) return PUZZLES[i];
     }
     return null;
   }
 
-  function goNext(){
-    const nxt = nextAvailable(ACTIVE_MMDD);
-    if(nxt){ setActiveDate(nxt, 'Next'); }
-    else { showToast('Already at latest date.', 'warn'); }
-  }
-  function goPrev(){
-    const prv = prevAvailable(ACTIVE_MMDD);
-    if(prv){ setActiveDate(prv, 'Previous'); }
-    else { showToast('Already at earliest date.', 'warn'); }
-  }
-
-  function renderNoPuzzle(mmdd, reason){
+  function renderNoPuzzle(mmdd){
     gridEl.innerHTML='';
     const frag = document.createDocumentFragment();
     for(let i=0;i<16;i++){ const d=document.createElement('div'); d.className='skeleton'; frag.appendChild(d); }
     gridEl.appendChild(frag);
     submitEl.disabled = deselectEl.disabled = shuffleEl.disabled = hintEl.disabled = true;
-    loaderEl.textContent = (reason ? reason + "\n" : "") + 'No puzzle found for ' + fmtMMDD(mmdd) + '.';
+    loaderEl.textContent = 'No puzzle found for ' + mmdd + '. Update puzzles.csv or press N/P to change day.';
   }
 
   function initBoard(){
@@ -332,10 +299,12 @@
     const frag = document.createDocumentFragment();
     gridEl.innerHTML='';
 
+    // solved cards
     for(const g of solved){
       const card=document.createElement('div'); card.className='solved-card'; card.style.background=rgba(g.color,.15); card.style.borderColor=g.color;
       const badge=document.createElement('span'); badge.className='badge'; badge.style.background=g.color; badge.textContent=g.name;
       const items=document.createElement('div'); items.style.opacity='.95'; items.style.fontWeight='700';
+      // Build linked list: each item links to its URL if provided
       const parts=[];
       for(let i=0;i<g.items.length;i++){
         const text = g.items[i];
@@ -357,10 +326,12 @@
       card.appendChild(badge); card.appendChild(items); frag.appendChild(card);
     }
 
+    // remaining tiles
     for(const it of getUnsolvedOrder()){
       const b=document.createElement('button'); b.type='button'; b.className='tile'; b.textContent=it;
       const isSel=selected.has(it); if(isSel) b.classList.add('selected');
       b.setAttribute('aria-pressed', isSel? 'true':'false');
+      // Apply hint coloring only when not selected
       if(hintedColors.has(it) && !isSel){
         const c = hintedColors.get(it);
         b.style.borderColor = c;
@@ -387,12 +358,14 @@
       const isSel = selected.has(n.textContent);
       n.classList.toggle('selected', isSel);
       n.setAttribute('aria-pressed', isSel ? 'true' : 'false');
+      // reapply hint visuals only if not selected
       if(hintedColors.has(n.textContent) && !isSel){
         const c = hintedColors.get(n.textContent);
         n.style.borderColor = c;
         n.style.outline = '2px solid ' + c;
         n.style.background = rgba(c, 0.12);
       } else {
+        // clear inline hint styles when selected or not hinted
         n.style.borderColor = '';
         n.style.outline = '';
         n.style.background = '';
@@ -428,6 +401,8 @@
 
   function onHint(){
     if(!PUZZLE) return;
+
+    // If no current hinted group or it's no longer fully remaining, pick a new unsolved group
     const validCurrent = hintGroupIdx >= 0 && PUZZLE.categories[hintGroupIdx].items.every(it => remaining.has(it));
     if(hintGroupIdx < 0 || !validCurrent){
       hintGroupIdx = chooseUnsolvedGroupIndex();
@@ -440,6 +415,7 @@
     const unseen = cat.items.filter(it => remaining.has(it) && !hintedItems.has(it));
 
     if(unseen.length === 0){
+      // All 4 have been hinted already; auto-solve this group now
       solved.push({name:cat.name, color:cat.color, items:cat.items.slice(), urls:(cat.urls||[]).slice()});
       cat.items.forEach(it => remaining.delete(it));
       selected.clear();
@@ -449,12 +425,14 @@
       return;
     }
 
+    // Reveal one random new item from this group's remaining items
     const item = unseen[Math.floor(Math.random()*unseen.length)];
     hintedItems.add(item);
     hintedColors.set(item, cat.color);
     const count = hintedItems.size;
     showToast(`Hint: revealed ${count}/4`, 'warn');
 
+    // If that was the 4th, auto-solve immediately
     if(count >= 4){
       solved.push({name:cat.name, color:cat.color, items:cat.items.slice(), urls:(cat.urls||[]).slice()});
       cat.items.forEach(it => remaining.delete(it));
@@ -465,47 +443,38 @@
     render();
   }
 
-  // NEW: instant solve of the entire puzzle (used by 'q' shortcut)
-  function solveAllNow(){
-    if(!PUZZLE) return;
-    let added = 0;
-    for(const cat of PUZZLE.categories){
-      const alreadySolved = cat.items.every(it => !remaining.has(it));
-      if(!alreadySolved){
-        solved.push({ name:cat.name, color:cat.color, items:cat.items.slice(), urls:(cat.urls||[]).slice() });
-        cat.items.forEach(it => remaining.delete(it));
-        added++;
-      }
-    }
-    selected.clear();
-    clearHintState();
-    if(added>0){
-      showToast('Auto-solved all groups.','ok');
-      render();
-    }
-  }
-
   submitEl.addEventListener('click', onSubmit);
   shuffleEl.addEventListener('click', onShuffle);
   deselectEl.addEventListener('click', onDeselect);
   hintEl.addEventListener('click', onHint);
 
-  // Keyboard: N = next available date, P = previous available date, Q = solve
+  // Secret: 'N' forward a day, 'P' back a day (strict MM-DD only)
   window.addEventListener('keydown', (e)=>{
     const k = (e.key||'').toLowerCase();
-    const tgt = e.target || document.activeElement;
-    const tag = (tgt && tgt.tagName ? tgt.tagName.toLowerCase() : '');
-    const inEditable = (tgt && (tgt.isContentEditable || tag==='input' || tag==='textarea'));
-    if(inEditable) return;
-
-    if(k === 'q'){ solveAllNow(); return; }
-    if(k === 'n'){ goNext(); }
-    if(k === 'p'){ goPrev(); }
+    if(k === 'n'){
+      dayOffset += 1;
+      if(PUZZLES.length){
+        const ds = phoenixMonthDayFromOffset(dayOffset);
+        PUZZLE = selectPuzzleForCurrentOffset();
+        if(!PUZZLE){ showToast('No puzzle for '+ds, 'err'); renderNoPuzzle(ds); return; }
+        initBoard();
+        showToast(`Advanced date → ${ds}`, 'ok');
+      }
+    }
+    if(k === 'p'){
+      dayOffset -= 1;
+      if(PUZZLES.length){
+        const ds = phoenixMonthDayFromOffset(dayOffset);
+        PUZZLE = selectPuzzleForCurrentOffset();
+        if(!PUZZLE){ showToast('No puzzle for '+ds, 'err'); renderNoPuzzle(ds); return; }
+        initBoard();
+        showToast(`Went back → ${ds}`, 'ok');
+      }
+    }
   }, {passive:true});
 
   // ================= Boot =================
   (async function boot(){
-    const today = phoenixTodayMMDD();
     try{
       const res = await fetch('puzzles.csv', {cache:'no-store'});
       if(!res.ok) throw new Error('HTTP '+res.status);
@@ -513,21 +482,12 @@
       const rows = parseCSV(text);
       PUZZLES = rowsToPuzzles(rows);
       if(!PUZZLES.length) throw new Error('No valid puzzles found');
-      updateAvailableDates();
-
-      // Set ACTIVE_MMDD: prefer today's date; else nearest future; else earliest
-      if(findPuzzle(today)){ setActiveDate(today); }
-      else{
-        const future = nextAvailable(today);
-        if(future){ setActiveDate(future); showToast(`No ${fmtMMDD(today)}; showing ${fmtMMDD(future)}.`, 'warn'); }
-        else { setActiveDate(AVAILABLE_MMDD[0]); showToast(`Showing earliest available: ${fmtMMDD(AVAILABLE_MMDD[0])}.`, 'warn'); }
-      }
+      PUZZLE = selectPuzzleForCurrentOffset();
+      if(!PUZZLE){ const ds = phoenixMonthDayFromOffset(dayOffset); showToast('No puzzle for '+ds,'err'); renderNoPuzzle(ds); return; }
+      initBoard();
     }catch(e){
-      console.warn('CSV load failed; using demo puzzle.', e);
-      PUZZLES = [DEMO_PUZZLE];
-      updateAvailableDates();
-      setActiveDate(PUZZLES[0].title);
-      loaderEl.textContent = "Using built‑in demo set (CSV not loaded).";
+      console.warn('Fetch failed, enabling local CSV uploader.', e);
+      loaderEl.textContent = "Couldn't fetch puzzles.csv.\n• Put index.html and puzzles.csv together and use a local server, or\n• Upload the CSV below.";
       uploaderEl.classList.add('show');
     }
   })();
@@ -543,14 +503,10 @@
         const rows = parseCSV(text);
         PUZZLES = rowsToPuzzles(rows);
         if(!PUZZLES.length) throw new Error('No valid puzzles in CSV');
-        updateAvailableDates();
-        // If current ACTIVE_MMDD not present, jump to nearest future else earliest
-        if(!setActiveDate(ACTIVE_MMDD)){
-          const future = nextAvailable(ACTIVE_MMDD || phoenixTodayMMDD());
-          if(future) setActiveDate(future, 'Jumped to');
-          else setActiveDate(AVAILABLE_MMDD[0], 'Jumped to');
-        }
+        PUZZLE = selectPuzzleForCurrentOffset();
+        if(!PUZZLE){ const ds = phoenixMonthDayFromOffset(dayOffset); showToast('No puzzle for '+ds,'err'); renderNoPuzzle(ds); return; }
         uploaderEl.classList.remove('show');
+        initBoard();
       }catch(err){ console.error(err); showToast('Invalid CSV format.','err'); }
     };
     reader.readAsText(file);
