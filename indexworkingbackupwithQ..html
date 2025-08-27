@@ -71,13 +71,6 @@
     .tile{ min-height:64px; max-height:120px; font-size:clamp(11px, 3.6vw, 15px); padding:6px; }
     .skeleton{ height:92px; }
   }
-
-  /* Confetti overlay canvas */
-  #confetti-canvas{
-    position:fixed; inset:0; width:100%; height:100%;
-    pointer-events:none; z-index:999;
-  }
-
 </style>
 </head>
 <body>
@@ -251,86 +244,6 @@
     return puzzles;
   }
 
-  
-  // ================= Confetti =================
-  function fireConfetti(durationMs = 1300, count = 200){
-    const canvas = getConfettiCanvas();
-    const ctx = canvas.getContext('2d');
-
-    // Build particles
-    const palette = ['#B388EB','#5DD0C2','#F2C14E','#6AA6FF','#F78C6C','#8B5CF6','#22C55E','#3B82F6','#EAB308'];
-    const w = canvas.width, h = canvas.height;
-    const cx = w / 2, cy = Math.max(120, h * 0.35); // launch near top-middle
-    const GRAVITY = 0.15, DRAG = 0.985, SPIN = 0.2;
-
-    const parts = [];
-    for(let i=0;i<count;i++){
-      const angle = Math.random()*Math.PI*2;
-      const speed = 6 + Math.random()*7;
-      const vx = Math.cos(angle)*speed;
-      const vy = Math.sin(angle)*speed - 6; // bias upward a bit
-      const size = 4 + Math.random()*6;
-      parts.push({
-        x: cx, y: cy, vx, vy,
-        w: size, h: size*0.6,
-        rot: Math.random()*Math.PI*2,
-        vr: (Math.random() - 0.5) * SPIN,
-        color: palette[i % palette.length],
-        alpha: 1
-      });
-    }
-
-    let start = performance.now();
-    function frame(now){
-      const t = now - start;
-      ctx.clearRect(0,0,w,h);
-
-      for(const p of parts){
-        // physics
-        p.vx *= DRAG;
-        p.vy = p.vy * DRAG + GRAVITY;
-        p.x += p.vx;
-        p.y += p.vy;
-        p.rot += p.vr;
-        // fade out towards the end
-        if(t > durationMs * 0.65){ p.alpha = Math.max(0, 1 - (t - durationMs*0.65)/(durationMs*0.35)); }
-
-        // draw
-        ctx.save();
-        ctx.globalAlpha = p.alpha;
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rot);
-        ctx.fillStyle = p.color;
-        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
-        ctx.restore();
-      }
-
-      if(t < durationMs && parts.some(p => p.alpha > 0 && p.y < h + 20)){
-        requestAnimationFrame(frame);
-      } else {
-        // cleanup
-        if(canvas && canvas.parentNode){ canvas.parentNode.removeChild(canvas); }
-      }
-    }
-    requestAnimationFrame(frame);
-  }
-
-  function getConfettiCanvas(){
-    let c = document.getElementById('confetti-canvas');
-    if(!c){
-      c = document.createElement('canvas');
-      c.id = 'confetti-canvas';
-      document.body.appendChild(c);
-    }
-    // size to viewport
-    const resize = ()=>{ c.width = window.innerWidth; c.height = window.innerHeight; };
-    resize();
-    // Only keep the listener while canvas exists
-    const onResize = ()=>{ if(document.body.contains(c)){ resize(); } else { window.removeEventListener('resize', onResize); } };
-    window.addEventListener('resize', onResize, {passive:true});
-    return c;
-  }
-
   // ================= Game state & rendering =================
   let PUZZLES=[], PUZZLE=null, solved=[], selected=new Set(), remaining=new Set(), order=[], itemToCat=new Map();
 
@@ -380,7 +293,6 @@
   }
 
   function initBoard(){
-    window._confettiShown = false;
     solved=[]; selected.clear(); clearHintState();
     remaining = new Set(PUZZLE.categories.flatMap(c=>c.items));
     order = shuffle([...remaining]);
@@ -443,7 +355,6 @@
     fitTiles();
 
     const done = PUZZLE && solved.length===PUZZLE.categories.length;
-    if(done && !window._confettiShown){ window._confettiShown = true; try{ fireConfetti(); }catch(_){} }
     submitEl.disabled = deselectEl.disabled = shuffleEl.disabled = hintEl.disabled = !!done || !PUZZLE;
   }
 
@@ -563,7 +474,6 @@
     }
     showToast('Auto-solved!','ok');
     render();
-    if(!window._confettiShown){ window._confettiShown = true; try{ fireConfetti(); }catch(_){} }
   }
 
   window.addEventListener('keydown', (e)=>{
