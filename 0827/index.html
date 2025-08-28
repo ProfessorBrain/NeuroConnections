@@ -120,13 +120,6 @@
   const fileInput = document.getElementById('fileInput');
   const toastEl = document.getElementById('toast');
 
-  const footerEl = document.querySelector('footer');
-  const BASE_FOOTER_TEXT = 'created by micah etter, md';
-  function renderFooter(){
-    const author = (PUZZLE && PUZZLE.author && String(PUZZLE.author).trim()) ? String(PUZZLE.author).trim() : '';
-    footerEl.textContent = BASE_FOOTER_TEXT + (author ? " • today's puzzle by " + author : "");
-  }
-
   let dayOffset = 0; // secret 'N' (forward), 'P' (back)
 
   // skeleton now to avoid white screen
@@ -216,16 +209,13 @@
   function rowsToPuzzles(rows){
     // Columns: date, category, item1..item4, (optional) difficulty|tier|color, and optional url/url1..url4
     const byDate=new Map();
-    const authors = new Map();
-for(const r of rows){
+    for(const r of rows){
       const date=r['date']||'';
       const category=r['category'];
       const items=[r['item1'],r['item2'],r['item3'],r['item4']].filter(Boolean);
       const difficulty = r['difficulty'] || r['tier'] || r['color'] || '';
 
-      const author = (r['author'] || '').trim();
-      if (author) { if (!authors.has(date)) authors.set(date, author); }
-// Extract URLs: prefer url1..url4; else split a single 'url' field by | ; , (in that order)
+      // Extract URLs: prefer url1..url4; else split a single 'url' field by | ; , (in that order)
       let urls = [];
       const ukeys = ['url1','url2','url3','url4'];
       if (ukeys.some(k => r[k])){
@@ -255,7 +245,6 @@ for(const r of rows){
       valids.sort((a,b)=> (DIFFICULTY_ORDER[(a.difficulty||'').toLowerCase()]||99) - (DIFFICULTY_ORDER[(b.difficulty||'').toLowerCase()]||99));
       puzzles.push({
         title:d,
-        author: authors.get(d) || '',
         categories: valids.slice(0,4).map((c,i)=> ({...c, color: pickDifficultyColor(c.difficulty, i)}))
       });
     }
@@ -384,8 +373,7 @@ for(const r of rows){
   function renderNoPuzzle(mmdd){
     gridEl.innerHTML='';
     const frag = document.createDocumentFragment();
-    for(let i=0;i<16;i++){ const d=document.createElement('div'); d.className='skeleton'; frag.appendChild(d); 
-    renderFooter();}
+    for(let i=0;i<16;i++){ const d=document.createElement('div'); d.className='skeleton'; frag.appendChild(d); }
     gridEl.appendChild(frag);
     submitEl.disabled = deselectEl.disabled = shuffleEl.disabled = hintEl.disabled = true;
     loaderEl.textContent = 'No puzzle found for ' + mmdd + '. Update puzzles.csv or press N/P to change day.';
@@ -400,9 +388,7 @@ for(const r of rows){
     PUZZLE.categories.forEach((c, idx)=> c.items.forEach(it=> itemToCat.set(it, idx)));
     loaderEl.textContent='';
     render();
-  
-    renderFooter();
-}
+  }
 
   function getUnsolvedOrder(){ return order.filter(it=>remaining.has(it)); }
 
@@ -590,9 +576,6 @@ for(const r of rows){
         PUZZLE = selectPuzzleForCurrentOffset();
         if(!PUZZLE){ showToast('No puzzle for '+ds, 'err'); renderNoPuzzle(ds); return; }
         initBoard();
-      
-      renderFooter();
-renderFooter();
         showToast(`Advanced date → ${ds}`, 'ok');
       }
     }
@@ -604,9 +587,7 @@ renderFooter();
         if(!PUZZLE){ showToast('No puzzle for '+ds, 'err'); renderNoPuzzle(ds); return; }
         initBoard();
         showToast(`Went back → ${ds}`, 'ok');
-      
-      renderFooter();
-}
+      }
     }
   }, {passive:true});
 
@@ -644,9 +625,7 @@ renderFooter();
         if(!PUZZLE){ const ds = phoenixMonthDayFromOffset(dayOffset); showToast('No puzzle for '+ds,'err'); renderNoPuzzle(ds); return; }
         uploaderEl.classList.remove('show');
         initBoard();
-      
-        renderFooter();
-}catch(err){ console.error(err); showToast('Invalid CSV format.','err'); }
+      }catch(err){ console.error(err); showToast('Invalid CSV format.','err'); }
     };
     reader.readAsText(file);
   });
