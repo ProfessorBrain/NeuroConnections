@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>🧠 NeuroConnections</title>
+<style>
+:root{
+  --bg:#f8fafc; --text:#0f172a; --muted:#64748b; --card:#ffffff; --border:#d1d5db;
+  --tile:#ffffff; --tile-hover:#f8fafc; --tile-selected:#e0e7ff; --tile-selected-border:#a5b4fc;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif; line-height:1.25;}
+.wrap{width:min(640px,96vw); margin:0 auto; padding:40px 0 24px; position:relative;}
+h1{margin:0 0 6px; text-align:center; font-weight:900; font-size:28px; letter-spacing:-0.01em}
+h2{margin:0; text-align:center; font-weight:700; font-size:18px}
+.toast-slot{ height:44px; display:flex; align-items:center; justify-content:center; margin-top:6px; }
+
+.grid{margin-top:24px; display:grid; grid-template-columns:repeat(4,150px); gap:10px; justify-content:center;}
+.tile{
+  width:150px; min-height:88px; max-height:160px;
+  border-radius:10px; border:1px solid var(--border); background:var(--tile);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; font-size:18px; text-align:center; cursor:pointer;
+  transition:background .15s ease, border-color .15s ease, transform .02s ease-in-out;
+  user-select:none; padding:10px; line-height:1.15;
+  overflow:hidden;
+}
+.tile:hover{ background:var(--tile-hover); }
+.tile.selected{ background:var(--tile-selected); border-color:var(--tile-selected-border); outline:2px solid var(--tile-selected-border); }
+.tile-label{display:block; font-weight:inherit; text-align:center; white-space:normal; word-break:normal; overflow-wrap:break-word; hyphens:auto;}
+
+.solved-card{ grid-column:1/-1; width:100%;
+  border-radius:10px; border:1px solid var(--border); background:var(--card);
+  padding:12px; display:flex; align-items:center; gap:10px; }
+.badge{ font-weight:900; padding:6px 10px; border-radius:999px; color:#0b0e12; font-size:12px; }
+
+.toast{ position:relative; z-index:1; pointer-events:none; font-weight:700; font-size:14px; border-radius:8px; padding:8px 10px; display:none; border:1px solid transparent; }
+.toast.show{display:block}
+.toast.ok{ background:rgba(22,163,74,.10); border-color:rgba(22,163,74,.35)}
+.toast.warn{ background:rgba(217,119,6,.10); border-color:rgba(217,119,6,.35)}
+.toast.err{ background:rgba(220,38,38,.10); border-color:rgba(220,38,38,.35)}
+
+.controls{ margin-top:18px; display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;}
+.btn{ border-radius:10px; border:1px solid var(--border); background:#fff; color:#0f172a; padding:14px 20px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; font-size:13px; cursor:pointer; }
+.btn:hover{ background:#f8fafc; }
+#submit.btn{ background:#ecfdf5; border-color:#bbf7d0; }
+#submit.btn:hover{ background:#e6f7ef; }
+#hint.btn{ background:#fff7ed; border-color:#fed7aa; }
+#hint.btn:hover{ background:#fff1e6; }
+
+footer{ margin-top:14px; text-align:center; color:#94a3b8; font-size:12px; user-select:none}
+
+.skeleton{ width:150px; height:120px; border-radius:10px; border:1px solid var(--border); background:linear-gradient(90deg, #ffffff 25%, #f1f5f9 37%, #ffffff 63%); background-size:400% 100%; animation:shimmer 1.2s infinite; }
+@keyframes shimmer{ 0%{background-position:100% 0} 100%{background-position:0 0} }
+
+/* Mobile */
+@media (max-width: 480px){
+  .wrap{ width:min(420px, 98vw); padding:24px 0 16px; }
+  .grid{ gap:8px; grid-template-columns: repeat(4, 1fr); }
+  .tile{ width:100%; min-height:72px; max-height:140px; font-size:clamp(12px, 3.4vw, 16px); padding:8px; }
+  .skeleton{ width:100%; height:100px; }
+  .toast-slot{ height:48px; }
+  .btn{ min-height:44px; padding:12px 14px; font-size:12px; }
+}
+@media (max-width: 360px){
+  .grid{ gap:6px; }
+  .tile{ min-height:64px; max-height:120px; font-size:clamp(11px, 3.6vw, 15px); padding:6px; }
+  .skeleton{ height:92px; }
+}
+
+/* Confetti overlay */
+#confetti-canvas{ position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:999; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1><span aria-hidden="true">🧠</span> NeuroConnections</h1>
+    <h2>Create four groups of four!</h2>
+    <div class="toast-slot"><div id="toast" class="toast" role="status" aria-live="polite"></div></div>
+
+    <div id="grid" class="grid" aria-label="Tiles grid"></div>
+    <div id="loader" class="loader"></div>
+
+    <div class="controls">
+      <button id="hint" class="btn" type="button">Hint</button>
+      <button id="shuffle" class="btn" type="button">Shuffle</button>
+      <button id="deselect" class="btn" type="button">Deselect All</button>
+      <button id="submit" class="btn" type="button">Submit</button>
+    </div>
+
+    <footer>created by micah etter, md</footer>
+  </div>
+
+<script>
+// ===== Utilities =====
+const DIFFICULTY_COLORS = { yellow:'#F2C14E', green:'#5DD0C2', blue:'#6AA6FF', purple:'#B388EB' };
+const FALLBACK_COLORS = ['#B388EB','#5DD0C2','#F2C14E','#F78C6C'];
+const DIFFICULTY_ORDER = {yellow:1, green:2, blue:3, purple:4};
+
+const gridEl = document.getElementById('grid');
+const submitEl = document.getElementById('submit');
+const deselectEl = document.getElementById('deselect');
+const shuffleEl = document.getElementById('shuffle');
+const hintEl = document.getElementById('hint');
+const loaderEl = document.getElementById('loader');
+const toastEl = document.getElementById('toast');
+const footerEl = document.querySelector('footer');
+const BASE_FOOTER_TEXT = 'created by micah etter, md';
+
+function renderFooter(){
+  const author = (PUZZLE && PUZZLE.author && String(PUZZLE.author).trim()) ? String(PUZZLE.author).trim() : '';
+  footerEl.textContent = BASE_FOOTER_TEXT + (author ? " • today's puzzle by " + author : "");
+}
+
+// skeleton while loading
+(function renderSkeleton(){
+  gridEl.innerHTML = '';
+  const frag = document.createDocumentFragment();
+  for(let i=0;i<16;i++){ const d=document.createElement('div'); d.className='skeleton'; frag.appendChild(d); }
+  gridEl.appendChild(frag);
+  loaderEl.textContent = 'Loading puzzles.csv…';
+})();
+
+function two(n){ n=String(n); return n.length===1? '0'+n : n; }
+function phoenixMonthDayFromOffset(offset){
+  const msPerDay = 86400000;
+  const target = new Date(Date.now() + offset*msPerDay);
+  const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Phoenix',month:'2-digit',day:'2-digit'});
+  const p=fmt.formatToParts(target);
+  return `${p.find(x=>x.type==='month').value}-${p.find(x=>x.type==='day').value}`;
+}
+// Normalize CSV dates to 'MM-DD', support 'Aug27' etc.
+function toMMDD(s){
+  s = String(s||'').trim();
+  let m = s.match(/^([A-Za-z]{3,5})\.?\s*([0-9]{1,2})$/);
+  if(m){
+    const monRaw = m[1].toLowerCase();
+    const mon3 = (monRaw.startsWith('sept') ? 'sep' : monRaw.slice(0,3));
+    const map = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+    if(map[mon3]) return `${two(map[mon3])}-${two(m[2])}`;
+  }
+  m = s.match(/^([0-9]{4})[-\\/](\d{1,2})[-\\/](\d{1,2})$/);
+  if(m) return `${two(m[2])}-${two(m[3])}`;
+  m = s.match(/^(\d{1,2})[-\\/](\d{1,2})(?:[-\\/](\d{2,4}))?$/);
+  if(m) return `${two(m[1])}-${two(m[2])}`;
+  m = s.match(/^(\d{2})(\d{2})$/);
+  if(m) return `${m[1]}-${m[2]}`;
+  return s;
+}
+
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+function rgba(hex,alpha=.15){ const s=hex.replace('#',''); const x=s.length===3? s.split('').map(c=>c+c).join(''):s; const n=parseInt(x,16); const r=(n>>16)&255,g=(n>>8)&255,b=n&255; return `rgba(${r},${g},${b},${alpha})`; }
+function showToast(msg,kind){ toastEl.textContent = msg; toastEl.className = 'toast show '+(kind||''); if(kind!=='err'){ clearTimeout(showToast._t); showToast._t=setTimeout(()=>{ toastEl.className='toast'; },1500);} }
+
+// lightweight CSV parser
+function parseCSV(text){
+  const rows = []; let cur = [], val = '', i = 0, inQuotes = false;
+  const pushVal = ()=>{ cur.push(val); val=''; };
+  const pushRow = ()=>{ rows.push(cur); cur=[]; };
+  while(i < text.length){
+    const ch = text[i];
+    if(inQuotes){
+      if(ch === '"'){ if(text[i+1] === '"'){ val += '"'; i+=2; } else { inQuotes = false; i++; } }
+      else { val += ch; i++; }
+    }else{
+      if(ch === '"'){ inQuotes = true; i++; }
+      else if(ch === ','){ pushVal(); i++; }
+      else if(ch === '\r'){ i++; }
+      else if(ch === '\n'){ pushVal(); pushRow(); i++; }
+      else { val += ch; i++; }
+    }
+  }
+  pushVal(); if(cur.length>1 || (cur.length===1 && cur[0]!=='')) pushRow();
+  if(rows.length === 0) return [];
+  const headers = rows[0].map(h => (h||'').trim().toLowerCase());
+  return rows.slice(1).map(cols => { const obj = {}; headers.forEach((h, idx)=> obj[h] = (cols[idx]||'').trim()); return obj; });
+}
+
+// flexible field helpers
+function getField(obj, candidates){
+  for(const k of candidates){
+    if(Object.prototype.hasOwnProperty.call(obj, k) && String(obj[k]).trim() !== '') return obj[k];
+  }
+  const keys = Object.keys(obj);
+  for(const k of keys){
+    const norm = k.replace(/[\s_]+/g,'').toLowerCase();
+    for(const want of candidates){
+      const wn = want.replace(/[\s_]+/g,'').toLowerCase();
+      if(norm === wn && String(obj[k]).trim() !== '') return obj[k];
+    }
+  }
+  return '';
+}
+function extractFourItems(row){
+  const entries = [];
+  const keys = Object.keys(row);
+  for(const k of keys){
+    const v = String(row[k]||'').trim();
+    if(!v) continue;
+    const key = k.toLowerCase();
+    if(key === 'a' || key === 'b' || key === 'c' || key === 'd'){
+      const order = {a:1,b:2,c:3,d:4}[key];
+      entries.push([order, v]); continue;
+    }
+    const m = key.match(/^(item|word|w|clue)\s*_?\s*([1-4])$/i);
+    if(m){ const idx = parseInt(m[2], 10); entries.push([idx, v]); }
+  }
+  entries.sort((a,b)=> a[0]-b[0]);
+  return entries.slice(0,4).map(x=>x[1]);
+}
+function extractUrls(row){
+  const urls = [];
+  const keys = Object.keys(row);
+  const urlEntries = [];
+  for(const k of keys){
+    const v = String(row[k]||'').trim();
+    if(!v) continue;
+    const key = k.toLowerCase();
+    const m = key.match(/^url\s*_?\s*([1-4])$/);
+    if(m){ urlEntries.push([parseInt(m[1],10), v]); }
+  }
+  if(urlEntries.length){
+    urlEntries.sort((a,b)=> a[0]-b[0]); for(const [_,v] of urlEntries) urls.push(v);
+  }else if(row['url']){
+    const raw = String(row['url']).trim();
+    let parts = raw.split('|'); if(parts.length < 2) parts = raw.split(';'); if(parts.length < 2) parts = raw.split(',');
+    for(const s of parts){ urls.push(String(s||'').trim()); }
+  }
+  while(urls.length < 4) urls.push('');
+  return urls.slice(0,4);
+}
+function pickDifficultyColor(val, idx){
+  if(!val) return FALLBACK_COLORS[idx % FALLBACK_COLORS.length];
+  const key = String(val).toLowerCase();
+  if (DIFFICULTY_COLORS[key]) return DIFFICULTY_COLORS[key];
+  if(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(val)) return val;
+  return FALLBACK_COLORS[idx % FALLBACK_COLORS.length];
+}
+
+function rowsToPuzzles(rows){
+  const byDate=new Map();
+  const authors = new Map();
+  for(const r of rows){
+    const date = toMMDD(getField(r, ['date','day','mmdd']));
+    const category = getField(r, ['category','group','theme','cat','set']);
+    const items = extractFourItems(r);
+    const difficulty = getField(r, ['difficulty','tier','color','level']);
+    const author = String(getField(r, ['author'])).trim();
+    if(author && date){ authors.set(date, author); }
+    const urls = extractUrls(r);
+    if(!date || !category || items.length !== 4) continue;
+    if(!byDate.has(date)) byDate.set(date, []);
+    byDate.get(date).push({name:category, items, difficulty, urls});
+  }
+  const dates=[...byDate.keys()].sort();
+  const puzzles = [];
+  for(const d of dates){
+    const cats = byDate.get(d);
+    const valids = cats.filter(c=>c.items.length===4);
+    if(valids.length < 4) continue;
+    valids.sort((a,b)=> (DIFFICULTY_ORDER[(a.difficulty||'').toLowerCase()]||99) - (DIFFICULTY_ORDER[(b.difficulty||'').toLowerCase()]||99));
+    puzzles.push({
+      title:d,
+      author: authors.get(d) || '',
+      categories: valids.slice(0,4).map((c,i)=> ({...c, color: pickDifficultyColor(c.difficulty, i)}))
+    });
+  }
+  return puzzles;
+}
+
+// ===== Confetti =====
+function getConfettiCanvas(){
+  let c = document.getElementById('confetti-canvas');
+  if(!c){ c = document.createElement('canvas'); c.id = 'confetti-canvas'; document.body.appendChild(c); }
+  const resize = ()=>{ c.width = window.innerWidth; c.height = window.innerHeight; };
+  resize();
+  const onResize = ()=>{ if(document.body.contains(c)){ resize(); } else { window.removeEventListener('resize', onResize); } };
+  window.addEventListener('resize', onResize, {passive:true});
+  return c;
+}
+function fireConfetti(durationMs = 1300, count = 200){
+  const canvas = getConfettiCanvas();
+  const ctx = canvas.getContext('2d');
+  const palette = ['#B388EB','#5DD0C2','#F2C14E','#6AA6FF','#F78C6C','#8B5CF6','#22C55E','#3B82F6','#EAB308'];
+  const w = canvas.width, h = canvas.height;
+  const cx = w / 2, cy = Math.max(120, h * 0.35);
+  const GRAVITY = 0.15, DRAG = 0.985, SPIN = 0.2;
+  const parts = [];
+  for(let i=0;i<count;i++){
+    const angle = Math.random()*Math.PI*2;
+    const speed = 6 + Math.random()*7;
+    const vx = Math.cos(angle)*speed;
+    const vy = Math.sin(angle)*speed - 6;
+    const size = 4 + Math.random()*6;
+    parts.push({ x:cx, y:cy, vx, vy, w:size, h:size*0.6, rot:Math.random()*Math.PI*2, vr:(Math.random()-0.5)*SPIN, color:palette[i % palette.length], alpha:1 });
+  }
+  let start = performance.now();
+  function frame(now){
+    const t = now - start;
+    ctx.clearRect(0,0,w,h);
+    for(const p of parts){
+      p.vx *= DRAG; p.vy = p.vy * DRAG + GRAVITY;
+      p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+      if(t > durationMs * 0.65){ p.alpha = Math.max(0, 1 - (t - durationMs*0.65)/(durationMs*0.35)); }
+      ctx.save(); ctx.globalAlpha = p.alpha; ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+      ctx.fillStyle = p.color; ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h); ctx.restore();
+    }
+    if(t < durationMs && parts.some(p => p.alpha > 0 && p.y < h + 20)){ requestAnimationFrame(frame); }
+    else { if(canvas && canvas.parentNode){ canvas.parentNode.removeChild(canvas); } }
+  }
+  requestAnimationFrame(frame);
+}
+
+// ===== Game state =====
+let PUZZLES=[], PUZZLE=null, solved=[], selected=new Set(), remaining=new Set(), order=[], itemToCat=new Map();
+let hintedColors = new Map(); let hintGroupIdx = -1; let hintedItems = new Set();
+let dayOffset = 0;
+
+function clearHintState(){ hintGroupIdx=-1; hintedItems.clear(); hintedColors.clear(); }
+function chooseUnsolvedGroupIndex(){ if(!PUZZLE) return -1; for(let i=0;i<PUZZLE.categories.length;i++){ const c = PUZZLE.categories[i]; if(c.items.every(it => remaining.has(it))) return i; } return -1; }
+function computeFontSizeForTile(el, text){
+  const base = parseFloat(getComputedStyle(el).fontSize) || 18;
+  let fs = base;
+  const len = (text || '').length;
+  const words = String(text || '').split(/\s+/).filter(Boolean);
+  const longestWord = words.reduce((m,w)=> Math.max(m, w.length), 0);
+  if(len > 18){ fs = base - 0.30 * (len - 18); }
+  if(longestWord > 14){ fs -= 0.65 * (longestWord - 14); }
+  const minFs = 13;
+  return Math.max(minFs, Math.min(base, fs));
+}
+
+function fitTiles(){
+  const tiles = gridEl.querySelectorAll('.tile');
+  const targetLines = 3; // universal 3-line cap
+
+  tiles.forEach(tile=>{
+    const label = tile.querySelector('.tile-label') || tile;
+    let text = label.textContent || '';
+    text = text.replace(/\u00AD/g,''); // ignore soft hyphens if any
+
+    // Base pre-scale using heuristics
+    let fs = computeFontSizeForTile(label, text);
+    label.style.fontSize = fs + 'px';
+    label.style.lineHeight = (fs * 1.15) + 'px';
+    label.style.whiteSpace = 'normal'; // default for multi-word
+
+    const styleTile = getComputedStyle(tile);
+    const maxH = parseInt(styleTile.maxHeight) || 160;
+    const lineH = () => parseFloat(getComputedStyle(label).lineHeight) || (fs*1.15);
+    const lines = () => Math.ceil((label.scrollHeight) / lineH());
+
+    const padL = parseFloat(styleTile.paddingLeft) || 0;
+    const padR = parseFloat(styleTile.paddingRight) || 0;
+    const availW = tile.clientWidth - padL - padR;
+
+    const isSingleWord = !/\s/.test(text);
+    let safety = 180;
+
+    if(isSingleWord){
+      // Keep it on one line and shrink until it fits the available width and height.
+      label.style.whiteSpace = 'nowrap';
+      while(((label.scrollWidth > availW) || (tile.scrollHeight > maxH)) && fs > 13 && safety-- > 0){
+        fs -= 1;
+        label.style.fontSize = fs + 'px';
+        label.style.lineHeight = (fs * 1.15) + 'px';
+      }
+      while(((label.scrollWidth > availW) || (tile.scrollHeight > maxH)) && fs > 13 && safety-- > 0){
+        fs -= 0.5;
+        label.style.fontSize = fs + 'px';
+        label.style.lineHeight = (fs * 1.15) + 'px';
+      }
+    }else{
+      // Multi-word: cap to 3 lines and max height
+      while((lines() > targetLines || tile.scrollHeight > maxH) && fs > 13 && safety-- > 0){
+        fs -= 1;
+        label.style.fontSize = fs + 'px';
+        label.style.lineHeight = (fs * 1.15) + 'px';
+      }
+      while((lines() > targetLines || tile.scrollHeight > maxH) && fs > 13 && safety-- > 0){
+        fs -= 0.5;
+        label.style.fontSize = fs + 'px';
+        label.style.lineHeight = (fs * 1.15) + 'px';
+      }
+    }
+  });
+}
+
+function selectPuzzleForCurrentOffset(){
+  const mmdd = phoenixMonthDayFromOffset(dayOffset);
+  for(let i=0;i<PUZZLES.length;i++){
+    if(PUZZLES[i].title === mmdd || toMMDD(PUZZLES[i].title) === mmdd) return PUZZLES[i];
+  }
+  return null;
+}
+
+function renderNoPuzzle(mmdd){
+  gridEl.innerHTML='';
+  const frag = document.createDocumentFragment();
+  for(let i=0;i<16;i++){ const d=document.createElement('div'); d.className='skeleton'; frag.appendChild(d); }
+  gridEl.appendChild(frag);
+  submitEl.disabled = deselectEl.disabled = shuffleEl.disabled = hintEl.disabled = true;
+  loaderEl.textContent = 'No puzzle found for ' + mmdd + '. Update puzzles.csv or press N/P to change day.';
+  renderFooter();
+}
+
+function initBoard(){
+  window._confettiShown = false;
+  solved=[]; selected.clear(); clearHintState();
+  remaining = new Set(PUZZLE.categories.flatMap(c=>c.items));
+  order = shuffle([...remaining]);
+  itemToCat = new Map();
+  PUZZLE.categories.forEach((c, idx)=> c.items.forEach(it=> itemToCat.set(it, idx)));
+  loaderEl.textContent='';
+  render();
+  renderFooter();
+}
+
+function getUnsolvedOrder(){ return order.filter(it=>remaining.has(it)); }
+
+function render(){
+  const frag = document.createDocumentFragment();
+  gridEl.innerHTML='';
+
+  // solved cards
+  for(const g of solved){
+    const card=document.createElement('div'); card.className='solved-card'; card.style.background='rgba(0,0,0,0.05)'; card.style.borderColor=g.color;
+    const badge=document.createElement('span'); badge.className='badge'; badge.style.background=g.color; badge.textContent=g.name;
+    const items=document.createElement('div'); items.style.opacity='.95'; items.style.fontWeight='700';
+    const parts=[];
+    for(let i=0;i<g.items.length;i++){
+      const text = g.items[i];
+      const url = (g.urls||[])[i] || '';
+      if(url){
+        const a = document.createElement('a');
+        a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.textContent = text;
+        a.style.textDecoration = 'none';
+        a.style.fontWeight = '800';
+        a.style.borderBottom = '1px solid rgba(0,0,0,.15)';
+        parts.push(a);
+      } else {
+        const span = document.createElement('span'); span.textContent = text; parts.push(span);
+      }
+      if(i < g.items.length-1){ parts.push(document.createTextNode(' • ')); }
+    }
+    parts.forEach(el=> items.appendChild(el));
+    card.appendChild(badge); card.appendChild(items); frag.appendChild(card);
+  }
+
+  // remaining tiles
+  for(const it of getUnsolvedOrder()){
+    const b=document.createElement('button'); b.type='button'; b.className='tile';
+    const lbl=document.createElement('span'); lbl.className='tile-label'; lbl.textContent=it; b.appendChild(lbl);
+    const isSel=selected.has(it); if(isSel) b.classList.add('selected');
+    b.setAttribute('aria-pressed', isSel? 'true':'false');
+    if(hintedColors.has(it) && !isSel){
+      const c = hintedColors.get(it);
+      b.style.borderColor = c;
+      b.style.outline = '2px solid ' + c;
+      b.style.background = 'rgba(0,0,0,0.03)';
+    }
+    b.addEventListener('click', ()=> toggle(it), {passive:true});
+    frag.appendChild(b);
+  }
+
+  gridEl.appendChild(frag);
+  fitTiles();
+  requestAnimationFrame(()=>fitTiles());
+
+  const done = PUZZLE && solved.length===PUZZLE.categories.length;
+  if(done && !window._confettiShown){ window._confettiShown = true; try{ fireConfetti(); }catch(_){} }
+  submitEl.disabled = deselectEl.disabled = shuffleEl.disabled = hintEl.disabled = !!done || !PUZZLE;
+}
+
+function toggle(it){
+  if(!remaining.has(it)) return;
+  if(selected.has(it)) selected.delete(it);
+  else { if(selected.size===4) selected.delete([...selected][0]); selected.add(it); }
+  const nodes = gridEl.querySelectorAll('.tile');
+  for(const n of nodes){
+    const isSel = selected.has(n.textContent);
+    n.classList.toggle('selected', isSel);
+    n.setAttribute('aria-pressed', isSel ? 'true' : 'false');
+    if(hintedColors.has(n.textContent) && !isSel){
+      const c = hintedColors.get(n.textContent);
+      n.style.borderColor = c; n.style.outline = '2px solid ' + c; n.style.background = 'rgba(0,0,0,0.03)';
+    } else {
+      n.style.borderColor = ''; n.style.outline = ''; n.style.background = '';
+    }
+  }
+}
+
+function countOverlap(arr, group){ const set=new Set(group); return arr.reduce((n,x)=> n+(set.has(x)?1:0),0); }
+
+function onSubmit(){
+  if(!PUZZLE) return;
+  if(selected.size!==4){ showToast('Select 4 tiles.','warn'); return; }
+  const sel=[...selected];
+  const catIdx=itemToCat.get(sel[0]);
+  const allSame = sel.every(it=> itemToCat.get(it)===catIdx);
+  if(allSame){
+    const cat=PUZZLE.categories[catIdx];
+    if(hintGroupIdx === catIdx) clearHintState();
+    solved.push({name:cat.name, color:cat.color, items:cat.items.slice(), urls:(cat.urls||[]).slice()});
+    for(const it of sel) remaining.delete(it);
+    selected.clear();
+    showToast('Correct!','ok');
+    if(solved.length===PUZZLE.categories.length){ showToast('You solved NeuroConnections!','ok'); }
+    render();
+  }else{
+    const oneAway = PUZZLE.categories.some(cat=> countOverlap(sel, cat.items)===3);
+    showToast(oneAway? 'One away!':'Nope. Try again.', oneAway? 'warn':'err');
+  }
+}
+
+function onShuffle(){ order = shuffle(getUnsolvedOrder()); render(); }
+function onDeselect(){ selected.clear(); const tiles=gridEl.querySelectorAll('.tile'); tiles.forEach(t=>{ t.classList.remove('selected'); t.setAttribute('aria-pressed','false'); }); fitTiles(); }
+function onHint(){
+  if(!PUZZLE) return;
+  const validCurrent = hintGroupIdx >= 0 && PUZZLE.categories[hintGroupIdx].items.every(it => remaining.has(it));
+  if(hintGroupIdx < 0 || !validCurrent){
+    hintGroupIdx = chooseUnsolvedGroupIndex();
+    hintedItems.clear(); hintedColors.clear();
+    if(hintGroupIdx < 0){ showToast('No groups left to hint.','warn'); return; }
+  }
+  const cat = PUZZLE.categories[hintGroupIdx];
+  const unseen = cat.items.filter(it => remaining.has(it) && !hintedItems.has(it));
+  if(unseen.length === 0){
+    solved.push({name:cat.name, color:cat.color, items:cat.items.slice(), urls:(cat.urls||[]).slice()});
+    cat.items.forEach(it => remaining.delete(it));
+    selected.clear(); showToast('Hint solved: ' + cat.name, 'ok'); clearHintState(); render(); return;
+  }
+  const item = unseen[Math.floor(Math.random()*unseen.length)];
+  hintedItems.add(item); hintedColors.set(item, cat.color);
+  const count = hintedItems.size; showToast(`Hint: revealed ${count}/4`, 'warn');
+  if(count >= 4){
+    solved.push({name:cat.name, color:cat.color, items:cat.items.slice(), urls:(cat.urls||[]).slice()});
+    cat.items.forEach(it => remaining.delete(it));
+    selected.clear(); showToast('Hint solved: ' + cat.name, 'ok'); clearHintState();
+  }
+  render();
+}
+
+submitEl.addEventListener('click', onSubmit);
+shuffleEl.addEventListener('click', onShuffle);
+deselectEl.addEventListener('click', onDeselect);
+hintEl.addEventListener('click', onHint);
+
+// Keyboard: N/P date, Q auto-solve
+function autoSolveAll(){
+  if(!PUZZLE) return;
+  selected.clear(); clearHintState();
+  for(const cat of PUZZLE.categories){
+    if(cat.items.some(it => remaining.has(it))){
+      solved.push({ name: cat.name, color: cat.color, items: cat.items.slice(), urls: (cat.urls||[]).slice() });
+      for(const it of cat.items) remaining.delete(it);
+    }
+  }
+  showToast('Auto-solved!','ok'); render(); if(!window._confettiShown){ window._confettiShown = true; try{ fireConfetti(); }catch(_){} }
+}
+window.addEventListener('keydown', (e)=>{
+  const k = (e.key||'').toLowerCase();
+  if(k === 'q'){ e.preventDefault(); autoSolveAll(); return; }
+  if(k === 'n'){
+    dayOffset += 1;
+    if(PUZZLES.length){
+      const ds = phoenixMonthDayFromOffset(dayOffset);
+      PUZZLE = selectPuzzleForCurrentOffset();
+      if(!PUZZLE){ showToast('No puzzle for '+ds, 'err'); renderNoPuzzle(ds); return; }
+      initBoard(); showToast(`Advanced date → ${ds}`, 'ok');
+    }
+  }
+  if(k === 'p'){
+    dayOffset -= 1;
+    if(PUZZLES.length){
+      const ds = phoenixMonthDayFromOffset(dayOffset);
+      PUZZLE = selectPuzzleForCurrentOffset();
+      if(!PUZZLE){ showToast('No puzzle for '+ds, 'err'); renderNoPuzzle(ds); return; }
+      initBoard(); showToast(`Went back → ${ds}`, 'ok');
+    }
+  }
+}, {passive:true});
+
+window.addEventListener('resize', ()=> { requestAnimationFrame(fitTiles); }, {passive:true});
+
+// ===== Boot =====
+(async function boot(){
+  try{
+    const res = await fetch('puzzles.csv', {cache:'no-store'});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const text = await res.text();
+    const rows = parseCSV(text);
+    PUZZLES = rowsToPuzzles(rows);
+    if(!PUZZLES.length) throw new Error('No valid puzzles found');
+    PUZZLE = selectPuzzleForCurrentOffset();
+    if(!PUZZLE){ const ds = phoenixMonthDayFromOffset(dayOffset); showToast('No puzzle for '+ds,'err'); renderNoPuzzle(ds); return; }
+    initBoard();
+  }catch(e){
+    console.warn('Fetch failed for puzzles.csv', e);
+    loaderEl.textContent = "Couldn't fetch puzzles.csv. Ensure index.html and puzzles.csv are together.";
+  }
+})();
+</script>
+</body>
+</html>
