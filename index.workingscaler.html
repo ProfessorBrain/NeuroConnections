@@ -331,59 +331,26 @@ function computeFontSizeForTile(el, text){
   const minFs = 13;
   return Math.max(minFs, Math.min(base, fs));
 }
-
 function fitTiles(){
   const tiles = gridEl.querySelectorAll('.tile');
-  const targetLines = 3; // universal 3-line cap
-
+  const isMobile = window.matchMedia('(max-width: 480px)').matches;
+  const targetLines = 3;
   tiles.forEach(tile=>{
     const label = tile.querySelector('.tile-label') || tile;
-    let text = label.textContent || '';
-    text = text.replace(/\u00AD/g,''); // ignore soft hyphens if any
-
-    // Base pre-scale using heuristics
+    const text = label.textContent || '';
     let fs = computeFontSizeForTile(label, text);
     label.style.fontSize = fs + 'px';
     label.style.lineHeight = (fs * 1.15) + 'px';
-    label.style.whiteSpace = 'normal'; // default for multi-word
-
     const styleTile = getComputedStyle(tile);
     const maxH = parseInt(styleTile.maxHeight) || 160;
     const lineH = () => parseFloat(getComputedStyle(label).lineHeight) || (fs*1.15);
     const lines = () => Math.ceil((label.scrollHeight) / lineH());
-
-    const padL = parseFloat(styleTile.paddingLeft) || 0;
-    const padR = parseFloat(styleTile.paddingRight) || 0;
-    const availW = tile.clientWidth - padL - padR;
-
-    const isSingleWord = !/\s/.test(text);
-    let safety = 180;
-
-    if(isSingleWord){
-      // Keep it on one line and shrink until it fits the available width and height.
-      label.style.whiteSpace = 'nowrap';
-      while(((label.scrollWidth > availW) || (tile.scrollHeight > maxH)) && fs > 13 && safety-- > 0){
-        fs -= 1;
-        label.style.fontSize = fs + 'px';
-        label.style.lineHeight = (fs * 1.15) + 'px';
-      }
-      while(((label.scrollWidth > availW) || (tile.scrollHeight > maxH)) && fs > 13 && safety-- > 0){
-        fs -= 0.5;
-        label.style.fontSize = fs + 'px';
-        label.style.lineHeight = (fs * 1.15) + 'px';
-      }
-    }else{
-      // Multi-word: cap to 3 lines and max height
-      while((lines() > targetLines || tile.scrollHeight > maxH) && fs > 13 && safety-- > 0){
-        fs -= 1;
-        label.style.fontSize = fs + 'px';
-        label.style.lineHeight = (fs * 1.15) + 'px';
-      }
-      while((lines() > targetLines || tile.scrollHeight > maxH) && fs > 13 && safety-- > 0){
-        fs -= 0.5;
-        label.style.fontSize = fs + 'px';
-        label.style.lineHeight = (fs * 1.15) + 'px';
-      }
+    let safety = 140;
+    while((lines() > targetLines || (tile.scrollHeight > maxH)) && fs > 13 && safety-- > 0){
+      fs -= 1; label.style.fontSize = fs + 'px'; label.style.lineHeight = (fs * 1.15) + 'px';
+    }
+    while((lines() > targetLines || (tile.scrollHeight > maxH)) && fs > 13 && safety-- > 0){
+      fs -= 0.5; label.style.fontSize = fs + 'px'; label.style.lineHeight = (fs * 1.15) + 'px';
     }
   });
 }

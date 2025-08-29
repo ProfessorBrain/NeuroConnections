@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>🧠 NeuroConnections</title>
+<style>
+  :root{
+    --bg:#f8fafc; --text:#0f172a; --muted:#64748b; --card:#ffffff; --border:#d1d5db;
+    --tile:#ffffff; --tile-hover:#f8fafc; --tile-selected:#e0e7ff; --tile-selected-border:#a5b4fc;
+    --ok:#16a34a; --warn:#d97706; --err:#dc2626;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif; line-height:1.25;}
+  .wrap{width:min(640px,96vw); margin:0 auto; padding:40px 0 24px; position:relative;}
+  h1{margin:0 0 6px; text-align:center; font-weight:900; font-size:28px; letter-spacing:-0.01em}
+  h2{margin:0; text-align:center; font-weight:700; font-size:18px}
+  /* fixed slot for toasts so they don't overlap the title */
+  .toast-slot{ height:44px; display:flex; align-items:center; justify-content:center; margin-top:6px; }
+  .grid{margin-top:24px; display:grid; grid-template-columns:repeat(4,auto); gap:10px; justify-items:center; justify-content:center;}
+  .tile{
+    width:150px; min-height:88px; max-height:160px;
+    border-radius:10px; border:1px solid var(--border); background:var(--tile);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:18px; text-align:center; cursor:pointer;
+    transition:background .15s ease, border-color .15s ease, transform .02s ease-in-out;
+    user-select:none; padding:10px; line-height:1.15;
+    word-break:break-word; hyphens:auto; overflow:hidden;
+  }
+  .tile:hover{ background:var(--tile-hover); }
+  .tile.selected{ background:var(--tile-selected); border-color:var(--tile-selected-border); outline:2px solid var(--tile-selected-border); }
+  .solved-card{ grid-column:1/-1; width:100%;
+    border-radius:10px; border:1px solid var(--border); background:var(--card);
+    padding:12px; display:flex; align-items:center; gap:10px; }
+  .badge{ font-weight:900; padding:6px 10px; border-radius:999px; color:#0b0e12; font-size:12px; }
+  .toast{ position:relative; z-index:1; pointer-events:none; font-weight:700; font-size:14px; border-radius:8px; padding:8px 10px; display:none; border:1px solid transparent; }
+  .toast.show{display:block}
+  .toast.ok{ background:rgba(22,163,74,.10); border-color:rgba(22,163,74,.35)}
+  .toast.warn{ background:rgba(217,119,6,.10); border-color:rgba(217,119,6,.35)} .toast.err{ background:rgba(220,38,38,.10); border-color:rgba(220,38,38,.35)}
+  .controls{ margin-top:18px; display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;}
+  .btn{ border-radius:10px; border:1px solid var(--border); background:#fff; color:#0f172a; padding:14px 20px; font-weight:900; letter-spacing:.06em; text-transform:uppercase; font-size:13px; cursor:pointer; }
+  .btn:hover{ background:#f8fafc; }
+  /* Submit = pale green, Hint = pale orange */
+  #submit.btn{ background:#ecfdf5; border-color:#bbf7d0; }
+  #submit.btn:hover{ background:#e6f7ef; }
+  #hint.btn{ background:#fff7ed; border-color:#fed7aa; }
+  #hint.btn:hover{ background:#fff1e6; }
+  footer{ margin-top:14px; text-align:center; color:#94a3b8; font-size:12px; user-select:none}
+  .skeleton{ width:150px; height:120px; border-radius:10px; border:1px solid var(--border); background:linear-gradient(90deg, #ffffff 25%, #f1f5f9 37%, #ffffff 63%); background-size:400% 100%; animation:shimmer 1.2s infinite; }
+  @keyframes shimmer{ 0%{background-position:100% 0} 100%{background-position:0 0} }
+  .loader{ margin-top:10px; text-align:center; color:var(--muted); font-size:14px; white-space:pre-wrap; }
+  .uploader{ display:none; margin-top:10px; text-align:center; }
+  .uploader.show{ display:block; }
+
+  /* --- Mobile-friendly adjustments --- */
+  @media (max-width: 480px){
+    .wrap{ width:min(420px, 98vw); padding:24px 0 16px; }
+    .grid{ gap:8px; grid-template-columns: repeat(4, 1fr); justify-content:stretch; }
+    .tile{
+      width:100%; min-height:72px; max-height:140px;
+      font-size:clamp(12px, 3.4vw, 16px); padding:8px;
+      -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+    }
+    .skeleton{ width:100%; height:100px; }
+    .toast-slot{ height:48px; }
+    .btn{ min-height:44px; padding:12px 14px; font-size:12px; touch-action: manipulation; }
+  }
+  @media (max-width: 360px){
+    .grid{ gap:6px; }
+    .tile{ min-height:64px; max-height:120px; font-size:clamp(11px, 3.6vw, 15px); padding:6px; }
+    .skeleton{ height:92px; }
+  }
+
+  /* Confetti overlay canvas */
+  #confetti-canvas{
+    position:fixed; inset:0; width:100%; height:100%;
+    pointer-events:none; z-index:999;
+  }
+
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1><span aria-hidden="true">🧠</span> NeuroConnections</h1>
+    <h2>Create four groups of four!</h2>
+    <div class="toast-slot"><div id="toast" class="toast" role="status" aria-live="polite"></div></div>
+
+    <div id="grid" class="grid" aria-label="Tiles grid"></div>
+    <div id="loader" class="loader"></div>
+
+    <div id="uploader" class="uploader">
+      <input id="fileInput" type="file" accept=".csv,text/csv" />
+      <div style="margin-top:8px; color:#64748b; font-size:12px">Tip: If you opened the file directly (file://), browsers may block reading puzzles.csv. Use this picker or run a tiny local server.</div>
+    </div>
+
+    <div class="controls">
+      <button id="hint" class="btn" type="button">Hint</button>
+      <button id="shuffle" class="btn" type="button">Shuffle</button>
+      <button id="deselect" class="btn" type="button">Deselect All</button>
+      <button id="submit" class="btn" type="button">Submit</button>
+    </div>
+
+    <footer>created by micah etter, md</footer>
+  </div>
+
+  <script>
+  // ================= Utilities =================
+  const DIFFICULTY_COLORS = { yellow:'#F2C14E', green:'#5DD0C2', blue:'#6AA6FF', purple:'#B388EB' };
+  const FALLBACK_COLORS = ['#B388EB','#5DD0C2','#F2C14E','#F78C6C'];
+  const DIFFICULTY_ORDER = {yellow:1, green:2, blue:3, purple:4};
+
+  const gridEl = document.getElementById('grid');
+  const submitEl = document.getElementById('submit');
+  const deselectEl = document.getElementById('deselect');
+  const shuffleEl = document.getElementById('shuffle');
+  const hintEl = document.getElementById('hint');
+  const loaderEl = document.getElementById('loader');
+  const uploaderEl = document.getElementById('uploader');
+  const fileInput = document.getElementById('fileInput');
+  const toastEl = document.getElementById('toast');
+
+  const footerEl = document.querySelector('footer');
+  const BASE_FOOTER_TEXT = 'created by micah etter, md';
+  function renderFooter(){
+    const author = (PUZZLE && PUZZLE.author && String(PUZZLE.author).trim()) ? String(PUZZLE.author).trim() : '';
+    footerEl.textContent = BASE_FOOTER_TEXT + (author ? " • today's puzzle by " + author : "");
+  }
+
+  let dayOffset = 0; // secret 'N' (forward), 'P' (back)
+
+  // skeleton now to avoid white screen
+  (function renderSkeleton(){
+    gridEl.innerHTML = '';
+    const frag = document.createDocumentFragment();
+    for(let i=0;i<16;i++){ const d=document.createElement('div'); d.className='skeleton'; frag.appendChild(d); }
+    gridEl.appendChild(frag);
+    loaderEl.textContent = 'Loading puzzles.csv…';
+  })();
+
+  function phoenixISODateFromOffset(offset){
+    const msPerDay = 86400000;
+    const target = new Date(Date.now() + offset*msPerDay);
+    const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Phoenix',year:'numeric',month:'2-digit',day:'2-digit'});
+    const p=fmt.formatToParts(target);
+    return `${p.find(x=>x.type==='year').value}-${p.find(x=>x.type==='month').value}-${p.find(x=>x.type==='day').value}`;
+  }
+  // Month-Day only (ignore year)
+  function phoenixMonthDayFromOffset(offset){
+    const msPerDay = 86400000;
+    const target = new Date(Date.now() + offset*msPerDay);
+    const fmt=new Intl.DateTimeFormat('en-CA',{timeZone:'America/Phoenix',month:'2-digit',day:'2-digit'});
+    const p=fmt.formatToParts(target);
+    return `${p.find(x=>x.type==='month').value}-${p.find(x=>x.type==='day').value}`;
+  }
+  function two(n){ n=String(n); return n.length===1? '0'+n : n; }
+  // Normalize CSV dates to 'MM-DD'
+  function toMMDD(s){
+    s = String(s||'').trim();
+
+    // NEW: support 'Aug27', 'Sep1', 'Sept 1', 'Aug 27', 'AUG27', etc.
+    let m = s.match(/^([A-Za-z]{3,5})\.?\s*([0-9]{1,2})$/);
+    if(m){
+      const monRaw = m[1].toLowerCase();
+      const mon3 = (monRaw.startsWith('sept') ? 'sep' : monRaw.slice(0,3));
+      const map = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+      if(map[mon3]) return `${two(map[mon3])}-${two(m[2])}`;
+    }
+
+    // ISO or M/D or MMDD
+    m = s.match(/^([0-9]{4})[-\\/](\d{1,2})[-\\/](\d{1,2})$/);
+    if(m) return `${two(m[2])}-${two(m[3])}`;
+    m = s.match(/^(\d{1,2})[-\\/](\d{1,2})(?:[-\\/](\d{2,4}))?$/);
+    if(m) return `${two(m[1])}-${two(m[2])}`;
+    m = s.match(/^(\d{2})(\d{2})$/);
+    if(m) return `${m[1]}-${m[2]}`;
+    return s;
+  }
+
+  function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+  function rgba(hex,alpha=.15){ const s=hex.replace('#',''); const x=s.length===3? s.split('').map(c=>c+c).join(''):s; const n=parseInt(x,16); const r=(n>>16)&255,g=(n>>8)&255,b=n&255; return `rgba(${r},${g},${b},${alpha})`; }
+  function showToast(msg,kind){ toastEl.textContent = msg; toastEl.className = 'toast show '+(kind||''); if(kind!=='err'){ clearTimeout(showToast._t); showToast._t=setTimeout(()=>{ toastEl.className='toast'; },1500);} }
+
+  // Robust CSV parser (RFC4180-ish)
+  function parseCSV(text){
+    const rows = []; let cur = [], val = '', i = 0, inQuotes = false;
+    const pushVal = ()=>{ cur.push(val); val=''; };
+    const pushRow = ()=>{ rows.push(cur); cur=[]; };
+    while(i < text.length){
+      const ch = text[i];
+      if(inQuotes){
+        if(ch === '"'){ if(text[i+1] === '"'){ val += '"'; i+=2; } else { inQuotes = false; i++; } }
+        else { val += ch; i++; }
+      }else{
+        if(ch === '"'){ inQuotes = true; i++; }
+        else if(ch === ','){ pushVal(); i++; }
+        else if(ch === '\r'){ i++; }
+        else if(ch === '\n'){ pushVal(); pushRow(); i++; }
+        else { val += ch; i++; }
+      }
+    }
+    pushVal(); if(cur.length>1 || (cur.length===1 && cur[0]!=='')) pushRow();
+    if(rows.length === 0) return [];
+    const headers = rows[0].map(h => (h||'').trim().toLowerCase());
+    return rows.slice(1).map(cols => { const obj = {}; headers.forEach((h, idx)=> obj[h] = (cols[idx]||'').trim()); return obj; });
+  }
+
+  function pickDifficultyColor(val, idx){
+    if(!val) return FALLBACK_COLORS[idx % FALLBACK_COLORS.length];
+    const key = String(val).toLowerCase();
+    if (DIFFICULTY_COLORS[key]) return DIFFICULTY_COLORS[key];
+    if(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(val)) return val;
+    return FALLBACK_COLORS[idx % FALLBACK_COLORS.length];
+  }
+
+  function rowsToPuzzles(rows){
+    // Columns: date, category, item1..item4, (optional) difficulty|tier|color, and optional url/url1..url4
+    const byDate=new Map();
+    const authors = new Map();
+for(const r of rows){
+      const date=r['date']||'';
+      const category=r['category'];
+      const items=[r['item1'],r['item2'],r['item3'],r['item4']].filter(Boolean);
+      const difficulty = r['difficulty'] || r['tier'] || r['color'] || '';
+
+      const author = (r['author'] || '').trim();
+      if (author) { if (!authors.has(date)) authors.set(date, author); }
+// Extract URLs: prefer url1..url4; else split a single 'url' field by | ; , (in that order)
+      let urls = [];
+      const ukeys = ['url1','url2','url3','url4'];
+      if (ukeys.some(k => r[k])){
+        urls = ukeys.map((k,i)=> (r[k]||'').trim() || '');
+      } else if (r['url']) {
+        const raw = String(r['url']).trim();
+        let parts = raw.split('|');
+        if (parts.length < 2) parts = raw.split(';');
+        if (parts.length < 2) parts = raw.split(',');
+        urls = parts.map(s=> String(s||'').trim());
+      }
+      // Ensure urls aligns to 4 items
+      while(urls.length < 4) urls.push('');
+      urls = urls.slice(0,4);
+
+      if(!date||!category||items.length!==4) continue;
+      if(!byDate.has(date)) byDate.set(date,[]);
+      byDate.get(date).push({name:category, items, difficulty, urls});
+    }
+    const dates=[...byDate.keys()].sort();
+    const puzzles = [];
+    for(const d of dates){
+      const cats = byDate.get(d);
+      const valids = cats.filter(c=>c.items.length===4);
+      if(valids.length < 4) continue;
+      // Order categories by difficulty color
+      valids.sort((a,b)=> (DIFFICULTY_ORDER[(a.difficulty||'').toLowerCase()]||99) - (DIFFICULTY_ORDER[(b.difficulty||'').toLowerCase()]||99));
+      puzzles.push({
+        title:d,
+        author: authors.get(d) || '',
+        categories: valids.slice(0,4).map((c,i)=> ({...c, color: pickDifficultyColor(c.difficulty, i)}))
+      });
+    }
+    return puzzles;
+  }
+
+  
+  // ================= Confetti =================
+  function fireConfetti(durationMs = 1300, count = 200){
+    const canvas = getConfettiCanvas();
+    const ctx = canvas.getContext('2d');
+
+    // Build particles
+    const palette = ['#B388EB','#5DD0C2','#F2C14E','#6AA6FF','#F78C6C','#8B5CF6','#22C55E','#3B82F6','#EAB308'];
+    const w = canvas.width, h = canvas.height;
+    const cx = w / 2, cy = Math.max(120, h * 0.35); // launch near top-middle
+    const GRAVITY = 0.15, DRAG = 0.985, SPIN = 0.2;
+
+    const parts = [];
+    for(let i=0;i<count;i++){
+      const angle = Math.random()*Math.PI*2;
+      const speed = 6 + Math.random()*7;
+      const vx = Math.cos(angle)*speed;
+      const vy = Math.sin(angle)*speed - 6; // bias upward a bit
+      const size = 4 + Math.random()*6;
+      parts.push({
+        x: cx, y: cy, vx, vy,
+        w: size, h: size*0.6,
+        rot: Math.random()*Math.PI*2,
+        vr: (Math.random() - 0.5) * SPIN,
+        color: palette[i % palette.length],
+        alpha: 1
+      });
+    }
+
+    let start = performance.now();
+    function frame(now){
+      const t = now - start;
+      ctx.clearRect(0,0,w,h);
+
+      for(const p of parts){
+        // physics
+        p.vx *= DRAG;
+        p.vy = p.vy * DRAG + GRAVITY;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.vr;
+        // fade out towards the end
+        if(t > durationMs * 0.65){ p.alpha = Math.max(0, 1 - (t - durationMs*0.65)/(durationMs*0.35)); }
+
+        // draw
+        ctx.save();
+        ctx.globalAlpha = p.alpha;
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+        ctx.restore();
+      }
+
+      if(t < durationMs && parts.some(p => p.alpha > 0 && p.y < h + 20)){
+        requestAnimationFrame(frame);
+      } else {
+        // cleanup
+        if(canvas && canvas.parentNode){ canvas.parentNode.removeChild(canvas); }
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function getConfettiCanvas(){
+    let c = document.getElementById('confetti-canvas');
+    if(!c){
+      c = document.createElement('canvas');
+      c.id = 'confetti-canvas';
+      document.body.appendChild(c);
+    }
+    // size to viewport
+    const resize = ()=>{ c.width = window.innerWidth; c.height = window.innerHeight; };
+    resize();
+    // Only keep the listener while canvas exists
+    const onResize = ()=>{ if(document.body.contains(c)){ resize(); } else { window.removeEventListener('resize', onResize); } };
+    window.addEventListener('resize', onResize, {passive:true});
+    return c;
+  }
+
+  // ================= Game state & rendering =================
+  let PUZZLES=[], PUZZLE=null, solved=[], selected=new Set(), remaining=new Set(), order=[], itemToCat=new Map();
+
+  // Hints
+  let hintedColors = new Map(); // item -> color for visual hinting
+  let hintGroupIdx = -1;
+  let hintedItems = new Set(); // items revealed so far in current hinted group
+
+  function clearHintState(){ hintGroupIdx=-1; hintedItems.clear(); hintedColors.clear(); }
+
+  function chooseUnsolvedGroupIndex(){
+    if(!PUZZLE) return -1;
+    for(let i=0;i<PUZZLE.categories.length;i++){
+      const c = PUZZLE.categories[i];
+      if(c.items.every(it => remaining.has(it))) return i;
+    }
+    return -1;
+  }
+
+  function fitTiles(){
+    const tiles = gridEl.querySelectorAll('.tile');
+    tiles.forEach(tile=>{
+      tile.style.fontSize = '18px';
+      const maxH = parseInt(getComputedStyle(tile).maxHeight) || 160;
+      let fs = 18, minFs = 12;
+      while(tile.scrollHeight > maxH && fs > minFs){
+        fs -= 1; tile.style.fontSize = fs + 'px';
+      }
+    });
+  }
+
+  function selectPuzzleForCurrentOffset(){
+    const mmdd = phoenixMonthDayFromOffset(dayOffset);
+    for(let i=0;i<PUZZLES.length;i++){
+      if(toMMDD(PUZZLES[i].title) === mmdd) return PUZZLES[i];
+    }
+    return null;
+  }
+
+  function renderNoPuzzle(mmdd){
+    gridEl.innerHTML='';
+    const frag = document.createDocumentFragment();
+    for(let i=0;i<16;i++){ const d=document.createElement('div'); d.className='skeleton'; frag.appendChild(d); 
+    renderFooter();}
+    gridEl.appendChild(frag);
+    submitEl.disabled = deselectEl.disabled = shuffleEl.disabled = hintEl.disabled = true;
+    loaderEl.textContent = 'No puzzle found for ' + mmdd + '. Update puzzles.csv or press N/P to change day.';
+  }
+
+  function initBoard(){
+    window._confettiShown = false;
+    solved=[]; selected.clear(); clearHintState();
+    remaining = new Set(PUZZLE.categories.flatMap(c=>c.items));
+    order = shuffle([...remaining]);
+    itemToCat = new Map();
+    PUZZLE.categories.forEach((c, idx)=> c.items.forEach(it=> itemToCat.set(it, idx)));
+    loaderEl.textContent='';
+    render();
+  
+    renderFooter();
+}
+
+  function getUnsolvedOrder(){ return order.filter(it=>remaining.has(it)); }
+
+  function render(){
+    const frag = document.createDocumentFragment();
+    gridEl.innerHTML='';
+
+    // solved cards
+    for(const g of solved){
+      const card=document.createElement('div'); card.className='solved-card'; card.style.background=rgba(g.color,.15); card.style.borderColor=g.color;
+      const badge=document.createElement('span'); badge.className='badge'; badge.style.background=g.color; badge.textContent=g.name;
+      const items=document.createElement('div'); items.style.opacity='.95'; items.style.fontWeight='700';
+      // Build linked list: each item links to its URL if provided
+      const parts=[];
+      for(let i=0;i<g.items.length;i++){
+        const text = g.items[i];
+        const url = (g.urls||[])[i] || '';
+        if(url){
+          const a = document.createElement('a');
+          a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+          a.textContent = text;
+          a.style.textDecoration = 'none';
+          a.style.fontWeight = '800';
+          a.style.borderBottom = '1px solid rgba(0,0,0,.15)';
+          parts.push(a);
+        } else {
+          const span = document.createElement('span'); span.textContent = text; parts.push(span);
+        }
+        if(i < g.items.length-1){ parts.push(document.createTextNode(' • ')); }
+      }
+      parts.forEach(el=> items.appendChild(el));
+      card.appendChild(badge); card.appendChild(items); frag.appendChild(card);
+    }
+
+    // remaining tiles
+    for(const it of getUnsolvedOrder()){
+      const b=document.createElement('button'); b.type='button'; b.className='tile'; b.textContent=it;
+      const isSel=selected.has(it); if(isSel) b.classList.add('selected');
+      b.setAttribute('aria-pressed', isSel? 'true':'false');
+      // Apply hint coloring only when not selected
+      if(hintedColors.has(it) && !isSel){
+        const c = hintedColors.get(it);
+        b.style.borderColor = c;
+        b.style.outline = '2px solid ' + c;
+        b.style.background = rgba(c, 0.12);
+      }
+      b.addEventListener('click', ()=> toggle(it), {passive:true});
+      frag.appendChild(b);
+    }
+
+    gridEl.appendChild(frag);
+    fitTiles();
+
+    const done = PUZZLE && solved.length===PUZZLE.categories.length;
+    if(done && !window._confettiShown){ window._confettiShown = true; try{ fireConfetti(); }catch(_){} }
+    submitEl.disabled = deselectEl.disabled = shuffleEl.disabled = hintEl.disabled = !!done || !PUZZLE;
+  }
+
+  function toggle(it){
+    if(!remaining.has(it)) return;
+    if(selected.has(it)) selected.delete(it);
+    else { if(selected.size===4) selected.delete([...selected][0]); selected.add(it); }
+    const nodes = gridEl.querySelectorAll('.tile');
+    for(const n of nodes){
+      const isSel = selected.has(n.textContent);
+      n.classList.toggle('selected', isSel);
+      n.setAttribute('aria-pressed', isSel ? 'true' : 'false');
+      // reapply hint visuals only if not selected
+      if(hintedColors.has(n.textContent) && !isSel){
+        const c = hintedColors.get(n.textContent);
+        n.style.borderColor = c;
+        n.style.outline = '2px solid ' + c;
+        n.style.background = rgba(c, 0.12);
+      } else {
+        // clear inline hint styles when selected or not hinted
+        n.style.borderColor = '';
+        n.style.outline = '';
+        n.style.background = '';
+      }
+    }
+  }
+
+  function countOverlap(arr, group){ const set=new Set(group); return arr.reduce((n,x)=> n+(set.has(x)?1:0),0); }
+
+  function onSubmit(){
+    if(!PUZZLE) return;
+    if(selected.size!==4){ showToast('Select 4 tiles.','warn'); return; }
+    const sel=[...selected];
+    const catIdx=itemToCat.get(sel[0]);
+    const allSame = sel.every(it=> itemToCat.get(it)===catIdx);
+    if(allSame){
+      const cat=PUZZLE.categories[catIdx];
+      if(hintGroupIdx === catIdx) clearHintState();
+      solved.push({name:cat.name, color:cat.color, items:cat.items.slice(), urls:(cat.urls||[]).slice()});
+      for(const it of sel) remaining.delete(it);
+      selected.clear();
+      showToast('Correct!','ok');
+      if(solved.length===PUZZLE.categories.length){ showToast('You solved NeuroConnections!','ok'); }
+      render();
+    }else{
+      const oneAway = PUZZLE.categories.some(cat=> countOverlap(sel, cat.items)===3);
+      showToast(oneAway? 'One away!':'Nope. Try again.', oneAway? 'warn':'err');
+    }
+  }
+
+  function onShuffle(){ order = shuffle(getUnsolvedOrder()); render(); }
+  function onDeselect(){ selected.clear(); const tiles=gridEl.querySelectorAll('.tile'); tiles.forEach(t=>{ t.classList.remove('selected'); t.setAttribute('aria-pressed','false'); }); fitTiles(); }
+
+  function onHint(){
+    if(!PUZZLE) return;
+
+    // If no current hinted group or it's no longer fully remaining, pick a new unsolved group
+    const validCurrent = hintGroupIdx >= 0 && PUZZLE.categories[hintGroupIdx].items.every(it => remaining.has(it));
+    if(hintGroupIdx < 0 || !validCurrent){
+      hintGroupIdx = chooseUnsolvedGroupIndex();
+      hintedItems.clear();
+      hintedColors.clear();
+      if(hintGroupIdx < 0){ showToast('No groups left to hint.','warn'); return; }
+    }
+
+    const cat = PUZZLE.categories[hintGroupIdx];
+    const unseen = cat.items.filter(it => remaining.has(it) && !hintedItems.has(it));
+
+    if(unseen.length === 0){
+      // All 4 have been hinted already; auto-solve this group now
+      solved.push({name:cat.name, color:cat.color, items:cat.items.slice(), urls:(cat.urls||[]).slice()});
+      cat.items.forEach(it => remaining.delete(it));
+      selected.clear();
+      showToast('Hint solved: ' + cat.name, 'ok');
+      clearHintState();
+      render();
+      return;
+    }
+
+    // Reveal one random new item from this group's remaining items
+    const item = unseen[Math.floor(Math.random()*unseen.length)];
+    hintedItems.add(item);
+    hintedColors.set(item, cat.color);
+    const count = hintedItems.size;
+    showToast(`Hint: revealed ${count}/4`, 'warn');
+
+    // If that was the 4th, auto-solve immediately
+    if(count >= 4){
+      solved.push({name:cat.name, color:cat.color, items:cat.items.slice(), urls:(cat.urls||[]).slice()});
+      cat.items.forEach(it => remaining.delete(it));
+      selected.clear();
+      showToast('Hint solved: ' + cat.name, 'ok');
+      clearHintState();
+    }
+    render();
+  }
+
+  submitEl.addEventListener('click', onSubmit);
+  shuffleEl.addEventListener('click', onShuffle);
+  deselectEl.addEventListener('click', onDeselect);
+  hintEl.addEventListener('click', onHint);
+
+  
+  // Secret: 'N' forward a day, 'P' back a day (strict MM-DD only)
+  // Also: 'Q' to auto-solve the entire puzzle (for test/demo).
+  function autoSolveAll(){
+    if(!PUZZLE) return;
+    // Clear any selection/hints and finish all remaining categories in displayed order
+    selected.clear();
+    clearHintState();
+    for(const cat of PUZZLE.categories){
+      // If any of this category's items are still remaining, finish it
+      if(cat.items.some(it => remaining.has(it))){
+        solved.push({ name: cat.name, color: cat.color, items: cat.items.slice(), urls: (cat.urls||[]).slice() });
+        for(const it of cat.items) remaining.delete(it);
+      }
+    }
+    showToast('Auto-solved!','ok');
+    render();
+    if(!window._confettiShown){ window._confettiShown = true; try{ fireConfetti(); }catch(_){} }
+  }
+
+  window.addEventListener('keydown', (e)=>{
+    const k = (e.key||'').toLowerCase();
+    if(k === 'q'){ e.preventDefault(); autoSolveAll(); return; }
+    if(k === 'n'){
+      dayOffset += 1;
+      if(PUZZLES.length){
+        const ds = phoenixMonthDayFromOffset(dayOffset);
+        PUZZLE = selectPuzzleForCurrentOffset();
+        if(!PUZZLE){ showToast('No puzzle for '+ds, 'err'); renderNoPuzzle(ds); return; }
+        initBoard();
+      
+      renderFooter();
+renderFooter();
+        showToast(`Advanced date → ${ds}`, 'ok');
+      }
+    }
+    if(k === 'p'){
+      dayOffset -= 1;
+      if(PUZZLES.length){
+        const ds = phoenixMonthDayFromOffset(dayOffset);
+        PUZZLE = selectPuzzleForCurrentOffset();
+        if(!PUZZLE){ showToast('No puzzle for '+ds, 'err'); renderNoPuzzle(ds); return; }
+        initBoard();
+        showToast(`Went back → ${ds}`, 'ok');
+      
+      renderFooter();
+}
+    }
+  }, {passive:true});
+
+  // ================= Boot =================
+  (async function boot(){
+    try{
+      const res = await fetch('puzzles.csv', {cache:'no-store'});
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const text = await res.text();
+      const rows = parseCSV(text);
+      PUZZLES = rowsToPuzzles(rows);
+      if(!PUZZLES.length) throw new Error('No valid puzzles found');
+      PUZZLE = selectPuzzleForCurrentOffset();
+      if(!PUZZLE){ const ds = phoenixMonthDayFromOffset(dayOffset); showToast('No puzzle for '+ds,'err'); renderNoPuzzle(ds); return; }
+      initBoard();
+    }catch(e){
+      console.warn('Fetch failed, enabling local CSV uploader.', e);
+      loaderEl.textContent = "Couldn't fetch puzzles.csv.\\n• Put index.html and puzzles.csv together and use a local server, or\\n• Upload the CSV below.";
+      uploaderEl.classList.add('show');
+    }
+  })();
+
+  // Local CSV uploader fallback
+  fileInput.addEventListener('change', (ev)=>{
+    const file = ev.target.files && ev.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ()=>{
+      try{
+        const text = String(reader.result||'');
+        const rows = parseCSV(text);
+        PUZZLES = rowsToPuzzles(rows);
+        if(!PUZZLES.length) throw new Error('No valid puzzles in CSV');
+        PUZZLE = selectPuzzleForCurrentOffset();
+        if(!PUZZLE){ const ds = phoenixMonthDayFromOffset(dayOffset); showToast('No puzzle for '+ds,'err'); renderNoPuzzle(ds); return; }
+        uploaderEl.classList.remove('show');
+        initBoard();
+      
+        renderFooter();
+}catch(err){ console.error(err); showToast('Invalid CSV format.','err'); }
+    };
+    reader.readAsText(file);
+  });
+  </script>
+</body>
+</html>
